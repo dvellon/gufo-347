@@ -12,7 +12,7 @@ Written 2026-11-15 23:56:05 ET. Windows 11, gfx1151.
 |---|---|
 | **A** stock | upstream gufo v0.34.0 (commit `2845939b`), built with TheRock 10.0.0 (upstream BUILD-WINDOWS.md, cmake --preset windows-release); the public shared Q8_0 MTP draft head that upstream's model guide uses (`5ff54097`) |
 | **B** ours, strict, public assets | our build `fe7b7048` = upstream v0.34.0 + our patches, built with TheRock 10.0.0, with the switches listed below; the **same public head**, and a public draft-vocabulary table (K = 6,931, `caade56a`) built with the tools in this repo |
-| **P** previous build (reference) | our pre-rebase production build (`edb3fe51`, profiles `a1f1493d`), same assets; shown for reference only |
+| **P** previous build (reference) | our pre-rebase production build, built with ROCm 10.1 (`edb3fe51`, profiles `a1f1493d`), same assets; shown for reference only |
 | **BX** ours, relaxed, public assets | the same binary and assets, with the relaxed (non-standard, near-tie) profile |
 | **C / CX** ours, private drafter | strict / relaxed with our privately trained head and vocabulary table: **numbers only** |
 | **R / AR** references | our binary / stock with speculation off: the exactness references |
