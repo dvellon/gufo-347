@@ -1,0 +1,371 @@
+diff --git a/src/cli/serve/component_text_cache.cpp b/src/cli/serve/component_text_cache.cpp
+--- a/src/cli/serve/component_text_cache.cpp
++++ b/src/cli/serve/component_text_cache.cpp
+@@ -1777,7 +1777,7 @@ std::optional<FrontierEnd> FrontierTextEnd(
+ 
+ bool ComponentTextCache::AlignToLiveFrontier(
+     std::vector<ContinuationToken>& prompt, std::size_t& stable,
+-    std::size_t max_tokens, bool trimmed) const {
++    std::size_t max_tokens, bool trimmed, std::size_t* frontier_tokens) const {
+   const std::lock_guard lock(impl_->mutex);
+   const std::vector<ContinuationToken>* selected = nullptr;
+   std::size_t seam = 0;
+@@ -1830,6 +1830,8 @@ bool ComponentTextCache::AlignToLiveFrontier(
+                       " prompt_seam=" + std::to_string(seam) +
+                       " split_tokens=" + std::to_string(rest.size()) +
+                       " prompt_tokens=" + std::to_string(prompt.size()));
++  if (frontier_tokens != nullptr)
++    *frontier_tokens = selected->size();  // hillclimb-275
+   if (stable != 0)
+     stable = stable - seam + selected->size() + rest.size();
+   std::vector<ContinuationToken> aligned;
+diff --git a/src/cli/serve/component_text_cache.hpp b/src/cli/serve/component_text_cache.hpp
+--- a/src/cli/serve/component_text_cache.hpp
++++ b/src/cli/serve/component_text_cache.hpp
+@@ -106,9 +106,12 @@ public:
+   // missing anywhere else is an edit. A frontier ending inside a prompt token
+   // continues with the rest of that token. `stable` follows the rewrite, and
+   // the prompt stays below `max_tokens`. Returns whether the prompt changed.
++  // hillclimb-275: `frontier_tokens` (optional) receives the selected
++  // frontier's token count when the prompt changed.
+   bool AlignToLiveFrontier(std::vector<ContinuationToken>& prompt,
+                            std::size_t& stable, std::size_t max_tokens,
+-                           bool trimmed) const;
++                           bool trimmed,
++                           std::size_t* frontier_tokens = nullptr) const;
+   [[nodiscard]] std::size_t capacity() const noexcept;
+   // RAM the cache may retain after host limits; zero with the RAM cache off.
+   [[nodiscard]] std::size_t ram_budget() const noexcept;
+diff --git a/src/cli/serve/openai_chat.cpp b/src/cli/serve/openai_chat.cpp
+--- a/src/cli/serve/openai_chat.cpp
++++ b/src/cli/serve/openai_chat.cpp
+@@ -2359,6 +2359,11 @@ json::Value Usage(const TextGenerationBackend::Result& result) {
+                                          : result.exactness_requested;
+     metrics["request_id"] = result.xm_request_id;
+   }
++  // hillclimb-275: GUFO_XM_STRICT_ALIGN=1 only (unset: never reported).
++  if (result.frontier_aligned >= 0) {
++    metrics["frontier_aligned"] = result.frontier_aligned;
++    metrics["frontier_tokens"] = result.frontier_tokens;
++  }
+   usage["gufo"] = std::move(metrics);
+   return usage;
+ }
+diff --git a/src/cli/serve/text_generation_backend.hpp b/src/cli/serve/text_generation_backend.hpp
+--- a/src/cli/serve/text_generation_backend.hpp
++++ b/src/cli/serve/text_generation_backend.hpp
+@@ -238,6 +238,11 @@ public:
+     std::string exactness{"strict"};
+     std::string exactness_requested;
+     std::uint64_t xm_request_id{0};
++    /// hillclimb-275 (GUFO_XM_STRICT_ALIGN=1 only, else -1 = not reported):
++    /// whether #1154/#1158 live-frontier alignment rewrote this prompt, and
++    /// the aligned frontier's token count (0 when not aligned).
++    int frontier_aligned{-1};
++    std::size_t frontier_tokens{0};
+     std::string prefill_fallback_reason;
+     std::string cache_miss_reason;
+     std::size_t cache_common_prefix_tokens{0};
+diff --git a/src/cli/serve/text_generation_scheduler.cpp b/src/cli/serve/text_generation_scheduler.cpp
+--- a/src/cli/serve/text_generation_scheduler.cpp
++++ b/src/cli/serve/text_generation_scheduler.cpp
+@@ -568,6 +568,18 @@ void PrepareStructuredOutput(const TextModelRunner& runner) {
+   Logger::Info("loader", line.str());
+ }
+ 
++// hillclimb-275: GUFO_XM_STRICT_ALIGN=1 (exactly "1"; read once). On: strict
++// requests on a --exactness* server also take upstream #1158 live-frontier
++// alignment (AlignToLiveFrontier), and every request's xm_request line and
++// usage.gufo report frontier_aligned / frontier_tokens. Unset: R7Q.
++bool W3XmStrictAlign() {
++  static const bool on = [] {
++    const char* v = std::getenv("GUFO_XM_STRICT_ALIGN");
++    return v != nullptr && std::string_view(v) == "1";
++  }();
++  return on;
++}
++
+ }  // namespace
+ 
+ struct TextGenerationScheduler::Request::Impl {
+@@ -2731,7 +2743,11 @@ TextGenerationScheduler::TextGenerationScheduler(
+     std::shared_ptr<TextRunnerPool> runner_pool,
+     TextPrefillPolicy prefill_policy, TextSchedulerPolicy scheduler_policy)
+     : impl_(std::make_unique<Impl>(std::move(runner_pool), prefill_policy,
+-                                   scheduler_policy)) {}
++                                   scheduler_policy)) {
++  // hillclimb-275: one config line (GUFO_XM_STRICT_ALIGN).
++  Logger::Info("scheduler", std::string("event=w3xmalign_config align=") +
++                                (W3XmStrictAlign() ? "1" : "0"));
++}
+ 
+ TextGenerationScheduler::~TextGenerationScheduler() = default;
+ 
+@@ -2805,13 +2821,21 @@ TextGenerationScheduler::Request TextGenerationScheduler::Submit(
+   // at arrival (timing), so a strict request on a server started with
+   // --exactness* never takes it; relaxed / approximate do. Without an
+   // --exactness* flag every request takes it, as upstream does.
++  // hillclimb-275 GUFO_XM_STRICT_ALIGN=1: strict requests align too (as
++  // upstream v0.34.0 does for every request), and the outcome is reported.
++  const bool xm_strict_align = W3XmStrictAlign();
+   const bool xm_strict_frontier =
+-      xm::TiersEnabled() &&
++      !xm_strict_align && xm::TiersEnabled() &&
+       xm::ResolveLevel(metadata.exactness) == xm::ExactnessLevel::kStrict;
++  bool frontier_aligned = false;
++  std::size_t frontier_tokens = 0;
+   if (metadata.cache_prompt && metadata.prompt_context == nullptr &&
+       impl_->incremental_text_is_exact && !xm_strict_frontier)
+-    (void)impl_->runner_pool->AlignToLiveFrontier(
+-        prompt, metadata.cache_prefix_tokens, metadata.chat_template);
++    frontier_aligned = impl_->runner_pool->AlignToLiveFrontier(
++        prompt, metadata.cache_prefix_tokens, metadata.chat_template,
++        &frontier_tokens);
++  if (!frontier_aligned)
++    frontier_tokens = 0;
+   const auto context = impl_->runner_pool->runner().Descriptor().max_context;
+   if (prompt.size() >= context) {
+     throw std::length_error("prompt has " + std::to_string(prompt.size()) +
+@@ -2873,6 +2897,10 @@ TextGenerationScheduler::Request TextGenerationScheduler::Submit(
+       metadata.exactness ? std::string(xm::ExactnessName(*metadata.exactness))
+                          : std::string();
+   request->result.xm_request_id = request->id;
++  if (xm_strict_align) {  // hillclimb-275 (unset: not reported)
++    request->result.frontier_aligned = frontier_aligned ? 1 : 0;
++    request->result.frontier_tokens = frontier_tokens;
++  }
+   // Wave3 XM: cache isolation. Every prefix-cache lookup, checkpoint and live
+   // frontier of this request is keyed with its level's numerics tag (empty
+   // for strict = upstream keys), through its prompt context.
+@@ -2894,7 +2922,12 @@ TextGenerationScheduler::Request TextGenerationScheduler::Submit(
+                        (request->exactness == xm::ExactnessLevel::kApproximate
+                             ? ":" + xm::ApproximateFeatures()
+                             : std::string())) +
+-            " client=" + request->client_id);
++            " client=" + request->client_id +
++            // hillclimb-275 GUFO_XM_STRICT_ALIGN=1 only
++            (xm_strict_align
++                 ? " frontier_aligned=" + std::string(frontier_aligned ? "1" : "0") +
++                       " frontier_tokens=" + std::to_string(frontier_tokens)
++                 : std::string()));
+   request->token_limit =
+       max_tokens > 0 ? std::min(max_tokens, available) : available;
+   // [optscore] optscore: a scoring request generates nothing.
+diff --git a/src/cli/serve/text_model_runner.cpp b/src/cli/serve/text_model_runner.cpp
+--- a/src/cli/serve/text_model_runner.cpp
++++ b/src/cli/serve/text_model_runner.cpp
+@@ -1921,10 +1921,11 @@ std::size_t TextRunnerPool::CachedPrefixTokens(
+ 
+ bool TextRunnerPool::AlignToLiveFrontier(std::vector<TextRunnerToken>& prompt,
+                                          std::size_t& cache_prefix_tokens,
+-                                         bool chat_template) const {
++                                         bool chat_template,
++                                         std::size_t* frontier_tokens) const {
+   return impl_->component_cache->AlignToLiveFrontier(
+       prompt, cache_prefix_tokens, impl_->validated.descriptor.max_context,
+-      chat_template);
++      chat_template, frontier_tokens);
+ }
+ 
+ }  // namespace gufo::server
+diff --git a/src/cli/serve/text_model_runner.hpp b/src/cli/serve/text_model_runner.hpp
+--- a/src/cli/serve/text_model_runner.hpp
++++ b/src/cli/serve/text_model_runner.hpp
+@@ -221,10 +221,12 @@ public:
+   /// frontier's tokens for it, so a different split of a previous answer does
+   /// not lose the frontier (#1154). Moves `cache_prefix_tokens` with the
+   /// rewrite. `chat_template` allows whitespace the template trimmed from
+-  /// the edges of a reply.
++  /// the edges of a reply. hillclimb-275: `frontier_tokens` (optional) gets
++  /// the aligned frontier's token count.
+   bool AlignToLiveFrontier(std::vector<TextRunnerToken>& prompt,
+                            std::size_t& cache_prefix_tokens,
+-                           bool chat_template) const;
++                           bool chat_template,
++                           std::size_t* frontier_tokens = nullptr) const;
+ 
+ private:
+   struct Impl;
+diff --git a/src/models/qwen38_flash_next/engine.cpp b/src/models/qwen38_flash_next/engine.cpp
+--- a/src/models/qwen38_flash_next/engine.cpp
++++ b/src/models/qwen38_flash_next/engine.cpp
+@@ -232,8 +232,18 @@ constexpr std::array<float, kMaxMtpDraftTokens + 1> kB5NoGaps{
+ //             suffix-copy / lookup chains or below one remaining draft
+ //             (decision 3).
+ //   off       on + GUFO_U882=off|0: no #882 gate anywhere (production c6v).
+-// One stderr line: event=w3u882_config gate=<g> drop=<d> mode=<on|off|upstream>
+-enum class W3StopMode : std::uint8_t { kUpstream, kOn, kOff };
++//   drop      on + GUFO_U882=drop (hillclimb-275): the same planned greedy
++//             confidence-stop batch cycles are gated, but at the drop line
++//             (kMtpBatchDropProbability) instead of kMtpGateProbability: a
++//             draft >= 0.6 continues the chain; a draft < 0.6 ends it and is
++//             not verified when decision 3 allows the drop (chain.size() > 2,
++//             no lookup / B5 / grammar / suffix copy), else it ends the chain
++//             and is verified (as `on` at its gate). Meaningful only with
++//             GUFO_U882_BCONF=1 (else batched confidences are ids[1] bits).
++//             Like off, only when one of ours is set (else upstream).
++// One stderr line: event=w3u882_config gate=<g> drop=<d>
++// mode=<on|off|upstream|drop>
++enum class W3StopMode : std::uint8_t { kUpstream, kOn, kOff, kDrop };
+ 
+ bool W3EnvSet(const char* name) {
+   const char* v = std::getenv(name);
+@@ -256,14 +266,17 @@ W3StopMode W3Stops() {
+     const char* kill = std::getenv("GUFO_U882");
+     const bool off = kill != nullptr && (std::string_view(kill) == "off" ||
+                                          std::string_view(kill) == "0");
++    const bool drop = kill != nullptr && std::string_view(kill) == "drop";
+     const W3StopMode m = !ours ? W3StopMode::kUpstream
+-                         : off ? W3StopMode::kOff
+-                               : W3StopMode::kOn;
++                         : off  ? W3StopMode::kOff
++                         : drop ? W3StopMode::kDrop
++                                : W3StopMode::kOn;
+     std::fprintf(stderr, "event=w3u882_config gate=%g drop=%g mode=%s\n",
+                  static_cast<double>(kMtpGateProbability),
+                  static_cast<double>(kMtpBatchDropProbability),
+                  m == W3StopMode::kUpstream ? "upstream"
+                  : m == W3StopMode::kOn     ? "on"
++                 : m == W3StopMode::kDrop   ? "drop"
+                                             : "off");
+     std::fflush(stderr);
+     return m;
+@@ -3080,9 +3093,13 @@ static_assert(chat_path::kDepths == kMaxMtpDraftTokens,
+ bool Session::GateStops(const PendingDecode& pending) {
+   if (!pending.gated)
+     return false;
++  // hillclimb-275 GUFO_U882=drop: a gated greedy chain stops only below the
++  // drop line (the planned drop then decides whether the draft is verified).
+   return pending.sampled
+              ? pending.proposals.back().probability < kMtpSampledGateProbability
+-             : pending.draft_confidence < kMtpGateProbability;
++             : pending.draft_confidence < (W3Stops() == W3StopMode::kDrop
++                                               ? kMtpBatchDropProbability
++                                               : kMtpGateProbability);
+ }
+ 
+ void Session::AppendDraft(PendingDecode& pending) {
+@@ -3473,9 +3490,11 @@ bool Session::PrepareDecode(const DecodeRequest& request,
+   // rebase-272 (#882): which chains end at the confidence gate (GateStops).
+   // kUpstream: every speculative chain. on: a jointly planned greedy
+   // confidence-stop cycle only (production c7up decision 2). off: none.
++  // hillclimb-275 drop: the same cycles as on (GateStops uses the drop line).
+   pending->gated =
+       W3Stops() == W3StopMode::kUpstream ||
+-      (W3Stops() == W3StopMode::kOn && batch_drafts.has_value() &&
++      ((W3Stops() == W3StopMode::kOn || W3Stops() == W3StopMode::kDrop) &&
++       batch_drafts.has_value() &&
+        pending->confidence_stop && !sampled && !pending->pen_draft);
+   // Wave3 H1 mask: the anchor passes CanSelectArgmax for tool/prose grammars
+   // (it is the masked selection); closed response_format schemas never do.
+diff --git a/src/models/qwen38_flash_next/kernels/rocm/batch.cpp b/src/models/qwen38_flash_next/kernels/rocm/batch.cpp
+--- a/src/models/qwen38_flash_next/kernels/rocm/batch.cpp
++++ b/src/models/qwen38_flash_next/kernels/rocm/batch.cpp
+@@ -205,6 +205,19 @@ WeightType EmbeddingType(core::GgmlType type) {
+ 
+ }  // namespace
+ 
++// hillclimb-275: GUFO_U882_BCONF=1 (exactly "1"; read once). Unset / other:
++// R7Q's statements (a batched candidates row's confidence = ids[1] bits).
++bool W3BatchConfidenceFix() {
++  static const bool on = [] {
++    const char* v = std::getenv("GUFO_U882_BCONF");
++    const bool b = v != nullptr && std::strcmp(v, "1") == 0;
++    std::fprintf(stderr, "event=w3bconf_config bconf=%d\n", b ? 1 : 0);
++    std::fflush(stderr);
++    return b;
++  }();
++  return on;
++}
++
+ Executor::Scratch Executor::RowScratch(const Scratch& b,
+                                        std::uint32_t offset) const {
+   const Config& c = config();
+@@ -697,6 +710,16 @@ bool Executor::MtpHeads(std::span<const MtpHeadItem> items,
+     for (std::uint32_t i = 0; i < kBatchSessions; ++i)
+       std::construct_at(batch_candidates_host_ + i);
+   }
++  // hillclimb-275 GUFO_U882_BCONF=1: rows that ask for candidates AND a
++  // confidence also take the token path's softmax (Argmax + ArgmaxConfidence,
++  // as the one-row path above / MtpHead); its float bits land here per row.
++  const bool bconf = W3BatchConfidenceFix();
++  if (bconf && batch_confidence_host_ == nullptr &&
++      !Check(host_allocations_.Allocate(
++                 &batch_confidence_host_,
++                 kBatchSessions * 2 * sizeof(std::int32_t), ResultHostFlags()),
++             error))
++    return false;
+   const auto n = static_cast<std::uint32_t>(items.size());
+   // Each request keeps the head it chose. A small-head row's logits are the
+   // prefix rows then the table rows, kSmall wide. When every row reads the
+@@ -979,6 +1002,18 @@ bool Executor::MtpHeads(std::span<const MtpHeadItem> items,
+         return false;
+       }
+       batch_candidates_host_[i].size = count;
++      // hillclimb-275 GUFO_U882_BCONF=1: the top-1 softmax confidence of this
++      // row's logits (candidates above are unchanged; only the confidence
++      // differs from R7Q, which read the second candidate's id bits).
++      if (bconf && items[i].output.confidence != nullptr &&
++          items[i].output.token != nullptr) {
++        Argmax(logits_of(i), s_.mtp_argmax, s_.mtp_token, 1, rows, stream_);
++        ArgmaxConfidence(logits_of(i), s_.mtp_token, rows, stream_);
++        if (!CopyPinned(s_.mtp_token, batch_confidence_host_ + 2 * i,
++                        2 * sizeof(std::int32_t), hipMemcpyDeviceToHost,
++                        stream_, error))
++          return false;
++      }
+     }
+     return true;
+   };
+@@ -1001,7 +1036,12 @@ bool Executor::MtpHeads(std::span<const MtpHeadItem> items,
+       *items[i].output.token = batch_candidates_host_[i].ids[0];
+       if (items[i].output.confidence != nullptr)
+         std::memcpy(items[i].output.confidence,
+-                    batch_candidates_host_[i].ids.data() + 1, sizeof(float));
++                    bconf && items[i].output.candidates != nullptr
++                        ? static_cast<const void*>(batch_confidence_host_ +
++                                                   2 * i + 1)
++                        : static_cast<const void*>(
++                              batch_candidates_host_[i].ids.data() + 1),
++                    sizeof(float));
+     }
+     if (items[i].output.candidates != nullptr)
+       *items[i].output.candidates = batch_candidates_host_[i];
+diff --git a/src/models/qwen38_flash_next/kernels/rocm/executor.cpp b/src/models/qwen38_flash_next/kernels/rocm/executor.cpp
+--- a/src/models/qwen38_flash_next/kernels/rocm/executor.cpp
++++ b/src/models/qwen38_flash_next/kernels/rocm/executor.cpp
+@@ -2673,6 +2673,8 @@ std::unique_ptr<Executor> Executor::Create(const DeviceModel& model,
+     return nullptr;
+   if (!e->CalibrateDecodeOverlap(error_msg))
+     return nullptr;
++  // hillclimb-275: event=w3bconf_config (GUFO_U882_BCONF, batch.cpp MtpHeads).
++  (void)W3BatchConfidenceFix();
+   return e;
+ }
+ 
+diff --git a/src/models/qwen38_flash_next/kernels/rocm/executor.hpp b/src/models/qwen38_flash_next/kernels/rocm/executor.hpp
+--- a/src/models/qwen38_flash_next/kernels/rocm/executor.hpp
++++ b/src/models/qwen38_flash_next/kernels/rocm/executor.hpp
+@@ -34,6 +34,12 @@
+ 
+ namespace gufo::models::qwen38_flash_next::rocm {
+ 
++/// hillclimb-275: GUFO_U882_BCONF=1 (read once; unset = R7Q). A batched MTP
++/// head row (>= 2 rows) that asks for candidates and a confidence gets the
++/// top-1 token's softmax confidence (as the one-row path) instead of the
++/// second candidate's id bits. Prints event=w3bconf_config bconf=<0|1>.
++[[nodiscard]] bool W3BatchConfidenceFix();
++
+ class Executor;
+ class SnapshotAllocator;
+ struct ArgmaxCandidate;
+@@ -1111,6 +1117,9 @@ private:
+   mutable float* batch_logits_{nullptr};
+   mutable Session::Control* batch_controls_{nullptr};
+   mutable MtpCandidateLogits* batch_candidates_host_{nullptr};
++  /// hillclimb-275 GUFO_U882_BCONF=1: per-row top-1 softmax confidence (float
++  /// bits) of batched head rows that asked for candidates AND a confidence.
++  mutable std::int32_t* batch_confidence_host_{nullptr};
+   // Mapped descriptors, one slice per layer: GPU reads cannot race the host
+   // preparing the next layer. ForwardBatch drains before reusing this table.
+   mutable GdnBatchItem* batch_gdn_host_{nullptr};

@@ -1,0 +1,65 @@
+{
+ "launches": [
+  {
+   "lid": "c1-A-r0",
+   "receipt": "launch-c1-A-r0.json",
+   "receipt_sha256": "e648d251fd90c44dd783340ed0d9a417f09e3cf8294b35a32dde670564b305ad"
+  },
+  {
+   "lid": "c1-A-r1",
+   "receipt": "launch-c1-A-r1.json",
+   "receipt_sha256": "312e024c41089f47ea9be81ce4000eff11fc915a8fd0596457d9ffcb9e8ab626"
+  },
+  {
+   "lid": "c1-A-r2",
+   "receipt": "launch-c1-A-r2.json",
+   "receipt_sha256": "1c665b13fbd2804ff5980a3d2e61d9bb28bbe564860ab5327d37bc4a5f471c65"
+  },
+  {
+   "lid": "c1-A-r3",
+   "receipt": "launch-c1-A-r3.json",
+   "receipt_sha256": "481ea1c04b811efc1f431aab38d09273632eb0c74a155847a4752e988075743a"
+  }
+ ],
+ "matches_run_verdict": null,
+ "result": {
+  "run_statistic": {
+   "ci": null,
+   "point": null,
+   "rounds": 0
+  },
+  "two_level": {
+   "ci": null,
+   "point": null,
+   "rounds": 0
+  }
+ },
+ "row": {
+  "den": "A",
+  "kind": "ratio",
+  "name": "c1 B/A",
+  "num": "B",
+  "stage": "c1",
+  "tier": "strict (lossless)"
+ },
+ "run": {
+  "label": "Windows 11, gfx1151",
+  "tag": "289"
+ },
+ "schema": "gufo.bench-receipt.row.v1",
+ "signer": {
+  "key_fingerprint": "SHA256:w70wubwWEJsWn1W/c+5uvqrPuXSuXs9e3xGk99YUWgg",
+  "namespace": "gufo-bench-receipt",
+  "principal": "gufo-bench-receipts"
+ },
+ "statistic": {
+  "run_statistic": "paired percentile bootstrap over rounds (every arm ran the same session subset in a round), 4000 resamples, seed 260; per-arm value = pooled client decode tok/s (sum completion tokens / sum client decode s)",
+  "two_level": "paired two-level percentile bootstrap: rounds, then the units inside each drawn round (c1 / chat: sessions; canon: prose samples; c8: the launch, not separable)"
+ },
+ "timestamps": {
+  "receipt_made": {
+   "et": "2026-11-16 13:33:31 EST",
+   "utc": "2026-11-16T18:33:31Z"
+  }
+ }
+}

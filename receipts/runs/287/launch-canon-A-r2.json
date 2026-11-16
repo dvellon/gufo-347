@@ -1,0 +1,420 @@
+{
+ "checks": {
+  "exe_identity_ok": true,
+  "host_state": "LOUD",
+  "quiet_before_launch": true,
+  "quiet_rule": "host-load-v2"
+ },
+ "hardware": {
+  "collected": "Win32 CIM (GPU name / driver, CPU, OS build, RAM); no host name, serials or network ids",
+  "cpu": {
+   "cores": 16,
+   "name": "AMD RYZEN AI MAX+ PRO 395 w/ Radeon 8060S",
+   "threads": 32
+  },
+  "gpu": [
+   {
+    "driver_date": "2026-09-29",
+    "driver_version": "32.0.31041.5005",
+    "name": "AMD Radeon(TM) 8060S Graphics",
+    "vendor": "Advanced Micro Devices, Inc."
+   }
+  ],
+  "os": {
+   "arch": "64-bit",
+   "build": "26200",
+   "caption": "Microsoft Windows 11 Pro",
+   "version": "10.0.26200"
+  },
+  "ram_gib": 31.8
+ },
+ "headline": {
+  "counts": true,
+  "name": "prose.tg_server_tps",
+  "value": 41.22952403179354
+ },
+ "inputs": {
+  "client": {
+   "call": {
+    "concurrency": 1,
+    "endpoint_profile": "gufo",
+    "model": "flash-next",
+    "temperature": 0.0
+   },
+   "llm_sha256": "6531589416319639bdb19229f05cec818e476095847bee37ff42100c76156a8c",
+   "name": "upstream tools/gufo serving_bench.py + model_bench/llm.py (stock commit)",
+   "serving_bench_sha256": "4b10a342f074b3692bdca07a1fe64b98017d8204c76cd8aad97dddc0cd407717"
+  },
+  "hip_runtime": null,
+  "launch_wrapper": null,
+  "model": {
+   "first_shard": "Qwen3.8-Flash-Next-UD-Q4_K_XL-00001-of-00004.gguf",
+   "shards": [
+    {
+     "bytes": 10946624,
+     "name": "Qwen3.8-Flash-Next-UD-Q4_K_XL-00001-of-00004.gguf",
+     "sha256": "4448186216b3af4cc558bbce2c3213f01608f8f8b2e5267a9767971dd3ec8082"
+    },
+    {
+     "bytes": 49859583136,
+     "name": "Qwen3.8-Flash-Next-UD-Q4_K_XL-00002-of-00004.gguf",
+     "sha256": "3f342f1c1580473f1ee94ddd5b28206e8c07a70fa1a366f59d1d6c922919a6c9"
+    },
+    {
+     "bytes": 49376141504,
+     "name": "Qwen3.8-Flash-Next-UD-Q4_K_XL-00003-of-00004.gguf",
+     "sha256": "56758f40269cad5cd9b0d3d6fbae0f40f6d5be6de49e4ab392dbe83157d9cbd3"
+    },
+    {
+     "bytes": 12087983520,
+     "name": "Qwen3.8-Flash-Next-UD-Q4_K_XL-00004-of-00004.gguf",
+     "sha256": "753bda48b98ba4f1636134a90a967de1b2d3908a236c026e464777342e53510a"
+    }
+   ]
+  },
+  "mtp_head": {
+   "name": "mtp-Qwen3.8-Flash-Next-shared-Q8_0.gguf",
+   "sha256": "5ff54097406a905cf3a724c709124ceb0e3e10235ee862298969e91c96fa96e6"
+  },
+  "perm": null,
+  "request_bodies_sha256": "a5a986c7a36be0dab13b8fb46e03846c733b455452ad69eb77b0947a073bebfb",
+  "rocm_sdk": {
+   "label": "TheRock 10.0.0 (upstream BUILD-WINDOWS.md, cmake --preset windows-release)",
+   "name": "therock-10.0.0"
+  },
+  "runner": {
+   "name": "run_pb.py",
+   "sha256": "16103735fdce16835761a8bb1be643e6539314bbc51353399978d87894b62ff0"
+  },
+  "server_args": [
+   "serve",
+   "--host",
+   "127.0.0.1",
+   "--port",
+   "<port>",
+   "--sessions",
+   "1",
+   "llm",
+   "--model",
+   "<model:Qwen3.8-Flash-Next-UD-Q4_K_XL-00001-of-00004.gguf>",
+   "--served-model-name",
+   "flash-next",
+   "--context",
+   "32768",
+   "--max-tokens",
+   "128",
+   "--think",
+   "off",
+   "--temperature",
+   "0",
+   "--speculative",
+   "mtp",
+   "--mtp-model",
+   "<mtp_head:mtp-Qwen3.8-Flash-Next-shared-Q8_0.gguf>",
+   "--cache-ram-bytes",
+   "9000000000"
+  ],
+  "server_env": {
+   "HIP_PATH": "<rocm_sdk:therock-10.0.0>"
+  },
+  "server_exe": {
+   "file_sha256_at_receipt": "682c99e0e71afd6cee8ea50be6acec02fba62f4396b64586c3471500bf458368",
+   "name": "gufo.exe",
+   "note": null,
+   "sha256": "682c99e0e71afd6cee8ea50be6acec02fba62f4396b64586c3471500bf458368"
+  },
+  "workload": {
+   "calibration": {
+    "overhead": 12,
+    "ratio": 1.167
+   },
+   "name": "upstream model-bench synthetic prompts",
+   "prompt_sha256": [
+    "93945d40fdbc2aa69ecdcaf8c36552788c7f8e756a1b4c863d2aae43683f3383",
+    "d485c75dc55c74922a903d6966318e7f7329233685d54de7ba3dec9d8f537882",
+    "319cf03e99150af733a37b70b13d8c71a32bf6650b90aa2a9d839797c6400a3d",
+    "b7b9e6a3b00182fca0a28476a01d18e4427b014950c99d9dd2ec789b237f2674",
+    "6c61f75b03ef175f0947d325d342ea7f955cd84bf39ee54827a39763dd676b79"
+   ],
+   "recipe": {
+    "calibration": "upstream model-bench depth-0 recipe",
+    "output_tokens": 128,
+    "prompt_tokens": 2048,
+    "samples": [
+     [
+      "prose",
+      0
+     ],
+     [
+      "prose",
+      1
+     ],
+     [
+      "prose",
+      2
+     ],
+     [
+      "repetition",
+      0
+     ],
+     [
+      "repetition",
+      1
+     ]
+    ],
+    "temperature": 0.0,
+    "think": "off",
+    "tolerance": 0.005
+   }
+  }
+ },
+ "launch": {
+  "arm": "A",
+  "lid": "canon-A-r2",
+  "profile": "stock",
+  "round": 2,
+  "session_ids": null,
+  "stage": "canon",
+  "state": "DONE",
+  "subset": null,
+  "tier": "strict",
+  "timed": true
+ },
+ "metrics": {
+  "prose": {
+   "acceptance": 0.5635838150289018,
+   "all_full_length": true,
+   "all_in_tolerance": true,
+   "n": 3,
+   "pp_server_tps": 1781.30038555649,
+   "tg_client_tps": 41.04724840406134,
+   "tg_server_tps": 41.22952403179354,
+   "tokens_per_target_pass": 2.0317460317460316,
+   "ttft_p50_ms": 1170.4567999695428
+  },
+  "repetition": {
+   "acceptance": 0.9958333333333333,
+   "all_full_length": true,
+   "all_in_tolerance": true,
+   "n": 2,
+   "pp_server_tps": 1862.838312173129,
+   "tg_client_tps": 157.8916251301788,
+   "tg_server_tps": 160.1813186621108,
+   "tokens_per_target_pass": 15.058823529411764,
+   "ttft_p50_ms": 1114.3418500141706
+  }
+ },
+ "outputs": {
+  "fields": [
+   "task",
+   "repetition",
+   "attempt",
+   "prompt_sha256",
+   "completion_sha256",
+   "completion_tokens"
+  ],
+  "strict_compare": "gate",
+  "strict_compare_why": "greedy strict / AR at one request in flight: a re-run must be byte-identical",
+  "transcript": [
+   {
+    "attempt": 0,
+    "completion_sha256": "beb88ea28b2f107b41b65207520a2eb11f0afdb8ab15b125049c36042b908a50",
+    "completion_tokens": 128,
+    "prompt_sha256": "93945d40fdbc2aa69ecdcaf8c36552788c7f8e756a1b4c863d2aae43683f3383",
+    "repetition": 0,
+    "task": "prose"
+   },
+   {
+    "attempt": 0,
+    "completion_sha256": "648350d5f701b41bbfa1c16580528ae5bda73bd8ec05df0ac7c65a07528e27a1",
+    "completion_tokens": 128,
+    "prompt_sha256": "d485c75dc55c74922a903d6966318e7f7329233685d54de7ba3dec9d8f537882",
+    "repetition": 1,
+    "task": "prose"
+   },
+   {
+    "attempt": 0,
+    "completion_sha256": "52833c3cb299ff08e9ee1f84f79bea2a02209b50e2c3a83a39de0aebb9462bf0",
+    "completion_tokens": 128,
+    "prompt_sha256": "319cf03e99150af733a37b70b13d8c71a32bf6650b90aa2a9d839797c6400a3d",
+    "repetition": 2,
+    "task": "prose"
+   },
+   {
+    "attempt": 0,
+    "completion_sha256": "82fd84fded8d257a194ac1eca43b70a866a79bac1e97e45d19f0292d6a7118bd",
+    "completion_tokens": 128,
+    "prompt_sha256": "b7b9e6a3b00182fca0a28476a01d18e4427b014950c99d9dd2ec789b237f2674",
+    "repetition": 0,
+    "task": "repetition"
+   },
+   {
+    "attempt": 0,
+    "completion_sha256": "3da89dccb9328945031d93d653df0c820c5af65886741e6065ef3ec8652e84ad",
+    "completion_tokens": 128,
+    "prompt_sha256": "6c61f75b03ef175f0947d325d342ea7f955cd84bf39ee54827a39763dd676b79",
+    "repetition": 1,
+    "task": "repetition"
+   }
+  ],
+  "transcript_sha256": "4c536dd5113b3982ece1ffe72a729dbcdf67fa6055738ee1982b57f1314f365a"
+ },
+ "run": {
+  "benchmark": "gufo public benchmark (full)",
+  "label": "Windows 11, gfx1151",
+  "tag": "287"
+ },
+ "schema": "gufo.bench-receipt.launch.v1",
+ "signer": {
+  "key_fingerprint": "SHA256:w70wubwWEJsWn1W/c+5uvqrPuXSuXs9e3xGk99YUWgg",
+  "namespace": "gufo-bench-receipt",
+  "principal": "gufo-bench-receipts"
+ },
+ "speed_band": {
+  "cv": 0.007928246068363964,
+  "max": 41.22952403179354,
+  "mean": 41.02943549461426,
+  "min": 40.544167578915534,
+  "n": 4,
+  "rel": 0.03,
+  "rule": "band = max(3%, 2 x CV of the launch headline over this arm's timed launches in this stage, same run)",
+  "stdev": 0.3252914606473684
+ },
+ "timestamps": {
+  "launch_end": {
+   "et": "2026-11-15 23:48:56 EST",
+   "utc": "2026-11-16T04:48:56Z"
+  },
+  "launch_start": {
+   "et": "2026-11-15 23:48:12 EST",
+   "utc": "2026-11-16T04:48:12Z"
+  },
+  "receipt_made": {
+   "et": "2026-11-15 23:57:39 EST",
+   "utc": "2026-11-16T04:57:39Z"
+  },
+  "server_load_s": 20.5
+ },
+ "timing": [
+  {
+   "attempt": 0,
+   "cached_prompt_tokens": 0,
+   "client_decode_tps": 41.60891262865101,
+   "client_ttft_ms": 1185.4140000068583,
+   "completion_sha256": "beb88ea28b2f107b41b65207520a2eb11f0afdb8ab15b125049c36042b908a50",
+   "completion_tokens": 128,
+   "decode_ms": 3069.192399999999,
+   "decode_tokens_per_second": 41.70478201366589,
+   "draft_accepted_tokens": 68,
+   "draft_tokens": 126,
+   "execution_plan": "serial-c1",
+   "in_tolerance": true,
+   "metrics_source": "gufo",
+   "prefill_ms": 1153.2997,
+   "prefill_tokens": 2040,
+   "prefill_tokens_per_second": 1768.8377097470848,
+   "prompt_sha256": "93945d40fdbc2aa69ecdcaf8c36552788c7f8e756a1b4c863d2aae43683f3383",
+   "prompt_tokens": 2040,
+   "repetition": 0,
+   "server_ttft_ms": 1159.9721,
+   "task": "prose",
+   "wall_ms": 4261.678000038955
+  },
+  {
+   "attempt": 0,
+   "cached_prompt_tokens": 0,
+   "client_decode_tps": 41.1667360558705,
+   "client_ttft_ms": 1153.750500001479,
+   "completion_sha256": "648350d5f701b41bbfa1c16580528ae5bda73bd8ec05df0ac7c65a07528e27a1",
+   "completion_tokens": 128,
+   "decode_ms": 3092.1303000000003,
+   "decode_tokens_per_second": 41.39540950133957,
+   "draft_accepted_tokens": 64,
+   "draft_tokens": 108,
+   "execution_plan": "serial-c1",
+   "in_tolerance": true,
+   "metrics_source": "gufo",
+   "prefill_ms": 1133.2069,
+   "prefill_tokens": 2032,
+   "prefill_tokens_per_second": 1793.1412171952009,
+   "prompt_sha256": "d485c75dc55c74922a903d6966318e7f7329233685d54de7ba3dec9d8f537882",
+   "prompt_tokens": 2032,
+   "repetition": 1,
+   "server_ttft_ms": 1139.4892,
+   "task": "prose",
+   "wall_ms": 4263.056999945547
+  },
+  {
+   "attempt": 0,
+   "cached_prompt_tokens": 0,
+   "client_decode_tps": 40.36609652766251,
+   "client_ttft_ms": 1170.4567999695428,
+   "completion_sha256": "52833c3cb299ff08e9ee1f84f79bea2a02209b50e2c3a83a39de0aebb9462bf0",
+   "completion_tokens": 128,
+   "decode_ms": 3153.6119000000003,
+   "decode_tokens_per_second": 40.58838058037515,
+   "draft_accepted_tokens": 63,
+   "draft_tokens": 112,
+   "execution_plan": "serial-c1",
+   "in_tolerance": true,
+   "metrics_source": "gufo",
+   "prefill_ms": 1152.1266,
+   "prefill_tokens": 2053,
+   "prefill_tokens_per_second": 1781.9222297271845,
+   "prompt_sha256": "319cf03e99150af733a37b70b13d8c71a32bf6650b90aa2a9d839797c6400a3d",
+   "prompt_tokens": 2053,
+   "repetition": 2,
+   "server_ttft_ms": 1158.5259,
+   "task": "prose",
+   "wall_ms": 4341.434700007085
+  },
+  {
+   "attempt": 0,
+   "cached_prompt_tokens": 0,
+   "client_decode_tps": 157.53842275947758,
+   "client_ttft_ms": 1118.5246999957599,
+   "completion_sha256": "82fd84fded8d257a194ac1eca43b70a866a79bac1e97e45d19f0292d6a7118bd",
+   "completion_tokens": 128,
+   "decode_ms": 804.9029999999999,
+   "decode_tokens_per_second": 159.0253732437325,
+   "draft_accepted_tokens": 120,
+   "draft_tokens": 120,
+   "execution_plan": "serial-c1",
+   "in_tolerance": true,
+   "metrics_source": "gufo",
+   "prefill_ms": 1090.6763,
+   "prefill_tokens": 2034,
+   "prefill_tokens_per_second": 1864.8979536824995,
+   "prompt_sha256": "b7b9e6a3b00182fca0a28476a01d18e4427b014950c99d9dd2ec789b237f2674",
+   "prompt_tokens": 2034,
+   "repetition": 0,
+   "server_ttft_ms": 1098.5105,
+   "task": "repetition",
+   "wall_ms": 1931.0248999972828
+  },
+  {
+   "attempt": 0,
+   "cached_prompt_tokens": 0,
+   "client_decode_tps": 158.24482750088,
+   "client_ttft_ms": 1110.1590000325814,
+   "completion_sha256": "3da89dccb9328945031d93d653df0c820c5af65886741e6065ef3ec8652e84ad",
+   "completion_tokens": 128,
+   "decode_ms": 793.3691000000001,
+   "decode_tokens_per_second": 161.33726408048912,
+   "draft_accepted_tokens": 119,
+   "draft_tokens": 120,
+   "execution_plan": "serial-c1",
+   "in_tolerance": true,
+   "metrics_source": "gufo",
+   "prefill_ms": 1088.7915,
+   "prefill_tokens": 2026,
+   "prefill_tokens_per_second": 1860.7786706637587,
+   "prompt_sha256": "6c61f75b03ef175f0947d325d342ea7f955cd84bf39ee54827a39763dd676b79",
+   "prompt_tokens": 2026,
+   "repetition": 1,
+   "server_ttft_ms": 1095.0211,
+   "task": "repetition",
+   "wall_ms": 1919.032200006768
+  }
+ ]
+}

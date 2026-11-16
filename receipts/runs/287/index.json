@@ -1,0 +1,717 @@
+{
+ "note": "refused = launches / rows not receipted (private inputs, e.g. arms C / CX, or missing inputs)",
+ "receipts": [
+  {
+   "file": "launch-c1-A-r0.json",
+   "kind": "launch",
+   "lid": "c1-A-r0",
+   "sha256": "68c1e443991cf7dd104529cb5332ee8c82be8d50fccb70ad9adb0f34d13c8055"
+  },
+  {
+   "file": "launch-c1-A-r1.json",
+   "kind": "launch",
+   "lid": "c1-A-r1",
+   "sha256": "bcf3fe653e1e2e34a41f75dd5cd6adced1b441153fe60b7b2b64233f9c3f7665"
+  },
+  {
+   "file": "launch-c1-A-r2.json",
+   "kind": "launch",
+   "lid": "c1-A-r2",
+   "sha256": "406e322f498e8145868e18475af5871ab8f07e504158e9a0291daa4d9f525c9e"
+  },
+  {
+   "file": "launch-c1-A-r3.json",
+   "kind": "launch",
+   "lid": "c1-A-r3",
+   "sha256": "b6e7e600df08ea9e96c0f9bba5d80a8beb75e58d5e15178aab1d3ea445ae837a"
+  },
+  {
+   "file": "launch-c1-A-r4.json",
+   "kind": "launch",
+   "lid": "c1-A-r4",
+   "sha256": "8e6ac584d3ad605abb6930d06706f1ba2f2472316c7356ae99b8ea947fabca10"
+  },
+  {
+   "file": "launch-c1-A-r5.json",
+   "kind": "launch",
+   "lid": "c1-A-r5",
+   "sha256": "72dea5cde8dfee7b7aad1bcbd0e217d669ea6b5118b61d1d6d0f180529685568"
+  },
+  {
+   "file": "launch-c1-A-r6.json",
+   "kind": "launch",
+   "lid": "c1-A-r6",
+   "sha256": "73291a0973d1bc0c207f55b457d7ccc3e9ffb1b6658419b691bdaec151e173f1"
+  },
+  {
+   "file": "launch-c1-A-r7.json",
+   "kind": "launch",
+   "lid": "c1-A-r7",
+   "sha256": "2afa3416497c5f9cd332b874676b94bc7eb42f1cad9a440668e487275516db85"
+  },
+  {
+   "file": "launch-c1-B-r0.json",
+   "kind": "launch",
+   "lid": "c1-B-r0",
+   "sha256": "405aa27ded16076641accf026de43b6d302669323d76499172a49ef9c015c0f1"
+  },
+  {
+   "file": "launch-c1-B-r1.json",
+   "kind": "launch",
+   "lid": "c1-B-r1",
+   "sha256": "a7f314299fc82fdf11f19e6549fba07222b585a6ee2566d75521db578a2292e9"
+  },
+  {
+   "file": "launch-c1-B-r2.json",
+   "kind": "launch",
+   "lid": "c1-B-r2",
+   "sha256": "fae4b1b64b56af7d6d21bd543e9120484c728931d6f713c741e6fccab2be7c20"
+  },
+  {
+   "file": "launch-c1-B-r3.json",
+   "kind": "launch",
+   "lid": "c1-B-r3",
+   "sha256": "828463aafc840b96d81512b330c655235e8949f8fd7e81a4b92d05cbc1aa5df2"
+  },
+  {
+   "file": "launch-c1-B-r4.json",
+   "kind": "launch",
+   "lid": "c1-B-r4",
+   "sha256": "6d5010fbf5fa628926b690861499dfe0a9434a761a28f2fdeffeba63f86623f4"
+  },
+  {
+   "file": "launch-c1-B-r5.json",
+   "kind": "launch",
+   "lid": "c1-B-r5",
+   "sha256": "bb5f85622dcff12851e17062a73afa229bc75cc185946057b9966b266c2e457f"
+  },
+  {
+   "file": "launch-c1-B-r6.json",
+   "kind": "launch",
+   "lid": "c1-B-r6",
+   "sha256": "2f503e61392d647168b948fa1f21f7bd719cd2e53aaa0d48b65cc3be9f727caf"
+  },
+  {
+   "file": "launch-c1-B-r7.json",
+   "kind": "launch",
+   "lid": "c1-B-r7",
+   "sha256": "a3cd30fb1cbb59c9bf7e8b6dbaa7cd38853b35542036e4559c0f4322057f9f97"
+  },
+  {
+   "file": "launch-c1-R7Q-r0.json",
+   "kind": "launch",
+   "lid": "c1-R7Q-r0",
+   "sha256": "4a54433d0d76219aeb0c528019061889e470649191206f5a1e82c11e59301001"
+  },
+  {
+   "file": "launch-c1-R7Q-r1.json",
+   "kind": "launch",
+   "lid": "c1-R7Q-r1",
+   "sha256": "3b01b245c85334dbe0391487624914ff403cbb271c12d8753eea24b8fd446d36"
+  },
+  {
+   "file": "launch-c1-R7Q-r2.json",
+   "kind": "launch",
+   "lid": "c1-R7Q-r2",
+   "sha256": "93873340399c87b2b0c5d6f127434494316648c19cb4c01d68dbb5914dcc46d1"
+  },
+  {
+   "file": "launch-c1-R7Q-r3.json",
+   "kind": "launch",
+   "lid": "c1-R7Q-r3",
+   "sha256": "d03f0a34619b17af3bc73b2da0863dbaf04169389d611dd549a9fab8efb6e7ca"
+  },
+  {
+   "file": "launch-c1-R7Q-r4.json",
+   "kind": "launch",
+   "lid": "c1-R7Q-r4",
+   "sha256": "c126eea110f2e7cae325da912519b71869fb89b779bd3f7f3620a02ca21b2510"
+  },
+  {
+   "file": "launch-c1-R7Q-r5.json",
+   "kind": "launch",
+   "lid": "c1-R7Q-r5",
+   "sha256": "0beac18e1724a8f29ddf3b64ac9a18d1ef305b843ea407bf840d484944ad643f"
+  },
+  {
+   "file": "launch-c1-R7Q-r6.json",
+   "kind": "launch",
+   "lid": "c1-R7Q-r6",
+   "sha256": "f4cdcd8838cbcf36e29cc07c7b564fcb2b986162b7c631ea57e6f211a157892e"
+  },
+  {
+   "file": "launch-c1-R7Q-r7.json",
+   "kind": "launch",
+   "lid": "c1-R7Q-r7",
+   "sha256": "873dbf05fb7c635a48c05cd4e5127ae37e9d375fc8ef8436b2a43921637fd06b"
+  },
+  {
+   "file": "launch-c1-R7QX-r0.json",
+   "kind": "launch",
+   "lid": "c1-R7QX-r0",
+   "sha256": "da7fc5e3400d7014084944e5d52992c3b28d062ce0d12439570ac347abd3660e"
+  },
+  {
+   "file": "launch-c1-R7QX-r1.json",
+   "kind": "launch",
+   "lid": "c1-R7QX-r1",
+   "sha256": "826d3f93aa56cc9dbb9719e03e09b8db2a40a94ea5860627e8daa7ccfeee39cb"
+  },
+  {
+   "file": "launch-c1-R7QX-r2.json",
+   "kind": "launch",
+   "lid": "c1-R7QX-r2",
+   "sha256": "a243812650449b39ca26f043bed6d026a2cee2194222d5fc169af7bf4d2cc46f"
+  },
+  {
+   "file": "launch-c1-R7QX-r3.json",
+   "kind": "launch",
+   "lid": "c1-R7QX-r3",
+   "sha256": "0d804172db2b7695a872e489f20fb7c1f4a5c929045ec666c58fba76f4449095"
+  },
+  {
+   "file": "launch-c1-R7QX-r4.json",
+   "kind": "launch",
+   "lid": "c1-R7QX-r4",
+   "sha256": "ada080a40f4271925176e2093ae985e3ef7eedad7a9f714dbae183a77a4cf64c"
+  },
+  {
+   "file": "launch-c1-R7QX-r5.json",
+   "kind": "launch",
+   "lid": "c1-R7QX-r5",
+   "sha256": "f466123677f6617248cf8341b115652a07186370d929df08122e70dadbd8947d"
+  },
+  {
+   "file": "launch-c1-R7QX-r6.json",
+   "kind": "launch",
+   "lid": "c1-R7QX-r6",
+   "sha256": "05a0cb16e64841fcebde6db9e0daa2426aa713302fa95a622548b848cfba9a7d"
+  },
+  {
+   "file": "launch-c1-R7QX-r7.json",
+   "kind": "launch",
+   "lid": "c1-R7QX-r7",
+   "sha256": "a8d3790df0e18d1fda194445b029837e30a767a5a5d8570ee1e77d9445952680"
+  },
+  {
+   "file": "launch-c1-RR7Q-k0.json",
+   "kind": "launch",
+   "lid": "c1-RR7Q-k0",
+   "sha256": "9837623a59ec842fc2c1a59067ef91939f04e4ac392c81d71f421e9c5b5ef552"
+  },
+  {
+   "file": "launch-c1-RR7Q-k1.json",
+   "kind": "launch",
+   "lid": "c1-RR7Q-k1",
+   "sha256": "cccd5c38705ac77a958103a5abcddae195064fb98aec1a81979314b75bbee61a"
+  },
+  {
+   "file": "launch-c1-RR7Q-k2.json",
+   "kind": "launch",
+   "lid": "c1-RR7Q-k2",
+   "sha256": "5c150f83afabf57cef90b51b97560f9e178b3cf86772b3e733231ca66a8bba77"
+  },
+  {
+   "file": "launch-c1-RR7Q-k3.json",
+   "kind": "launch",
+   "lid": "c1-RR7Q-k3",
+   "sha256": "19f8f727f988c58ca37a1eadd5ba6ec85fc7325c953267b58f242d4089adaa40"
+  },
+  {
+   "file": "launch-c1-RR7Q-k4.json",
+   "kind": "launch",
+   "lid": "c1-RR7Q-k4",
+   "sha256": "8bfcf1b8dccb1b812e779ef0285ca6fd46cf70c8c7b29a8b1fc3fbf0988c62f9"
+  },
+  {
+   "file": "launch-c1-RR7Q-k5.json",
+   "kind": "launch",
+   "lid": "c1-RR7Q-k5",
+   "sha256": "4e03b022da189b0d999b66930f2266f8073131b872076d968e3b280bc52938f6"
+  },
+  {
+   "file": "launch-c1-RR7Q-k6.json",
+   "kind": "launch",
+   "lid": "c1-RR7Q-k6",
+   "sha256": "31d7501648a820424299edbafe06d0828d6c0bfecfeac3683983c181326fed27"
+  },
+  {
+   "file": "launch-c1-RR7Q-k7.json",
+   "kind": "launch",
+   "lid": "c1-RR7Q-k7",
+   "sha256": "3b5778e64784b97ec06b0f14de2ff29f40efdf466809adc438c32b74e06a865a"
+  },
+  {
+   "file": "launch-c8-A-r0.json",
+   "kind": "launch",
+   "lid": "c8-A-r0",
+   "sha256": "1c96ea8ae4d2a22d891a091183f30c23958adcb5b6241f92283165243582646c"
+  },
+  {
+   "file": "launch-c8-A-r1.json",
+   "kind": "launch",
+   "lid": "c8-A-r1",
+   "sha256": "f58df2ac99b240e8045b8f78ee569cdf3a477ee37c2a505de33d68a72de0fe9c"
+  },
+  {
+   "file": "launch-c8-A-r2.json",
+   "kind": "launch",
+   "lid": "c8-A-r2",
+   "sha256": "d439185f0eb69185e6720ea2d2d55e3c3b04545495dd64fda8dc9ed8783f824e"
+  },
+  {
+   "file": "launch-c8-A-r3.json",
+   "kind": "launch",
+   "lid": "c8-A-r3",
+   "sha256": "af47dcf0c5c99971af4706d55ed7cad091a9c9473f3eafb0e27d6a8c3ac26b90"
+  },
+  {
+   "file": "launch-c8-A-r4.json",
+   "kind": "launch",
+   "lid": "c8-A-r4",
+   "sha256": "3f996a0bf33b3cea258d75342d7b8e7b13937b89659f79698db60fb479f58f55"
+  },
+  {
+   "file": "launch-c8-A-r5.json",
+   "kind": "launch",
+   "lid": "c8-A-r5",
+   "sha256": "76d1f198b71661623874d7c4012e3d287f1c602fd9327410d95d41f8be51623e"
+  },
+  {
+   "file": "launch-c8-B-r0.json",
+   "kind": "launch",
+   "lid": "c8-B-r0",
+   "sha256": "d29269e4bb6c8fdc4584d6f9066951fa0d139f54de0b1526a4d14557af8c2ab6"
+  },
+  {
+   "file": "launch-c8-B-r1.json",
+   "kind": "launch",
+   "lid": "c8-B-r1",
+   "sha256": "cb88d1e61dd8186e20e48506d862a74768004d075f41a89d90ea8cbdd0c8f899"
+  },
+  {
+   "file": "launch-c8-B-r2.json",
+   "kind": "launch",
+   "lid": "c8-B-r2",
+   "sha256": "ad4b1530ce803dadbd4d7690b5d8e14cf8503af4a3891c9185aeb47035839b9b"
+  },
+  {
+   "file": "launch-c8-B-r3.json",
+   "kind": "launch",
+   "lid": "c8-B-r3",
+   "sha256": "38aad315bbfe8399d285b366c617ca9ed2c09b08d6ff59dace55721f29884219"
+  },
+  {
+   "file": "launch-c8-B-r4.json",
+   "kind": "launch",
+   "lid": "c8-B-r4",
+   "sha256": "d2a58b572c77d2805d36bc9e03bbe0cc3a33b38d5341d62fd720bb4bc12bb150"
+  },
+  {
+   "file": "launch-c8-B-r5.json",
+   "kind": "launch",
+   "lid": "c8-B-r5",
+   "sha256": "4dce2c3b7c7321a0da881d89ccf25cb3c7681b9d03123215ca71583461ae78cb"
+  },
+  {
+   "file": "launch-c8-R7Q-r0.json",
+   "kind": "launch",
+   "lid": "c8-R7Q-r0",
+   "sha256": "4714c61d3d64f1547945ef35ef56f6e6754bfb605541fb46338d72fe3b5d39be"
+  },
+  {
+   "file": "launch-c8-R7Q-r1.json",
+   "kind": "launch",
+   "lid": "c8-R7Q-r1",
+   "sha256": "8331c6830991a4aedef84b07e172407a29b1821c71a135dde910e10e3a30ca51"
+  },
+  {
+   "file": "launch-c8-R7Q-r2.json",
+   "kind": "launch",
+   "lid": "c8-R7Q-r2",
+   "sha256": "a0bf8e480889cecbaf77753eed9fec72398af49ee72fb6b1b4a6ae4348481a12"
+  },
+  {
+   "file": "launch-c8-R7Q-r3.json",
+   "kind": "launch",
+   "lid": "c8-R7Q-r3",
+   "sha256": "77ddeaba6d544b18bd01ec811828287342d31987607d46833c57007c1821fb66"
+  },
+  {
+   "file": "launch-c8-R7Q-r4.json",
+   "kind": "launch",
+   "lid": "c8-R7Q-r4",
+   "sha256": "60e32ca9c3ad774427d13f9f8985e31e2ab39cb5f7c8a84d882bca797baacddc"
+  },
+  {
+   "file": "launch-c8-R7Q-r5.json",
+   "kind": "launch",
+   "lid": "c8-R7Q-r5",
+   "sha256": "0d755c31add39751407adae610da84e885272c6d80be9ff9a75ab0de4d111856"
+  },
+  {
+   "file": "launch-c8-R7QX-r0.json",
+   "kind": "launch",
+   "lid": "c8-R7QX-r0",
+   "sha256": "f980b5f78701159150f46402c3412611a72b906eb43494f0831651b1aae3724d"
+  },
+  {
+   "file": "launch-c8-R7QX-r1.json",
+   "kind": "launch",
+   "lid": "c8-R7QX-r1",
+   "sha256": "1b68a268220005c38c5d9378c84c61ea5b0bc9f89260a2003e1ed345fd4875ce"
+  },
+  {
+   "file": "launch-c8-R7QX-r2.json",
+   "kind": "launch",
+   "lid": "c8-R7QX-r2",
+   "sha256": "9f458b0d94b78222057d9c56864f7f32028517c5fb1349f6af9380745260433e"
+  },
+  {
+   "file": "launch-c8-R7QX-r3.json",
+   "kind": "launch",
+   "lid": "c8-R7QX-r3",
+   "sha256": "5e9fd496379d4d0c50a684ec9efc9506671b7f43da53319214ec412322e14a99"
+  },
+  {
+   "file": "launch-c8-R7QX-r4.json",
+   "kind": "launch",
+   "lid": "c8-R7QX-r4",
+   "sha256": "eb5c6bb09bd6704b427ce7be956f06852f5fd4875205f82bf21a978ae76202e0"
+  },
+  {
+   "file": "launch-c8-R7QX-r5.json",
+   "kind": "launch",
+   "lid": "c8-R7QX-r5",
+   "sha256": "65e9252ba247b5d7d092fca2d7a726b4aee82ba007dc620748503f4b81e067f0"
+  },
+  {
+   "file": "launch-canon-A-r0.json",
+   "kind": "launch",
+   "lid": "canon-A-r0",
+   "sha256": "2881c14ff4c024cafecf210c4a1c08c015bdbdb94a37179906822953b86907d6"
+  },
+  {
+   "file": "launch-canon-A-r1.json",
+   "kind": "launch",
+   "lid": "canon-A-r1",
+   "sha256": "d723d58e1d3f6764bb5a098233773460c54779da7d19f246c77f04a2d7364e68"
+  },
+  {
+   "file": "launch-canon-A-r2.json",
+   "kind": "launch",
+   "lid": "canon-A-r2",
+   "sha256": "e71c62f951d1381b5e72657e160209e663952caf5abe27ac7f67e6d6afbe48bc"
+  },
+  {
+   "file": "launch-canon-A-r3.json",
+   "kind": "launch",
+   "lid": "canon-A-r3",
+   "sha256": "42d1969ace42416591e60d1e75913c8b3c942d1c097429fd9aad0825e20427b6"
+  },
+  {
+   "file": "launch-canon-B-r0.json",
+   "kind": "launch",
+   "lid": "canon-B-r0",
+   "sha256": "a98205df7453a689bda8e762aeed8128d3f381695508cae92774ffd649421a80"
+  },
+  {
+   "file": "launch-canon-B-r1.json",
+   "kind": "launch",
+   "lid": "canon-B-r1",
+   "sha256": "52ba78602c2ed6f212dd323f1922e71d522076e6035d2ff82b54d2e9184d1661"
+  },
+  {
+   "file": "launch-canon-B-r2.json",
+   "kind": "launch",
+   "lid": "canon-B-r2",
+   "sha256": "f30c7b0f6a92fd7cd335b267e6b4bb196866312a3980c51e42a948a201cd2ee5"
+  },
+  {
+   "file": "launch-canon-B-r3.json",
+   "kind": "launch",
+   "lid": "canon-B-r3",
+   "sha256": "9c980aadb769c5afb485f194d333c5f3bd767374599752018e7bf7100de99a93"
+  },
+  {
+   "file": "launch-canon-R7Q-r0.json",
+   "kind": "launch",
+   "lid": "canon-R7Q-r0",
+   "sha256": "a1cc24f39cd4e663685e2ce6014303c5532012d2a40360ebeb147664dd3e445e"
+  },
+  {
+   "file": "launch-canon-R7Q-r1.json",
+   "kind": "launch",
+   "lid": "canon-R7Q-r1",
+   "sha256": "176319e640fe595ee90fa4047d4e8177ac262820d6f7adaf6a833d496d174359"
+  },
+  {
+   "file": "launch-canon-R7Q-r2.json",
+   "kind": "launch",
+   "lid": "canon-R7Q-r2",
+   "sha256": "95ae41f72c01c7cb1edfae5833b2c8128bb887dde460ed79cac6a6bc0e3bd21b"
+  },
+  {
+   "file": "launch-canon-R7Q-r3.json",
+   "kind": "launch",
+   "lid": "canon-R7Q-r3",
+   "sha256": "27c56859f0bb953d6c757271361415e2e8002b44721dc7c80397411d2d64b189"
+  },
+  {
+   "file": "launch-canon-R7QX-r0.json",
+   "kind": "launch",
+   "lid": "canon-R7QX-r0",
+   "sha256": "3429a342f765956a60c7ef0a6c408c7a1cd08fdce0af837907116b6fd2dd2081"
+  },
+  {
+   "file": "launch-canon-R7QX-r1.json",
+   "kind": "launch",
+   "lid": "canon-R7QX-r1",
+   "sha256": "355ef743f0946aaa2c9978dc1b446e07bd1fb16bd6c781a49ec7c5a44148b0ce"
+  },
+  {
+   "file": "launch-canon-R7QX-r2.json",
+   "kind": "launch",
+   "lid": "canon-R7QX-r2",
+   "sha256": "289ed478f8c00bab36a5a4ea601550b0632fc65f8a2beae4b947229b173b74b1"
+  },
+  {
+   "file": "launch-canon-R7QX-r3.json",
+   "kind": "launch",
+   "lid": "canon-R7QX-r3",
+   "sha256": "70be28eb4a3bde49e4b61eda3211ef25bad57bba1b102db569ed79b4fc796e42"
+  },
+  {
+   "file": "launch-canon-RR7Q.json",
+   "kind": "launch",
+   "lid": "canon-RR7Q",
+   "sha256": "dd1c16bd4af42e8242f9902f0d02bd1a1294448ed4353c5090eae334d355dc29"
+  },
+  {
+   "file": "launch-chat-A-r0.json",
+   "kind": "launch",
+   "lid": "chat-A-r0",
+   "sha256": "7966e866d6cccc5407b534dd6884599fdd38812d0a4560b853042201732e43fe"
+  },
+  {
+   "file": "launch-chat-A-r1.json",
+   "kind": "launch",
+   "lid": "chat-A-r1",
+   "sha256": "b08dac21e7fe2eb54d630d90a9e17510433166e9bd17850bec3173cffe42493f"
+  },
+  {
+   "file": "launch-chat-A-r2.json",
+   "kind": "launch",
+   "lid": "chat-A-r2",
+   "sha256": "5597082b4b07e8a75b3845db4e5bbc7e3d9e4242d7038a21e353f80dd1c3e486"
+  },
+  {
+   "file": "launch-chat-A-r3.json",
+   "kind": "launch",
+   "lid": "chat-A-r3",
+   "sha256": "1f3db69d8aff53c481e823ad1345671a1cb1e0f43b56c5ddfe0d21fbb660beac"
+  },
+  {
+   "file": "launch-chat-B-r0.json",
+   "kind": "launch",
+   "lid": "chat-B-r0",
+   "sha256": "1d3f0e3e0c03047061d7510d2b44173876e6ba369d3ad383fb2e0afd430ed735"
+  },
+  {
+   "file": "launch-chat-B-r1.json",
+   "kind": "launch",
+   "lid": "chat-B-r1",
+   "sha256": "431f3d281b1edfc0742882314912f42eb112319deb349ff7dfe174bec7d20123"
+  },
+  {
+   "file": "launch-chat-B-r2.json",
+   "kind": "launch",
+   "lid": "chat-B-r2",
+   "sha256": "b400f5067a26f8ab8fa3d9fa34bdc38ba61977ce3adc5a622e989fb7cde041ee"
+  },
+  {
+   "file": "launch-chat-B-r3.json",
+   "kind": "launch",
+   "lid": "chat-B-r3",
+   "sha256": "76899612877b8e13dfd53416a12a542f82bfdd0eb03a81158d9e94f98b3e9194"
+  },
+  {
+   "file": "launch-chat-R7Q-r0.json",
+   "kind": "launch",
+   "lid": "chat-R7Q-r0",
+   "sha256": "74557ec8ff2e59261316f8f0233c48fd2f74a982d8d98058d881db0a1b856b3b"
+  },
+  {
+   "file": "launch-chat-R7Q-r1.json",
+   "kind": "launch",
+   "lid": "chat-R7Q-r1",
+   "sha256": "eb0fdd1d450ed8fbfe4cff02edc729fe7dab7d0ed92ef4ce89453695d3cbb156"
+  },
+  {
+   "file": "launch-chat-R7Q-r2.json",
+   "kind": "launch",
+   "lid": "chat-R7Q-r2",
+   "sha256": "83c61f5ef3a392c7986541fcc2c874c51331f645d321a67edee117547b8836d6"
+  },
+  {
+   "file": "launch-chat-R7Q-r3.json",
+   "kind": "launch",
+   "lid": "chat-R7Q-r3",
+   "sha256": "2b890d6928efecc86c0343d268a1f301ae39c332c661bf63a97d7c53048b1cff"
+  },
+  {
+   "file": "launch-chat-R7QX-r0.json",
+   "kind": "launch",
+   "lid": "chat-R7QX-r0",
+   "sha256": "d7122456e706d5a5eb73298f58ac20836a8a0534519c9c75aaed834edb7d4a8c"
+  },
+  {
+   "file": "launch-chat-R7QX-r1.json",
+   "kind": "launch",
+   "lid": "chat-R7QX-r1",
+   "sha256": "0839822b2c376240e90f4513d21a3b7f0970c5f121460585a6ddcd7fc9718284"
+  },
+  {
+   "file": "launch-chat-R7QX-r2.json",
+   "kind": "launch",
+   "lid": "chat-R7QX-r2",
+   "sha256": "48e61e539515950c162d37590958ec9e51d14c3e530a0c5ce9f9fd7911b33a53"
+  },
+  {
+   "file": "launch-chat-R7QX-r3.json",
+   "kind": "launch",
+   "lid": "chat-R7QX-r3",
+   "sha256": "68ae4ca2992397a33fa9a50bdee38db0827f26cb4e514439c031bff9c42726f9"
+  },
+  {
+   "file": "launch-chat-RR7Q-k0.json",
+   "kind": "launch",
+   "lid": "chat-RR7Q-k0",
+   "sha256": "eb83323d8da46fe71b15f1e73f426671ced1088b2160514313b00bb9026778d8"
+  },
+  {
+   "file": "launch-chat-RR7Q-k1.json",
+   "kind": "launch",
+   "lid": "chat-RR7Q-k1",
+   "sha256": "f13d8649f171116f5506354c43f60ec82f68fed59d4487d46d2eec93b29ad7e0"
+  },
+  {
+   "file": "launch-chat-RR7Q-k2.json",
+   "kind": "launch",
+   "lid": "chat-RR7Q-k2",
+   "sha256": "f8fb2fba2b68d32bf2c4a5109eba57872aea190188a25947c061503e1576ccba"
+  },
+  {
+   "file": "launch-chat-RR7Q-k3.json",
+   "kind": "launch",
+   "lid": "chat-RR7Q-k3",
+   "sha256": "65bb780b04f74f5906a86b8e721009bdf3dc3c146cb39c2aca6bb21731913742"
+  },
+  {
+   "file": "row-canon-B-A.json",
+   "kind": "row",
+   "name": "canon B/A",
+   "sha256": "55724c58b47ebeb2102cf12c64a0d27f2a03a5663d13a8a37667d1351f61fbbe"
+  },
+  {
+   "file": "row-canon-A.json",
+   "kind": "row",
+   "name": "canon A",
+   "sha256": "697be8db24771342ac7af538b140c574e2e2680045118138205a3cfdadaaaa50"
+  },
+  {
+   "file": "row-canon-B.json",
+   "kind": "row",
+   "name": "canon B",
+   "sha256": "6079e1f81f2953d3d9b7c4bac6742b18a12862d652cc7ce281d474c7aad68473"
+  },
+  {
+   "file": "row-c1-B-A.json",
+   "kind": "row",
+   "name": "c1 B/A",
+   "sha256": "4f4a8dc5555aedcf4bd180ef1397f59c01fc600254b5c8cc9de82dbc1b7fe3eb"
+  },
+  {
+   "file": "row-c1-A.json",
+   "kind": "row",
+   "name": "c1 A",
+   "sha256": "f65e7450758b80332d95de91b9562356d5a58a2045cae0331a5d99de184891c0"
+  },
+  {
+   "file": "row-c1-B.json",
+   "kind": "row",
+   "name": "c1 B",
+   "sha256": "a12bdca6abc6f1a08a42f380f126f4ba021b299817f4f77dd73320412f2559f8"
+  },
+  {
+   "file": "row-chat-B-A.json",
+   "kind": "row",
+   "name": "chat B/A",
+   "sha256": "50030c714e5d3a02703af8c730eb790728cf572b4a2bb96891b748b6dda7c8e7"
+  },
+  {
+   "file": "row-chat-A.json",
+   "kind": "row",
+   "name": "chat A",
+   "sha256": "0795251338a5f0b08b3aa9dd5fcd462b3947a1a3ea66caca30eb05946c0e6a6b"
+  },
+  {
+   "file": "row-chat-B.json",
+   "kind": "row",
+   "name": "chat B",
+   "sha256": "d97d72d21d25b47084c32b3eb3b2bb8b59d55a556355b220011d16261b558dbb"
+  },
+  {
+   "file": "row-c8-B-A.json",
+   "kind": "row",
+   "name": "c8 B/A",
+   "sha256": "4297c7a02882c20231b267f29527ea1184bd270055806d2a5a9eb23f81d04273"
+  },
+  {
+   "file": "row-c8-BX-B.json",
+   "kind": "row",
+   "name": "c8 BX/B",
+   "sha256": "6f124f1491e6bf83778d1021fe44289c1e28a93f46c14f3a7ed139b24d2ef237"
+  },
+  {
+   "file": "row-c8-A.json",
+   "kind": "row",
+   "name": "c8 A",
+   "sha256": "e3ae379cab8aa825a99f4741278869a3b3e283c642e56febad2717abe48002c1"
+  },
+  {
+   "file": "row-c8-B.json",
+   "kind": "row",
+   "name": "c8 B",
+   "sha256": "cc69b3dcad8a260228c935f89dee0001bd2672f3c23dc8b4e6bb2bc536093797"
+  },
+  {
+   "file": "row-C8-A-A-A-same-subset-twice-report-only.json",
+   "kind": "row",
+   "name": "C8 A/A A (same subset twice, report only)",
+   "sha256": "b2f933747d73fdb91cc129c8f41481a52c7a40e7a7a95961e71cefd8f2b9eb18"
+  },
+  {
+   "file": "row-C8-A-A-B-same-subset-twice-report-only.json",
+   "kind": "row",
+   "name": "C8 A/A B (same subset twice, report only)",
+   "sha256": "9ba6b262979d037f9578ff86c19471431905ffcfc76d6d3820bbaf41e7c6ff01"
+  }
+ ],
+ "refused": [],
+ "run": {
+  "tag": "287"
+ },
+ "schema": "gufo.bench-receipt.index.v1",
+ "signer": {
+  "key_fingerprint": "SHA256:w70wubwWEJsWn1W/c+5uvqrPuXSuXs9e3xGk99YUWgg",
+  "namespace": "gufo-bench-receipt",
+  "principal": "gufo-bench-receipts"
+ },
+ "timestamps": {
+  "made": {
+   "et": "2026-11-15 23:57:40 EST",
+   "utc": "2026-11-16T04:57:40Z"
+  }
+ }
+}

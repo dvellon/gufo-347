@@ -1,0 +1,55 @@
+{
+ "launches": [
+  {
+   "lid": "chat-A-r0",
+   "receipt": "launch-chat-A-r0.json",
+   "receipt_sha256": "7dad7efbf92c49667bec255694b8b82ef998eb73b0357d2d58c2a687d0469e3f"
+  },
+  {
+   "lid": "chat-A-r1",
+   "receipt": "launch-chat-A-r1.json",
+   "receipt_sha256": "2a147240493256d7b4791cf8440593029f062026a54f07030a6bcde039c199e3"
+  }
+ ],
+ "matches_run_verdict": null,
+ "result": {
+  "run_statistic": {
+   "ci": null,
+   "point": null,
+   "rounds": 0
+  },
+  "two_level": {
+   "ci": null,
+   "point": null,
+   "rounds": 0
+  }
+ },
+ "row": {
+  "den": "A",
+  "kind": "ratio",
+  "name": "chat B/A",
+  "num": "B",
+  "stage": "chat",
+  "tier": "strict (lossless)"
+ },
+ "run": {
+  "label": "Windows 11, gfx1151",
+  "tag": "289"
+ },
+ "schema": "gufo.bench-receipt.row.v1",
+ "signer": {
+  "key_fingerprint": "SHA256:w70wubwWEJsWn1W/c+5uvqrPuXSuXs9e3xGk99YUWgg",
+  "namespace": "gufo-bench-receipt",
+  "principal": "gufo-bench-receipts"
+ },
+ "statistic": {
+  "run_statistic": "paired percentile bootstrap over rounds (every arm ran the same session subset in a round), 4000 resamples, seed 260; per-arm value = pooled client decode tok/s (sum completion tokens / sum client decode s)",
+  "two_level": "paired two-level percentile bootstrap: rounds, then the units inside each drawn round (c1 / chat: sessions; canon: prose samples; c8: the launch, not separable)"
+ },
+ "timestamps": {
+  "receipt_made": {
+   "et": "2026-11-16 13:33:31 EST",
+   "utc": "2026-11-16T18:33:31Z"
+  }
+ }
+}

@@ -1,0 +1,74 @@
+{
+ "launches": [
+  {
+   "lid": "c1-B-r0",
+   "receipt": "launch-c1-B-r0.json",
+   "receipt_sha256": "405aa27ded16076641accf026de43b6d302669323d76499172a49ef9c015c0f1"
+  },
+  {
+   "lid": "c1-B-r1",
+   "receipt": "launch-c1-B-r1.json",
+   "receipt_sha256": "a7f314299fc82fdf11f19e6549fba07222b585a6ee2566d75521db578a2292e9"
+  },
+  {
+   "lid": "c1-B-r2",
+   "receipt": "launch-c1-B-r2.json",
+   "receipt_sha256": "fae4b1b64b56af7d6d21bd543e9120484c728931d6f713c741e6fccab2be7c20"
+  },
+  {
+   "lid": "c1-B-r3",
+   "receipt": "launch-c1-B-r3.json",
+   "receipt_sha256": "828463aafc840b96d81512b330c655235e8949f8fd7e81a4b92d05cbc1aa5df2"
+  },
+  {
+   "lid": "c1-B-r4",
+   "receipt": "launch-c1-B-r4.json",
+   "receipt_sha256": "6d5010fbf5fa628926b690861499dfe0a9434a761a28f2fdeffeba63f86623f4"
+  },
+  {
+   "lid": "c1-B-r5",
+   "receipt": "launch-c1-B-r5.json",
+   "receipt_sha256": "bb5f85622dcff12851e17062a73afa229bc75cc185946057b9966b266c2e457f"
+  },
+  {
+   "lid": "c1-B-r6",
+   "receipt": "launch-c1-B-r6.json",
+   "receipt_sha256": "2f503e61392d647168b948fa1f21f7bd719cd2e53aaa0d48b65cc3be9f727caf"
+  },
+  {
+   "lid": "c1-B-r7",
+   "receipt": "launch-c1-B-r7.json",
+   "receipt_sha256": "a3cd30fb1cbb59c9bf7e8b6dbaa7cd38853b35542036e4559c0f4322057f9f97"
+  }
+ ],
+ "matches_run_verdict": true,
+ "result": {
+  "launches": 8,
+  "value": 69.90260238580919
+ },
+ "row": {
+  "arm": "B",
+  "kind": "arm",
+  "name": "c1 B",
+  "stage": "c1"
+ },
+ "run": {
+  "label": "Windows 11, gfx1151",
+  "tag": "287"
+ },
+ "schema": "gufo.bench-receipt.row.v1",
+ "signer": {
+  "key_fingerprint": "SHA256:w70wubwWEJsWn1W/c+5uvqrPuXSuXs9e3xGk99YUWgg",
+  "namespace": "gufo-bench-receipt",
+  "principal": "gufo-bench-receipts"
+ },
+ "statistic": {
+  "value": "pooled client decode tok/s (sum completion tokens / sum client decode s)"
+ },
+ "timestamps": {
+  "receipt_made": {
+   "et": "2026-11-15 23:57:40 EST",
+   "utc": "2026-11-16T04:57:40Z"
+  }
+ }
+}

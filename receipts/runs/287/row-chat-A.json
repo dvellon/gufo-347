@@ -1,0 +1,54 @@
+{
+ "launches": [
+  {
+   "lid": "chat-A-r0",
+   "receipt": "launch-chat-A-r0.json",
+   "receipt_sha256": "7966e866d6cccc5407b534dd6884599fdd38812d0a4560b853042201732e43fe"
+  },
+  {
+   "lid": "chat-A-r1",
+   "receipt": "launch-chat-A-r1.json",
+   "receipt_sha256": "b08dac21e7fe2eb54d630d90a9e17510433166e9bd17850bec3173cffe42493f"
+  },
+  {
+   "lid": "chat-A-r2",
+   "receipt": "launch-chat-A-r2.json",
+   "receipt_sha256": "5597082b4b07e8a75b3845db4e5bbc7e3d9e4242d7038a21e353f80dd1c3e486"
+  },
+  {
+   "lid": "chat-A-r3",
+   "receipt": "launch-chat-A-r3.json",
+   "receipt_sha256": "1f3db69d8aff53c481e823ad1345671a1cb1e0f43b56c5ddfe0d21fbb660beac"
+  }
+ ],
+ "matches_run_verdict": true,
+ "result": {
+  "launches": 4,
+  "value": 49.822382179562965
+ },
+ "row": {
+  "arm": "A",
+  "kind": "arm",
+  "name": "chat A",
+  "stage": "chat"
+ },
+ "run": {
+  "label": "Windows 11, gfx1151",
+  "tag": "287"
+ },
+ "schema": "gufo.bench-receipt.row.v1",
+ "signer": {
+  "key_fingerprint": "SHA256:w70wubwWEJsWn1W/c+5uvqrPuXSuXs9e3xGk99YUWgg",
+  "namespace": "gufo-bench-receipt",
+  "principal": "gufo-bench-receipts"
+ },
+ "statistic": {
+  "value": "pooled client decode tok/s (sum completion tokens / sum client decode s)"
+ },
+ "timestamps": {
+  "receipt_made": {
+   "et": "2026-11-15 23:57:40 EST",
+   "utc": "2026-11-16T04:57:40Z"
+  }
+ }
+}

@@ -1,0 +1,23 @@
+---
+---
+
+@import "minima";
+
+.wrapper { max-width: 1180px; }
+table { font-size: 0.86em; display: block; overflow-x: auto; }
+table th { position: sticky; top: 0; background: #f3f3f3; }
+td, th { padding: 4px 8px; vertical-align: top; }
+.v { font-weight: 600; padding: 1px 6px; border-radius: 3px; color: #fff; font-size: 0.85em; white-space: nowrap; }
+.v-GO { background: #2e7d32; }
+.v-KILL { background: #c62828; }
+.v-REVIEW { background: #f9a825; color: #222; }
+.v-INVALID { background: #6d4c41; }
+.v-PARKED { background: #78909c; }
+.v-FAIL { background: #ad1457; }
+.v-REPORT { background: #1565c0; }
+.v-BUILT { background: #bdbdbd; color: #222; }
+.v-DONE { background: #00838f; }
+.v-NOT-RUN { background: #9e9e9e; }
+.v-PENDING { background: #d7ccc8; color: #222; }
+.caveat { border-left: 4px solid #f9a825; padding: 6px 12px; background: #fffbea; }
+img[src$=".svg"] { max-width: 100%; height: auto; }

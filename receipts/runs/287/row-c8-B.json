@@ -1,0 +1,64 @@
+{
+ "launches": [
+  {
+   "lid": "c8-B-r0",
+   "receipt": "launch-c8-B-r0.json",
+   "receipt_sha256": "d29269e4bb6c8fdc4584d6f9066951fa0d139f54de0b1526a4d14557af8c2ab6"
+  },
+  {
+   "lid": "c8-B-r1",
+   "receipt": "launch-c8-B-r1.json",
+   "receipt_sha256": "cb88d1e61dd8186e20e48506d862a74768004d075f41a89d90ea8cbdd0c8f899"
+  },
+  {
+   "lid": "c8-B-r2",
+   "receipt": "launch-c8-B-r2.json",
+   "receipt_sha256": "ad4b1530ce803dadbd4d7690b5d8e14cf8503af4a3891c9185aeb47035839b9b"
+  },
+  {
+   "lid": "c8-B-r3",
+   "receipt": "launch-c8-B-r3.json",
+   "receipt_sha256": "38aad315bbfe8399d285b366c617ca9ed2c09b08d6ff59dace55721f29884219"
+  },
+  {
+   "lid": "c8-B-r4",
+   "receipt": "launch-c8-B-r4.json",
+   "receipt_sha256": "d2a58b572c77d2805d36bc9e03bbe0cc3a33b38d5341d62fd720bb4bc12bb150"
+  },
+  {
+   "lid": "c8-B-r5",
+   "receipt": "launch-c8-B-r5.json",
+   "receipt_sha256": "4dce2c3b7c7321a0da881d89ccf25cb3c7681b9d03123215ca71583461ae78cb"
+  }
+ ],
+ "matches_run_verdict": true,
+ "result": {
+  "launches": 6,
+  "value": 52.50879964872197
+ },
+ "row": {
+  "arm": "B",
+  "kind": "arm",
+  "name": "c8 B",
+  "stage": "c8"
+ },
+ "run": {
+  "label": "Windows 11, gfx1151",
+  "tag": "287"
+ },
+ "schema": "gufo.bench-receipt.row.v1",
+ "signer": {
+  "key_fingerprint": "SHA256:w70wubwWEJsWn1W/c+5uvqrPuXSuXs9e3xGk99YUWgg",
+  "namespace": "gufo-bench-receipt",
+  "principal": "gufo-bench-receipts"
+ },
+ "statistic": {
+  "value": "mean full-window tok/s (>= 8 in flight, valid launches only)"
+ },
+ "timestamps": {
+  "receipt_made": {
+   "et": "2026-11-15 23:57:40 EST",
+   "utc": "2026-11-16T04:57:40Z"
+  }
+ }
+}

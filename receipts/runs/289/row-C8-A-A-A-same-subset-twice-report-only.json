@@ -1,0 +1,65 @@
+{
+ "launches": [
+  {
+   "lid": "c8-A-r0",
+   "receipt": "launch-c8-A-r0.json",
+   "receipt_sha256": "bf08fab4961b54c4ed6ccc197ea9fa1df26f3a072eb88b268d7a2b8d27616ec5"
+  },
+  {
+   "lid": "c8-A-r3",
+   "receipt": "launch-c8-A-r3.json",
+   "receipt_sha256": "4f92ccd54c0a175fa1e93c1dba3aabd8896a440c8f48401d7ec7096e42e011ce"
+  }
+ ],
+ "matches_run_verdict": null,
+ "result": {
+  "exactness": {
+   "differ": 11,
+   "first_diffs": [
+    "swe-agent-000357efb5:1",
+    "swe-agent-0007963171:2",
+    "swe-agent-00209b6453:1",
+    "swe-agent-005979df31:0",
+    "swe-agent-005b5fbcfd:1",
+    "swe-agent-00bd53921d:2",
+    "swe-agent-00c6cd0e9f:2",
+    "swe-agent-00ce845b54:2"
+   ],
+   "identical": 28,
+   "launches": 1,
+   "not_compared": 9,
+   "verdict": "DIFFERS (report only)"
+  }
+ },
+ "row": {
+  "gate": false,
+  "kind": "exactness",
+  "name": "C8 A/A A (same subset twice, report only)",
+  "pairs": [
+   [
+    "c8-A-r3",
+    "c8-A-r0"
+   ]
+  ],
+  "stage": "c8"
+ },
+ "run": {
+  "label": "Windows 11, gfx1151",
+  "tag": "289"
+ },
+ "schema": "gufo.bench-receipt.row.v1",
+ "signer": {
+  "key_fingerprint": "SHA256:w70wubwWEJsWn1W/c+5uvqrPuXSuXs9e3xGk99YUWgg",
+  "namespace": "gufo-bench-receipt",
+  "principal": "gufo-bench-receipts"
+ },
+ "statistic": {
+  "exactness": "session lineage over content hashes (canon: completion sha per prompt); gate = strict E1, else report only"
+ },
+ "timestamps": {
+  "receipt_made": {
+   "et": "2026-11-16 13:33:31 EST",
+   "utc": "2026-11-16T18:33:31Z"
+  }
+ }
+}

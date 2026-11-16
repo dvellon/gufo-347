@@ -1,0 +1,151 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 780 564" width="780" height="564" font-family="sans-serif" font-size="12">
+<title>Experiment log: verdicts per page and per kind</title>
+<text x="202" y="44" text-anchor="end">Queues 001-099</text>
+<rect x="210.0" y="30" width="18.9" height="20" fill="#2e7d32"><title>GO: 8</title></rect>
+<text x="219.5" y="44" text-anchor="middle" fill="#fff" font-size="10">8</text>
+<rect x="228.9" y="30" width="56.8" height="20" fill="#c62828"><title>KILL: 24</title></rect>
+<text x="257.3" y="44" text-anchor="middle" fill="#fff" font-size="10">24</text>
+<rect x="285.7" y="30" width="9.5" height="20" fill="#f9a825"><title>REVIEW: 4</title></rect>
+<rect x="295.2" y="30" width="18.9" height="20" fill="#6d4c41"><title>INVALID: 8</title></rect>
+<text x="304.6" y="44" text-anchor="middle" fill="#fff" font-size="10">8</text>
+<text x="318.1" y="44" font-size="10" fill="#555">44</text>
+<text x="202" y="73" text-anchor="end">Queues 100-149</text>
+<rect x="210.0" y="59" width="26.0" height="20" fill="#2e7d32"><title>GO: 11</title></rect>
+<text x="223.0" y="73" text-anchor="middle" fill="#fff" font-size="10">11</text>
+<rect x="236.0" y="59" width="47.3" height="20" fill="#c62828"><title>KILL: 20</title></rect>
+<text x="259.7" y="73" text-anchor="middle" fill="#fff" font-size="10">20</text>
+<rect x="283.3" y="59" width="23.7" height="20" fill="#f9a825"><title>REVIEW: 10</title></rect>
+<text x="295.2" y="73" text-anchor="middle" fill="#222" font-size="10">10</text>
+<rect x="307.0" y="59" width="35.5" height="20" fill="#6d4c41"><title>INVALID: 15</title></rect>
+<text x="324.8" y="73" text-anchor="middle" fill="#fff" font-size="10">15</text>
+<rect x="342.5" y="59" width="14.2" height="20" fill="#1565c0"><title>REPORT: 6</title></rect>
+<text x="360.7" y="73" font-size="10" fill="#555">62</text>
+<text x="202" y="102" text-anchor="end">Queues 150-199</text>
+<rect x="210.0" y="88" width="33.1" height="20" fill="#2e7d32"><title>GO: 14</title></rect>
+<text x="226.6" y="102" text-anchor="middle" fill="#fff" font-size="10">14</text>
+<rect x="243.1" y="88" width="18.9" height="20" fill="#c62828"><title>KILL: 8</title></rect>
+<text x="252.6" y="102" text-anchor="middle" fill="#fff" font-size="10">8</text>
+<rect x="262.1" y="88" width="23.7" height="20" fill="#f9a825"><title>REVIEW: 10</title></rect>
+<text x="273.9" y="102" text-anchor="middle" fill="#222" font-size="10">10</text>
+<rect x="285.7" y="88" width="21.3" height="20" fill="#6d4c41"><title>INVALID: 9</title></rect>
+<text x="296.4" y="102" text-anchor="middle" fill="#fff" font-size="10">9</text>
+<rect x="307.0" y="88" width="9.5" height="20" fill="#1565c0"><title>REPORT: 4</title></rect>
+<text x="320.5" y="102" font-size="10" fill="#555">45</text>
+<text x="202" y="131" text-anchor="end">Queues 200-247</text>
+<rect x="210.0" y="117" width="21.3" height="20" fill="#2e7d32"><title>GO: 9</title></rect>
+<text x="220.6" y="131" text-anchor="middle" fill="#fff" font-size="10">9</text>
+<rect x="231.3" y="117" width="37.9" height="20" fill="#c62828"><title>KILL: 16</title></rect>
+<text x="250.2" y="131" text-anchor="middle" fill="#fff" font-size="10">16</text>
+<rect x="269.2" y="117" width="30.8" height="20" fill="#f9a825"><title>REVIEW: 13</title></rect>
+<text x="284.5" y="131" text-anchor="middle" fill="#222" font-size="10">13</text>
+<rect x="299.9" y="117" width="45.0" height="20" fill="#6d4c41"><title>INVALID: 19</title></rect>
+<text x="322.4" y="131" text-anchor="middle" fill="#fff" font-size="10">19</text>
+<rect x="344.9" y="117" width="28.4" height="20" fill="#1565c0"><title>REPORT: 12</title></rect>
+<text x="359.1" y="131" text-anchor="middle" fill="#fff" font-size="10">12</text>
+<rect x="373.3" y="117" width="4.7" height="20" fill="#d7ccc8"><title>PENDING: 2</title></rect>
+<text x="382.0" y="131" font-size="10" fill="#555">71</text>
+<text x="202" y="160" text-anchor="end">CPU simulations</text>
+<rect x="210.0" y="146" width="16.6" height="20" fill="#2e7d32"><title>GO: 7</title></rect>
+<text x="218.3" y="160" text-anchor="middle" fill="#fff" font-size="10">7</text>
+<rect x="226.6" y="146" width="35.5" height="20" fill="#c62828"><title>KILL: 15</title></rect>
+<text x="244.3" y="160" text-anchor="middle" fill="#fff" font-size="10">15</text>
+<rect x="262.1" y="146" width="14.2" height="20" fill="#f9a825"><title>REVIEW: 6</title></rect>
+<rect x="276.2" y="146" width="4.7" height="20" fill="#78909c"><title>PARKED: 2</title></rect>
+<rect x="281.0" y="146" width="4.7" height="20" fill="#1565c0"><title>REPORT: 2</title></rect>
+<text x="289.7" y="160" font-size="10" fill="#555">32</text>
+<text x="202" y="189" text-anchor="end">Other packets: experiments</text>
+<rect x="210.0" y="175" width="18.9" height="20" fill="#c62828"><title>KILL: 8</title></rect>
+<text x="219.5" y="189" text-anchor="middle" fill="#fff" font-size="10">8</text>
+<rect x="228.9" y="175" width="2.4" height="20" fill="#f9a825"><title>REVIEW: 1</title></rect>
+<rect x="231.3" y="175" width="2.4" height="20" fill="#78909c"><title>PARKED: 1</title></rect>
+<rect x="233.7" y="175" width="2.4" height="20" fill="#1565c0"><title>REPORT: 1</title></rect>
+<text x="240.0" y="189" font-size="10" fill="#555">11</text>
+<text x="202" y="218" text-anchor="end">Other packets: CPU checks</text>
+<rect x="210.0" y="204" width="4.7" height="20" fill="#2e7d32"><title>GO: 2</title></rect>
+<rect x="214.7" y="204" width="113.6" height="20" fill="#c62828"><title>KILL: 48</title></rect>
+<text x="271.5" y="218" text-anchor="middle" fill="#fff" font-size="10">48</text>
+<rect x="328.3" y="204" width="4.7" height="20" fill="#f9a825"><title>REVIEW: 2</title></rect>
+<rect x="333.0" y="204" width="7.1" height="20" fill="#78909c"><title>PARKED: 3</title></rect>
+<rect x="340.1" y="204" width="7.1" height="20" fill="#1565c0"><title>REPORT: 3</title></rect>
+<rect x="347.2" y="204" width="2.4" height="20" fill="#9e9e9e"><title>NOT-RUN: 1</title></rect>
+<text x="353.6" y="218" font-size="10" fill="#555">59</text>
+<text x="202" y="247" text-anchor="end">Other packets: research</text>
+<rect x="210.0" y="233" width="14.2" height="20" fill="#2e7d32"><title>GO: 6</title></rect>
+<rect x="224.2" y="233" width="2.4" height="20" fill="#c62828"><title>KILL: 1</title></rect>
+<rect x="226.6" y="233" width="4.7" height="20" fill="#f9a825"><title>REVIEW: 2</title></rect>
+<rect x="231.3" y="233" width="2.4" height="20" fill="#78909c"><title>PARKED: 1</title></rect>
+<rect x="233.7" y="233" width="4.7" height="20" fill="#9e9e9e"><title>NOT-RUN: 2</title></rect>
+<text x="242.4" y="247" font-size="10" fill="#555">12</text>
+<text x="202" y="276" text-anchor="end">Engineering changes</text>
+<rect x="210.0" y="262" width="9.5" height="20" fill="#c62828"><title>KILL: 4</title></rect>
+<rect x="219.5" y="262" width="23.7" height="20" fill="#6d4c41"><title>INVALID: 10</title></rect>
+<text x="231.3" y="276" text-anchor="middle" fill="#fff" font-size="10">10</text>
+<rect x="243.1" y="262" width="2.4" height="20" fill="#78909c"><title>PARKED: 1</title></rect>
+<rect x="245.5" y="262" width="243.7" height="20" fill="#00838f"><title>DONE: 103</title></rect>
+<text x="367.3" y="276" text-anchor="middle" fill="#fff" font-size="10">103</text>
+<rect x="489.2" y="262" width="14.2" height="20" fill="#9e9e9e"><title>NOT-RUN: 6</title></rect>
+<rect x="503.4" y="262" width="2.4" height="20" fill="#d7ccc8"><title>PENDING: 1</title></rect>
+<text x="509.8" y="276" font-size="10" fill="#555">125</text>
+<text x="202" y="305" text-anchor="end">Not run</text>
+<rect x="210.0" y="291" width="9.5" height="20" fill="#6d4c41"><title>INVALID: 4</title></rect>
+<rect x="219.5" y="291" width="212.9" height="20" fill="#9e9e9e"><title>NOT-RUN: 90</title></rect>
+<text x="325.9" y="305" text-anchor="middle" fill="#fff" font-size="10">90</text>
+<text x="436.4" y="305" font-size="10" fill="#555">94</text>
+<line x1="20" x2="760" y1="330.0" y2="330.0" stroke="#ccc"/>
+<text x="202" y="363" text-anchor="end">kind: experiment</text>
+<rect x="210.0" y="349" width="97.0" height="20" fill="#2e7d32"><title>GO: 41</title></rect>
+<text x="258.5" y="363" text-anchor="middle" fill="#fff" font-size="10">41</text>
+<rect x="307.0" y="349" width="160.9" height="20" fill="#c62828"><title>KILL: 68</title></rect>
+<text x="387.5" y="363" text-anchor="middle" fill="#fff" font-size="10">68</text>
+<rect x="467.9" y="349" width="89.9" height="20" fill="#f9a825"><title>REVIEW: 38</title></rect>
+<text x="512.9" y="363" text-anchor="middle" fill="#222" font-size="10">38</text>
+<rect x="557.8" y="349" width="120.7" height="20" fill="#6d4c41"><title>INVALID: 51</title></rect>
+<text x="618.1" y="363" text-anchor="middle" fill="#fff" font-size="10">51</text>
+<rect x="678.5" y="349" width="2.4" height="20" fill="#78909c"><title>PARKED: 1</title></rect>
+<rect x="680.8" y="349" width="54.4" height="20" fill="#1565c0"><title>REPORT: 23</title></rect>
+<text x="708.1" y="363" text-anchor="middle" fill="#fff" font-size="10">23</text>
+<rect x="735.3" y="349" width="4.7" height="20" fill="#d7ccc8"><title>PENDING: 2</title></rect>
+<text x="744.0" y="363" font-size="10" fill="#555">224</text>
+<text x="202" y="392" text-anchor="end">kind: cpu-sim</text>
+<rect x="210.0" y="378" width="23.7" height="20" fill="#2e7d32"><title>GO: 10</title></rect>
+<text x="221.8" y="392" text-anchor="middle" fill="#fff" font-size="10">10</text>
+<rect x="233.7" y="378" width="168.0" height="20" fill="#c62828"><title>KILL: 71</title></rect>
+<text x="317.7" y="392" text-anchor="middle" fill="#fff" font-size="10">71</text>
+<rect x="401.7" y="378" width="18.9" height="20" fill="#f9a825"><title>REVIEW: 8</title></rect>
+<text x="411.1" y="392" text-anchor="middle" fill="#222" font-size="10">8</text>
+<rect x="420.6" y="378" width="11.8" height="20" fill="#78909c"><title>PARKED: 5</title></rect>
+<rect x="432.4" y="378" width="11.8" height="20" fill="#1565c0"><title>REPORT: 5</title></rect>
+<rect x="444.2" y="378" width="2.4" height="20" fill="#9e9e9e"><title>NOT-RUN: 1</title></rect>
+<text x="450.6" y="392" font-size="10" fill="#555">100</text>
+<text x="202" y="421" text-anchor="end">kind: research</text>
+<rect x="210.0" y="407" width="14.2" height="20" fill="#2e7d32"><title>GO: 6</title></rect>
+<rect x="224.2" y="407" width="2.4" height="20" fill="#c62828"><title>KILL: 1</title></rect>
+<rect x="226.6" y="407" width="4.7" height="20" fill="#f9a825"><title>REVIEW: 2</title></rect>
+<rect x="231.3" y="407" width="2.4" height="20" fill="#78909c"><title>PARKED: 1</title></rect>
+<rect x="233.7" y="407" width="4.7" height="20" fill="#9e9e9e"><title>NOT-RUN: 2</title></rect>
+<text x="242.4" y="421" font-size="10" fill="#555">12</text>
+<text x="202" y="450" text-anchor="end">kind: engineering</text>
+<rect x="210.0" y="436" width="9.5" height="20" fill="#c62828"><title>KILL: 4</title></rect>
+<rect x="219.5" y="436" width="23.7" height="20" fill="#6d4c41"><title>INVALID: 10</title></rect>
+<text x="231.3" y="450" text-anchor="middle" fill="#fff" font-size="10">10</text>
+<rect x="243.1" y="436" width="2.4" height="20" fill="#78909c"><title>PARKED: 1</title></rect>
+<rect x="245.5" y="436" width="243.7" height="20" fill="#00838f"><title>DONE: 103</title></rect>
+<text x="367.3" y="450" text-anchor="middle" fill="#fff" font-size="10">103</text>
+<rect x="489.2" y="436" width="14.2" height="20" fill="#9e9e9e"><title>NOT-RUN: 6</title></rect>
+<rect x="503.4" y="436" width="2.4" height="20" fill="#d7ccc8"><title>PENDING: 1</title></rect>
+<text x="509.8" y="450" font-size="10" fill="#555">125</text>
+<text x="202" y="479" text-anchor="end">kind: not-run</text>
+<rect x="210.0" y="465" width="9.5" height="20" fill="#6d4c41"><title>INVALID: 4</title></rect>
+<rect x="219.5" y="465" width="212.9" height="20" fill="#9e9e9e"><title>NOT-RUN: 90</title></rect>
+<text x="325.9" y="479" text-anchor="middle" fill="#fff" font-size="10">90</text>
+<text x="436.4" y="479" font-size="10" fill="#555">94</text>
+<rect x="20" y="506" width="12" height="12" fill="#2e7d32"/><text x="36" y="516">GO</text>
+<rect x="104" y="506" width="12" height="12" fill="#c62828"/><text x="120" y="516">KILL</text>
+<rect x="188" y="506" width="12" height="12" fill="#f9a825"/><text x="204" y="516">REVIEW</text>
+<rect x="272" y="506" width="12" height="12" fill="#6d4c41"/><text x="288" y="516">INVALID</text>
+<rect x="356" y="506" width="12" height="12" fill="#78909c"/><text x="372" y="516">PARKED</text>
+<rect x="440" y="506" width="12" height="12" fill="#1565c0"/><text x="456" y="516">REPORT</text>
+<rect x="524" y="506" width="12" height="12" fill="#00838f"/><text x="540" y="516">DONE</text>
+<rect x="608" y="506" width="12" height="12" fill="#9e9e9e"/><text x="624" y="516">NOT-RUN</text>
+<rect x="692" y="506" width="12" height="12" fill="#d7ccc8"/><text x="708" y="516">PENDING</text>
+</svg>

@@ -1,0 +1,65 @@
+{
+ "launches": [
+  {
+   "lid": "c8-A-r0",
+   "receipt": "launch-c8-A-r0.json",
+   "receipt_sha256": "bf08fab4961b54c4ed6ccc197ea9fa1df26f3a072eb88b268d7a2b8d27616ec5"
+  },
+  {
+   "lid": "c8-A-r1",
+   "receipt": "launch-c8-A-r1.json",
+   "receipt_sha256": "bfdc4e4098035bb127a112329a4ae3d1c805f9fd2961d8da67b870c414806f87"
+  },
+  {
+   "lid": "c8-A-r2",
+   "receipt": "launch-c8-A-r2.json",
+   "receipt_sha256": "8a8831ac248e4b10dfda892897fb2dd698b2d8708bd8904f20f6a8bb7345d9d4"
+  },
+  {
+   "lid": "c8-A-r3",
+   "receipt": "launch-c8-A-r3.json",
+   "receipt_sha256": "4f92ccd54c0a175fa1e93c1dba3aabd8896a440c8f48401d7ec7096e42e011ce"
+  }
+ ],
+ "matches_run_verdict": null,
+ "result": {
+  "run_statistic": {
+   "ci": null,
+   "point": null,
+   "rounds": 0
+  },
+  "two_level": {
+   "ci": null,
+   "point": null,
+   "rounds": 0
+  }
+ },
+ "row": {
+  "den": "A",
+  "kind": "ratio",
+  "name": "c8 B/A",
+  "num": "B",
+  "stage": "c8",
+  "tier": "strict (lossless)"
+ },
+ "run": {
+  "label": "Windows 11, gfx1151",
+  "tag": "289"
+ },
+ "schema": "gufo.bench-receipt.row.v1",
+ "signer": {
+  "key_fingerprint": "SHA256:w70wubwWEJsWn1W/c+5uvqrPuXSuXs9e3xGk99YUWgg",
+  "namespace": "gufo-bench-receipt",
+  "principal": "gufo-bench-receipts"
+ },
+ "statistic": {
+  "run_statistic": "paired percentile bootstrap over rounds (every arm ran the same session subset in a round), 4000 resamples, seed 260; per-arm value = mean full-window tok/s (>= 8 in flight, valid launches only)",
+  "two_level": "paired two-level percentile bootstrap: rounds, then the units inside each drawn round (c1 / chat: sessions; canon: prose samples; c8: the launch, not separable)"
+ },
+ "timestamps": {
+  "receipt_made": {
+   "et": "2026-11-16 13:33:31 EST",
+   "utc": "2026-11-16T18:33:31Z"
+  }
+ }
+}

@@ -1,0 +1,24 @@
+title: "gufo-347: gufo on Strix Halo"
+description: >-
+  A performance study of the gufo inference engine on an AMD Ryzen AI Max+ 395 (gfx1151) under Windows 11:
+  benchmarks against stock upstream, what shipped, and the full log of experiments, including the ones that failed.
+theme: minima
+markdown: kramdown
+kramdown:
+  input: GFM
+  hard_wrap: false
+# baseurl is the repository name when served from <user>.github.io/<repo>; set it before publishing.
+baseurl: "/gufo-347"
+url: ""
+header_pages:
+  - final-results.md
+  - drafter.md
+  - benchmarks.md
+  - production.md
+  - experiments/index.md
+  - open-items.md
+  - methods.md
+  - reproduce.md
+exclude:
+  - experiments/_index_template.md
+  - ideas.md

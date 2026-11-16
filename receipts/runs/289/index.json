@@ -1,0 +1,286 @@
+{
+ "note": "refused = launches / rows not receipted (private inputs, e.g. arms C / CX, or missing inputs)",
+ "receipts": [
+  {
+   "file": "launch-c1-A-r0.json",
+   "kind": "launch",
+   "lid": "c1-A-r0",
+   "sha256": "e648d251fd90c44dd783340ed0d9a417f09e3cf8294b35a32dde670564b305ad"
+  },
+  {
+   "file": "launch-c1-A-r1.json",
+   "kind": "launch",
+   "lid": "c1-A-r1",
+   "sha256": "312e024c41089f47ea9be81ce4000eff11fc915a8fd0596457d9ffcb9e8ab626"
+  },
+  {
+   "file": "launch-c1-A-r2.json",
+   "kind": "launch",
+   "lid": "c1-A-r2",
+   "sha256": "1c665b13fbd2804ff5980a3d2e61d9bb28bbe564860ab5327d37bc4a5f471c65"
+  },
+  {
+   "file": "launch-c1-A-r3.json",
+   "kind": "launch",
+   "lid": "c1-A-r3",
+   "sha256": "481ea1c04b811efc1f431aab38d09273632eb0c74a155847a4752e988075743a"
+  },
+  {
+   "file": "launch-c1-R7Q-r0.json",
+   "kind": "launch",
+   "lid": "c1-R7Q-r0",
+   "sha256": "93f727db225b1bf8ecd49846ed88e2ddd0702d7c61ef77e2b70275bcbefa6116"
+  },
+  {
+   "file": "launch-c1-R7Q-r1.json",
+   "kind": "launch",
+   "lid": "c1-R7Q-r1",
+   "sha256": "63c66b488ec5dcd5a987f9628a4b8375c813c9faa8955aa433bc846dc3c3099f"
+  },
+  {
+   "file": "launch-c1-R7Q-r2.json",
+   "kind": "launch",
+   "lid": "c1-R7Q-r2",
+   "sha256": "d4208ab8e3462b62b2a6f02d093f9a76da4d747de949d114fa87982d0db927b8"
+  },
+  {
+   "file": "launch-c1-R7Q-r3.json",
+   "kind": "launch",
+   "lid": "c1-R7Q-r3",
+   "sha256": "181dd30103d1f2ce1258b34023718472ea859e3fc0e2f5a97328242d1a573a24"
+  },
+  {
+   "file": "launch-c1-RR7Q-k0.json",
+   "kind": "launch",
+   "lid": "c1-RR7Q-k0",
+   "sha256": "94116132ee23b17310414e9ea6dc58b5dd917b8195a369d6740fa819bae7264a"
+  },
+  {
+   "file": "launch-c1-RR7Q-k2.json",
+   "kind": "launch",
+   "lid": "c1-RR7Q-k2",
+   "sha256": "5816123a773df161c506046eb9489f2cd2d9a7ce2777bf5eb41038b6c2bced33"
+  },
+  {
+   "file": "launch-c1-RR7Q-k4.json",
+   "kind": "launch",
+   "lid": "c1-RR7Q-k4",
+   "sha256": "74dfedb886bbc7156b37fdd1bab27ac82949ed1cb0da9782582fcce397b07437"
+  },
+  {
+   "file": "launch-c1-RR7Q-k6.json",
+   "kind": "launch",
+   "lid": "c1-RR7Q-k6",
+   "sha256": "4c8e5c6fac224eb4347ac1a70e3c56e9d05cfc55b91585d5c530f4a6c2732c01"
+  },
+  {
+   "file": "launch-c8-A-r0.json",
+   "kind": "launch",
+   "lid": "c8-A-r0",
+   "sha256": "bf08fab4961b54c4ed6ccc197ea9fa1df26f3a072eb88b268d7a2b8d27616ec5"
+  },
+  {
+   "file": "launch-c8-A-r1.json",
+   "kind": "launch",
+   "lid": "c8-A-r1",
+   "sha256": "bfdc4e4098035bb127a112329a4ae3d1c805f9fd2961d8da67b870c414806f87"
+  },
+  {
+   "file": "launch-c8-A-r2.json",
+   "kind": "launch",
+   "lid": "c8-A-r2",
+   "sha256": "8a8831ac248e4b10dfda892897fb2dd698b2d8708bd8904f20f6a8bb7345d9d4"
+  },
+  {
+   "file": "launch-c8-A-r3.json",
+   "kind": "launch",
+   "lid": "c8-A-r3",
+   "sha256": "4f92ccd54c0a175fa1e93c1dba3aabd8896a440c8f48401d7ec7096e42e011ce"
+  },
+  {
+   "file": "launch-c8-R7Q-r0.json",
+   "kind": "launch",
+   "lid": "c8-R7Q-r0",
+   "sha256": "5dbaeb76f321b040c01c502c9cfd44295f38ca49db954177d15946f576c00d05"
+  },
+  {
+   "file": "launch-c8-R7Q-r1.json",
+   "kind": "launch",
+   "lid": "c8-R7Q-r1",
+   "sha256": "c50ff02518bb2fee3288acd52c54500f3196eec06c43422bb7d99cc2b448809e"
+  },
+  {
+   "file": "launch-c8-R7Q-r2.json",
+   "kind": "launch",
+   "lid": "c8-R7Q-r2",
+   "sha256": "acacb5e6c30a2800454bfd0e538cc630609b9cdf3b1cf3beddbf8d3165c85b22"
+  },
+  {
+   "file": "launch-c8-R7Q-r3.json",
+   "kind": "launch",
+   "lid": "c8-R7Q-r3",
+   "sha256": "988af88126c28ce60e1d65502fa7ce242d802a4d280b0f4c896eec09996d8292"
+  },
+  {
+   "file": "launch-canon-A-r0.json",
+   "kind": "launch",
+   "lid": "canon-A-r0",
+   "sha256": "81319309821164a9b7311dc57141b82d59ce2f244269f02fdb43484256be9bdb"
+  },
+  {
+   "file": "launch-canon-A-r1.json",
+   "kind": "launch",
+   "lid": "canon-A-r1",
+   "sha256": "4a746fc211d87707ce9ba66c55fac9314c5779ce67826b8663478933d56a2545"
+  },
+  {
+   "file": "launch-canon-R7Q-r0.json",
+   "kind": "launch",
+   "lid": "canon-R7Q-r0",
+   "sha256": "efe5911a9988d36f89399237f97b780e43b9711c1ef84802decb275e48d64f06"
+  },
+  {
+   "file": "launch-canon-R7Q-r1.json",
+   "kind": "launch",
+   "lid": "canon-R7Q-r1",
+   "sha256": "8d0f8551c9dc02bdff53ef502ff6f0ab5c6ee440eb46501920b2c671c11f9f5d"
+  },
+  {
+   "file": "launch-canon-RR7Q.json",
+   "kind": "launch",
+   "lid": "canon-RR7Q",
+   "sha256": "c6370f103afb508102146596697ea5bff23490e54b5f01491846c23a13f68a9a"
+  },
+  {
+   "file": "launch-chat-A-r0.json",
+   "kind": "launch",
+   "lid": "chat-A-r0",
+   "sha256": "7dad7efbf92c49667bec255694b8b82ef998eb73b0357d2d58c2a687d0469e3f"
+  },
+  {
+   "file": "launch-chat-A-r1.json",
+   "kind": "launch",
+   "lid": "chat-A-r1",
+   "sha256": "2a147240493256d7b4791cf8440593029f062026a54f07030a6bcde039c199e3"
+  },
+  {
+   "file": "launch-chat-R7Q-r0.json",
+   "kind": "launch",
+   "lid": "chat-R7Q-r0",
+   "sha256": "f0975804f8d59b32fa100eda8bcde9bfb27488a11cae0d52cba9ba885979b09b"
+  },
+  {
+   "file": "launch-chat-R7Q-r1.json",
+   "kind": "launch",
+   "lid": "chat-R7Q-r1",
+   "sha256": "3244f4cec4575a3ef7dce4cbda5ecc692097195c31fe83a75242e27ff6768a4f"
+  },
+  {
+   "file": "launch-chat-RR7Q-k0.json",
+   "kind": "launch",
+   "lid": "chat-RR7Q-k0",
+   "sha256": "8435b7d560e394827ab00f1b6326c960d118f6eee1e227e0a464017a350a191e"
+  },
+  {
+   "file": "launch-chat-RR7Q-k2.json",
+   "kind": "launch",
+   "lid": "chat-RR7Q-k2",
+   "sha256": "4423c8fc0954520abf5ecba3d427702aba1989a68f4e533451dcabf86ee7a02a"
+  },
+  {
+   "file": "row-canon-B-A.json",
+   "kind": "row",
+   "name": "canon B/A",
+   "sha256": "08aa24572b8a6c52fba579f6e7a95555a41e7344f0aa89533f8380b2492b8c82"
+  },
+  {
+   "file": "row-canon-A.json",
+   "kind": "row",
+   "name": "canon A",
+   "sha256": "a056052056d8099e249e54336e6848d96fc536e7b062686558edefe1542481a5"
+  },
+  {
+   "file": "row-c1-B-A.json",
+   "kind": "row",
+   "name": "c1 B/A",
+   "sha256": "d267f53979ac759b7b5d8fd82fc17ee45baf0f6423a540daa95a2e353baa586f"
+  },
+  {
+   "file": "row-c1-A.json",
+   "kind": "row",
+   "name": "c1 A",
+   "sha256": "c6546d5312dfa5a5a414bae8f2e94751e045abbfd0a1473ca2dc23d0942a02a0"
+  },
+  {
+   "file": "row-chat-B-A.json",
+   "kind": "row",
+   "name": "chat B/A",
+   "sha256": "9ad50a4c0d03d66dc79c25eecda74d2f7f2dc6b812fe82c8d943c0adf26ccb4f"
+  },
+  {
+   "file": "row-chat-A.json",
+   "kind": "row",
+   "name": "chat A",
+   "sha256": "8b06f6350260c2b67d3d81d0b38ab7ac1fe6138cc049269c36c576dbd0c21039"
+  },
+  {
+   "file": "row-c8-B-A.json",
+   "kind": "row",
+   "name": "c8 B/A",
+   "sha256": "bab457c87076f0dd9c917a7f9c8b74f39d19447d348316ae9a7f6daa1ba5f366"
+  },
+  {
+   "file": "row-c8-A.json",
+   "kind": "row",
+   "name": "c8 A",
+   "sha256": "6ca2028afa4c23218925164d142e41d22a15865c9fa65e83a6478ccff5490401"
+  },
+  {
+   "file": "row-C8-A-A-A-same-subset-twice-report-only.json",
+   "kind": "row",
+   "name": "C8 A/A A (same subset twice, report only)",
+   "sha256": "9893180316c69ee675a8df31bd27f81da866169bec2fcc4fd78df8a173dadbfa"
+  }
+ ],
+ "refused": [
+  "c1-C-r0",
+  "c1-C-r1",
+  "c1-C-r2",
+  "c1-C-r3",
+  "c1-CX-r0",
+  "c1-CX-r1",
+  "c1-CX-r2",
+  "c1-CX-r3",
+  "c8-C-r0",
+  "c8-C-r1",
+  "c8-C-r2",
+  "c8-C-r3",
+  "c8-CX-r0",
+  "c8-CX-r1",
+  "c8-CX-r2",
+  "c8-CX-r3",
+  "canon-C-r0",
+  "canon-C-r1",
+  "canon-CX-r0",
+  "canon-CX-r1",
+  "chat-C-r0",
+  "chat-C-r1",
+  "chat-CX-r0",
+  "chat-CX-r1"
+ ],
+ "run": {
+  "tag": "289"
+ },
+ "schema": "gufo.bench-receipt.index.v1",
+ "signer": {
+  "key_fingerprint": "SHA256:w70wubwWEJsWn1W/c+5uvqrPuXSuXs9e3xGk99YUWgg",
+  "namespace": "gufo-bench-receipt",
+  "principal": "gufo-bench-receipts"
+ },
+ "timestamps": {
+  "made": {
+   "et": "2026-11-16 13:33:31 EST",
+   "utc": "2026-11-16T18:33:31Z"
+  }
+ }
+}
