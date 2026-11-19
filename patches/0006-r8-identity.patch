@@ -1,0 +1,16 @@
+diff --git a/src/cli/serve/serve.cpp b/src/cli/serve/serve.cpp
+--- a/src/cli/serve/serve.cpp
++++ b/src/cli/serve/serve.cpp
+@@ -1819,9 +1819,10 @@ int RunServe(std::span<const char* const> args) {
+       xm::SetTiersEnabled(xm_supplied);
+       xm::SetServerPolicy(*xm_default, *xm_max);
+       xm::SetServerMinLevel(*xm_min);
+-      // R7 identity line (rebase-272), once at startup.
++      // R7 identity line (rebase-272 lineage), once at startup. rebase-v035:
++      // the base is upstream v0.35.0 (R8).
+       server::Logger::Info(
+-          "server", "event=w3r7_config base=v0.34.0 upstream=2845939b "
++          "server", "event=w3r7_config base=v0.35.0 upstream=0260e116 "
+                     "rebase=272 exactness=" +
+                         std::string(xm::ExactnessName(*xm_default)));
+       // The contract stub registers its feature tag like a real feature

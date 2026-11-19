@@ -1,0 +1,73 @@
+{
+ "launches": [
+  {
+   "lid": "canon-A-r0",
+   "receipt": "launch-canon-A-r0.json",
+   "receipt_sha256": "71a222d61a553d1893a75a62b3fcfb12835e9ff0beb0a2258c441ebe8905c64f"
+  },
+  {
+   "lid": "canon-A-r1",
+   "receipt": "launch-canon-A-r1.json",
+   "receipt_sha256": "7f263ea4307a0588a1a08a11041e60fd1dbe0151936a9214396654a58369c4c8"
+  },
+  {
+   "lid": "canon-B-r0",
+   "receipt": "launch-canon-B-r0.json",
+   "receipt_sha256": "ecad30ceb72a8f55d41188cd889355412deb9c93bb352754a79c1fb10e344f57"
+  },
+  {
+   "lid": "canon-B-r1",
+   "receipt": "launch-canon-B-r1.json",
+   "receipt_sha256": "6cca339182dabd1f3da290fbb4afce4e7266dbaecb5c06aa4384110a69a16fc5"
+  }
+ ],
+ "matches_run_verdict": true,
+ "result": {
+  "run_statistic": {
+   "ci": [
+    1.0102502825327244,
+    1.0130435921834333
+   ],
+   "point": 1.0116525716282656,
+   "rounds": 2
+  },
+  "two_level": {
+   "ci": [
+    1.00281090708445,
+    1.0217054062632867
+   ],
+   "point": 1.0116525716282656,
+   "resamples": 4000,
+   "rounds": 2,
+   "seed": 260
+  }
+ },
+ "row": {
+  "den": "A",
+  "kind": "ratio",
+  "name": "canon B/A",
+  "num": "B",
+  "stage": "canon",
+  "tier": "strict (lossless)"
+ },
+ "run": {
+  "label": "Windows 11, gfx1151",
+  "tag": "294"
+ },
+ "schema": "gufo.bench-receipt.row.v1",
+ "signer": {
+  "key_fingerprint": "SHA256:w70wubwWEJsWn1W/c+5uvqrPuXSuXs9e3xGk99YUWgg",
+  "namespace": "gufo-bench-receipt",
+  "principal": "gufo-bench-receipts"
+ },
+ "statistic": {
+  "run_statistic": "paired percentile bootstrap over rounds (every arm ran the same session subset in a round), 4000 resamples, seed 260; per-arm value = mean server tg tok/s (prose samples)",
+  "two_level": "paired two-level percentile bootstrap: rounds, then the units inside each drawn round (c1 / chat: sessions; canon: prose samples; c8: the launch, not separable)"
+ },
+ "timestamps": {
+  "receipt_made": {
+   "et": "2026-11-18 11:50:04 EST",
+   "utc": "2026-11-18T16:50:04Z"
+  }
+ }
+}

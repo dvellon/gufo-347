@@ -10,14 +10,16 @@ drafted token. We do not publish our head, because it was trained on private dat
 
 ## What to expect, by workload
 
-From benchmark run 287. The comparison is private drafter (C) vs public drafter (B), same binary, strict tier:
+From benchmark run 289 (2026-11-16), the session that measured the private drafter, on the previous build (R7R on
+upstream v0.34.0; not re-measured on R8). The comparison is private drafter (C) vs public drafter (B), same binary,
+strict tier, paired within that run (B here is run 289's public-drafter arm):
 
 | workload | gain (C / B, 95 % CI) | acceptance B -> C | tokens per target pass B -> C |
 |---|---|---|---|
-| canonical prose | n/a  | 0.401 -> n/a | 2.12 -> n/a |
-| chat with thinking | n/a  | 0.649 -> n/a | 2.81 -> n/a |
-| coding agent, 1 session | n/a  | 0.776 -> n/a | 4.35 -> n/a |
-| coding agent, 8 sessions | n/a  | 0.875 -> n/a | 3.11 -> n/a |
+| canonical prose | +19.4 % [+18.3 %, +20.6 %] | 0.401 -> 0.568 | 2.12 -> 2.37 |
+| chat with thinking | +5.1 % [+4.7 %, +5.4 %] | 0.647 -> 0.687 | 2.77 -> 2.86 |
+| coding agent, 1 session | +3.4 % [+3.0 %, +3.6 %] | 0.791 -> 0.816 | 4.43 -> 4.52 |
+| coding agent, 8 sessions | +1.0 % [-1.5 %, +3.4 %] | 0.879 -> 0.883 | 3.14 -> 3.24 |
 
 How to read it:
 
@@ -149,4 +151,4 @@ See [`drafter-training/README.md`](https://github.com/dvellon/gufo-347/blob/main
 GPU for training; Python stdlib for the data and vocabulary tools), and the commands.
 
 ---
-Numbers filled by fill_release.py from benchmark run 287 (written 2026-11-15 23:56:05 ET).
+Numbers from benchmark runs 287 (written 2026-11-15 23:56:05 ET) and 289 (2026-11-16), both on the previous build (R7R on upstream v0.34.0).

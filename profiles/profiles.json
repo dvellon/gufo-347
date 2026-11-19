@@ -1,7 +1,10 @@
 {
  "schema": "gufo-release.launch-profiles.v1",
- "run": "287",
- "build_sha8": "fe7b7048",
+ "run": "294",
+ "run_cells_from": "287",
+ "build_sha8": "8735d242",
+ "build": "R8 = upstream v0.35.0 (0260e116) + patches/",
+ "previous_build_sha8": "fe7b7048",
  "public_head_sha256": "5ff54097406a905cf3a724c709124ceb0e3e10235ee862298969e91c96fa96e6",
  "public_perm_sha256": "caade56ad3a63d37e55ec069df9ad72bc89dcfb162985241f6ce9b9b9d5abf9e",
  "profiles": {

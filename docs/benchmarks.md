@@ -4,6 +4,11 @@ title: Benchmarks
 permalink: /benchmarks/
 ---
 
+> **Superseded.** This page keeps earlier runs (from 2026-11-08 on) for the record. They used older builds, older
+> stock versions and earlier draft-vocabulary setups, so their figures differ from the release benchmarks. The current
+> numbers are on [Results]({{ site.baseurl }}/results/): run 294 (R8 vs stock v0.35.0), and the previous release's
+> runs 287 and 289 (R7R vs stock v0.34.0).
+
 Every table on this page names its machine, OS, date, binaries and caveats. Ratios are only quoted between arms that
 ran **interleaved in the same run**; numbers from different runs are never divided by each other.
 

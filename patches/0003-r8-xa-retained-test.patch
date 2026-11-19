@@ -1,0 +1,101 @@
+diff --git a/tests/cli/component_text_cache_test.cpp b/tests/cli/component_text_cache_test.cpp
+--- a/tests/cli/component_text_cache_test.cpp
++++ b/tests/cli/component_text_cache_test.cpp
+@@ -3803,6 +3803,89 @@ void FrontierAlignmentStaysWithinItsLevel() {
+          "XA: approximate aligns to approximate");
+   std::cout << "FrontierAlignmentStaysWithinItsLevel PASS\n";
+ }
++// rebase-v035 (hc275 r7r XA on upstream #1183): a retained generated frontier
++// (its live entry gone, here because a peer took the only slot) is offered
++// for #1154 alignment only to requests of the level it was committed at, as
++// live frontiers are. Untagged = upstream's VisitGenerated.
++void RetainedFrontierAlignmentStaysWithinItsLevel() {
++  static const std::map<TextRunnerToken, std::string> pieces{
++      {40, "."}, {41, ".\n\n"}, {42, "\n\n"}, {50, "<|im_end|>"}};
++  class TextRunner final : public Runner {
++  public:
++    std::vector<TextRunnerToken> Tokenize(
++        std::string_view text) const override {
++      for (const auto& [token, piece] : pieces)
++        if (piece == text)
++          return {token};
++      return {};
++    }
++    std::string Decode(std::span<const TextRunnerToken> tokens) const override {
++      std::string text;
++      for (const auto token : tokens) {
++        const auto found = pieces.find(token);
++        text += found != pieces.end() ? found->second
++                                      : "<" + std::to_string(token) + ">";
++      }
++      return text;
++    }
++  };
++  auto runner = std::make_shared<TextRunner>();
++  using Tokens = std::vector<TextRunnerToken>;
++  const auto tagged = [](xm::ExactnessLevel level) {
++    auto c = std::make_shared<TextPromptContext>();
++    const auto tag = xm::NumericsTag(level);
++    c->cache_identity.assign(tag.begin(), tag.end());
++    return std::shared_ptr<const TextPromptContext>(c);
++  };
++  const auto relaxed = tagged(xm::ExactnessLevel::kRelaxed);
++  const auto approximate = tagged(xm::ExactnessLevel::kApproximate);
++  // The model sampled "." "\n\n"; the next prompt has the same bytes as one
++  // ".\n\n" token (a byte-identical retokenization: retained frontiers carry
++  // no whitespace-edge metadata).
++  const Tokens prompt0{1};
++  const Tokens frontier{1, 40, 42};
++  const Tokens next{1, 41, 50, 6};
++  const Tokens aligned{1, 40, 42, 50, 6};
++  const auto align =
++      [&](const std::shared_ptr<const TextPromptContext>& committed,
++          const std::shared_ptr<const TextPromptContext>& request)
++      -> std::optional<Tokens> {
++    ComponentTextCache cache(runner, 1, 1 << 22, std::nullopt);
++    {
++      auto lease = cache.Acquire(prompt0, {}, committed, true, 0, true);
++      auto& state = dynamic_cast<State&>(lease->state());
++      lease->PreparePrefill(prompt0.size());
++      runner->adapter->Append(state.slot, frontier, frontier);
++      (void)lease->Commit({}, {}, frontier);
++    }
++    {
++      // One slot: the peer replaces the live frontier; its retained
++      // generated copy stays.
++      auto peer = cache.Acquire(Tokens{90, 91}, {}, {}, true, 0, true);
++      peer->Invalidate();
++    }
++    Tokens prompt = next;
++    std::size_t stable = 0;
++    if (!cache.AlignToLiveFrontier(prompt, stable, 4096, false, nullptr,
++                                   request.get())) {
++      Expect(prompt == next && stable == 0,
++             "XA retained: refused alignment is a no-op");
++      return std::nullopt;
++    }
++    return prompt;
++  };
++  Expect(align(nullptr, nullptr) == aligned,
++         "XA retained: strict aligns to a retained strict frontier");
++  Expect(!align(nullptr, relaxed),
++         "XA retained: relaxed never aligns to a retained strict frontier");
++  Expect(!align(relaxed, nullptr),
++         "XA retained: strict never aligns to a retained relaxed frontier");
++  Expect(align(relaxed, relaxed) == aligned,
++         "XA retained: relaxed aligns to a retained relaxed frontier");
++  Expect(!align(relaxed, approximate) && !align(approximate, relaxed),
++         "XA retained: approximate and relaxed never cross");
++  std::cout << "RetainedFrontierAlignmentStaysWithinItsLevel PASS\n";
++}
+ // Disk metadata admission is independent of the RAM and disk budgets.
+ // Account for a fully committed disk-capture pool without allocating its bytes.
+ void RamCacheOffAllowsLargeDiskIndexMetadata() {
+@@ -4325,6 +4408,7 @@ int main() {
+   RamCacheOffCommitsNoBackingAndKeepsLiveFrontiers();
+   RetokenizedAnswerContinuesTheLiveFrontier();
+   FrontierAlignmentStaysWithinItsLevel();  // hc275 r7r XA
++  RetainedFrontierAlignmentStaysWithinItsLevel();  // rebase-v035 XA
+   RamCacheOffWithDiskCommitsOnlyStagingBacking();
+   HostBelowReserveRefusesUnlessRamCacheOff();
+   TrimmedRamBudgetIsReported();

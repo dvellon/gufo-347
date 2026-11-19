@@ -8,8 +8,10 @@ permalink: /production/
 
 ## The release build
 
-**Benchmarked in run 287: build `fe7b7048` (R7R) = upstream gufo v0.34.0
-(`2845939b`) plus our changes, built with TheRock 10.0.0.** Every change sits behind a runtime switch;
+**Benchmarked in run 294: build `8735d242` (R8) = upstream gufo v0.35.0
+(`0260e116`) plus our changes, built with TheRock 10.0.0.** It replaces the previous release build `fe7b7048` (R7R on
+v0.34.0, run 287); in run 294, R8 strict vs R7R ranges from -1.3 % (agent C8, CI includes zero) to +0.7 % (chat C1) (see
+[Results]({{ site.baseurl }}/results/)), and the launch settings below are unchanged. Every change sits behind a runtime switch;
 with no switch set the build behaves as upstream. The changes are published as patches in the repository's
 [patches/](https://github.com/dvellon/gufo-347/tree/main/patches), and the benchmarked launch settings for each task as ready-to-run files in
 [profiles/](https://github.com/dvellon/gufo-347/tree/main/profiles).
@@ -64,12 +66,26 @@ like-for-like check, run 288, relaxed agent at 1 session, no published receipts:
 
 - The exact LM-head screen (A1) scales its bound with a per-channel table. The benchmarked build and the released patches both use a flat, data-free calibration table (every channel 1.0). The screen is exact for any table; the table only changes how many candidate rows are re-read.
 - All draft-side changes are **strict-safe by construction**: they change what is proposed or how fast it is checked,
-  never the verified token. Run 287's exactness tables are on the [Results]({{ site.baseurl }}/results/#exactness)
+  never the verified token. Run 294's exactness tables (and run 287's) are on the [Results]({{ site.baseurl }}/results/#exactness)
   page.
 
-## Before the rebase: our previous build (still in production)
+## What runs in production now
 
-Our production server still runs the pre-rebase build, a fork of an older upstream base: package `c5`, `gufo.exe` `edb3fe51`, adopted
+Since 2026-11-17 19:28 ET our production server runs the release build **R8** (`8735d242`, upstream v0.35.0 plus
+patches/), switched over after it passed run 294 and a GPU start-up smoke test. It serves coding agents with the
+relaxed agent profile: 8 sessions x 32768 context, `--exactness relaxed`, `--preserve-thinking auto`, no default reply
+cap. Its arguments and switches are those of
+[`profiles/relaxed-agent-8-sessions.ps1`](https://github.com/dvellon/gufo-347/blob/main/profiles/relaxed-agent-8-sessions.ps1),
+except that it loads our privately trained draft head and draft-vocabulary table instead of the public ones. Those are
+not published, and the production configuration itself was not benchmarked on R8 (run 294 used the public assets).
+Upstream's #1209 Q4_K draft-head copy is on (`GUFO_DRAFT_Q4K` unset), as in run 294.
+
+Before that, from 2026-11-16 20:29 ET, production ran the previous release build R7R (`fe7b7048`, upstream v0.34.0)
+with the same profile.
+
+## Before the rebase: our pre-rebase build
+
+Until 2026-11-16, our production server ran the pre-rebase build, a fork of an older upstream base: package `c5`, `gufo.exe` `edb3fe51`, adopted
 server profiles `a1f1493d`. It is the "previous build" reference row in run 287. The history below is how it was
 built up; each change was ported to the rebased build behind the same switch.
 
@@ -137,4 +153,4 @@ in 17,000 agent requests.
 - a 4096 prefill chunk on a box that serves chat (see above).
 
 
-<small>Numbers filled by fill_release.py from benchmark run 287 (written 2026-11-15 23:56:05 ET).</small>
+<small>Release build: run 294 (2026-11-17). Production history and the other numbers on this page: as filled from benchmark run 287 (written 2026-11-15 23:56:05 ET).</small>

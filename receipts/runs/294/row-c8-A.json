@@ -1,0 +1,54 @@
+{
+ "launches": [
+  {
+   "lid": "c8-A-r0",
+   "receipt": "launch-c8-A-r0.json",
+   "receipt_sha256": "40757c2b0a169e81e8de9b7059a95c6921560816399c31dc7aa57a96a6f5e02d"
+  },
+  {
+   "lid": "c8-A-r1",
+   "receipt": "launch-c8-A-r1.json",
+   "receipt_sha256": "d9c32da369a0257fc4627658af3991bd679f0bb7d0655d6ad08210e4b5f2b101"
+  },
+  {
+   "lid": "c8-A-r2",
+   "receipt": "launch-c8-A-r2.json",
+   "receipt_sha256": "bbc7100c512dd3afd3b8fbd467693e8db4afe262c16ac9bf04db63f45a8814e8"
+  },
+  {
+   "lid": "c8-A-r3",
+   "receipt": "launch-c8-A-r3.json",
+   "receipt_sha256": "b89ef0ac77f993659e7ae991c6a0721b29f35277e3c0126b27e453fdc7e9b3ce"
+  }
+ ],
+ "matches_run_verdict": true,
+ "result": {
+  "launches": 4,
+  "value": 57.73517850673028
+ },
+ "row": {
+  "arm": "A",
+  "kind": "arm",
+  "name": "c8 A",
+  "stage": "c8"
+ },
+ "run": {
+  "label": "Windows 11, gfx1151",
+  "tag": "294"
+ },
+ "schema": "gufo.bench-receipt.row.v1",
+ "signer": {
+  "key_fingerprint": "SHA256:w70wubwWEJsWn1W/c+5uvqrPuXSuXs9e3xGk99YUWgg",
+  "namespace": "gufo-bench-receipt",
+  "principal": "gufo-bench-receipts"
+ },
+ "statistic": {
+  "value": "mean full-window tok/s (>= 8 in flight, valid launches only)"
+ },
+ "timestamps": {
+  "receipt_made": {
+   "et": "2026-11-18 11:50:04 EST",
+   "utc": "2026-11-18T16:50:04Z"
+  }
+ }
+}

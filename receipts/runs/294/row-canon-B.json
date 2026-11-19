@@ -1,0 +1,44 @@
+{
+ "launches": [
+  {
+   "lid": "canon-B-r0",
+   "receipt": "launch-canon-B-r0.json",
+   "receipt_sha256": "ecad30ceb72a8f55d41188cd889355412deb9c93bb352754a79c1fb10e344f57"
+  },
+  {
+   "lid": "canon-B-r1",
+   "receipt": "launch-canon-B-r1.json",
+   "receipt_sha256": "6cca339182dabd1f3da290fbb4afce4e7266dbaecb5c06aa4384110a69a16fc5"
+  }
+ ],
+ "matches_run_verdict": true,
+ "result": {
+  "launches": 2,
+  "value": 39.21003724549278
+ },
+ "row": {
+  "arm": "B",
+  "kind": "arm",
+  "name": "canon B",
+  "stage": "canon"
+ },
+ "run": {
+  "label": "Windows 11, gfx1151",
+  "tag": "294"
+ },
+ "schema": "gufo.bench-receipt.row.v1",
+ "signer": {
+  "key_fingerprint": "SHA256:w70wubwWEJsWn1W/c+5uvqrPuXSuXs9e3xGk99YUWgg",
+  "namespace": "gufo-bench-receipt",
+  "principal": "gufo-bench-receipts"
+ },
+ "statistic": {
+  "value": "mean server tg tok/s (prose samples)"
+ },
+ "timestamps": {
+  "receipt_made": {
+   "et": "2026-11-18 11:50:04 EST",
+   "utc": "2026-11-18T16:50:04Z"
+  }
+ }
+}

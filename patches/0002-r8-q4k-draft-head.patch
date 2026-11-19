@@ -1,0 +1,138 @@
+diff --git a/src/models/qwen38_flash_next/kernels/rocm/device_model.cpp b/src/models/qwen38_flash_next/kernels/rocm/device_model.cpp
+--- a/src/models/qwen38_flash_next/kernels/rocm/device_model.cpp
++++ b/src/models/qwen38_flash_next/kernels/rocm/device_model.cpp
+@@ -4,6 +4,8 @@
+ 
+ #include <algorithm>
+ #include <cassert>
++#include <cstdio>
++#include <cstdlib>
+ #include <cstring>
+ #include <gufo/ext/experimental/managed_alloc.hpp>
+ #include <gufo/ext/experimental/weight_upload.hpp>
+@@ -454,7 +456,19 @@ bool DeviceModel::SetDraftVocab(std::uint32_t prefix_rows,
+   }
+   draft_output_ = output_;
+   draft_output_.rows = prefix_rows;
+-  if (output_.type == core::GgmlType::kQ8_0 && output_.cols % 256 == 0) {
++  // rebase-v035: GUFO_DRAFT_Q4K=0 (exactly "0"; read once) keeps the Q8_0
++  // prefix in place as v0.34.0 / production R7R did (no #1209 copy). Unset or
++  // any other value: upstream #1209. One stderr line at load.
++  static const bool q4k_off = [] {
++    const char* v = std::getenv("GUFO_DRAFT_Q4K");
++    return v != nullptr && std::strcmp(v, "0") == 0;
++  }();
++  const bool q4k_copy = !q4k_off && output_.type == core::GgmlType::kQ8_0 &&
++                        output_.cols % 256 == 0;
++  std::fprintf(stderr, "event=w3dq4k_config q4k=%d prefix_rows=%u knob=%s\n",
++               q4k_copy ? 1 : 0, prefix_rows, q4k_off ? "0" : "unset");
++  std::fflush(stderr);
++  if (q4k_copy) {
+     // Drafts read a Q4_K copy of the Q8_0 prefix: the head is the larger
+     // part of each draft step's weight traffic, and its proposals are
+     // verified, so this changes acceptance only. Each row of the copy is
+diff --git a/src/models/qwen38_flash_next/kernels/rocm/executor.cpp b/src/models/qwen38_flash_next/kernels/rocm/executor.cpp
+--- a/src/models/qwen38_flash_next/kernels/rocm/executor.cpp
++++ b/src/models/qwen38_flash_next/kernels/rocm/executor.cpp
+@@ -2116,7 +2116,9 @@ static bool W3PermSetup(const DeviceModel& model, std::vector<void*>& a,
+   if (head == nullptr || map == nullptr)
+     return false;
+   const auto* out = static_cast<const std::uint8_t*>(model.output().data);
+-  if (!Check(hipMemcpy(head, prefix.data, head_bytes, hipMemcpyDeviceToDevice),
++  // rebase-v035: the Q8_0 prefix rows are output()'s leading rows (production's
++  // in-place prefix); draft_output() may now be upstream #1209's Q4_K copy.
++  if (!Check(hipMemcpy(head, out, head_bytes, hipMemcpyDeviceToDevice),
+              "draft perm prefix", error_msg))
+     return false;
+   for (std::size_t k = 0; k < perm.drop.size(); ++k) {
+@@ -2132,13 +2134,37 @@ static bool W3PermSetup(const DeviceModel& model, std::vector<void*>& a,
+              "draft perm map", error_msg) ||
+       !Check(hipDeviceSynchronize(), "draft perm", error_msg))
+     return false;
+-  if (!w3perm::Claim(w3perm::Device{owner, head, map})) {
++  // rebase-v035 (#1209 port to the permuted 49,152-row prefix): when the model
++  // drafts with upstream's Q4_K copy, the permuted head gets one too, made by
++  // the same per-row quantizer from the permuted Q8_0 rows above.
++  void* head_q4k = nullptr;
++  std::size_t q4k_bytes = 0;
++  if (prefix.type == GgmlType::kQ4_K) {
++    const auto cols = static_cast<std::uint32_t>(model.output().cols);
++    if (model.output().type != GgmlType::kQ8_0 || cols % 256 != 0) {
++      AssignError(error_msg, "GUFO_DRAFT_PERM: Q4_K prefix of a non-Q8_0 head");
++      return false;
++    }
++    q4k_bytes = std::size_t{kMtpDraftVocab} * (cols / 256) * 144;
++    auto* q4k = Alloc<std::uint8_t>(a, q4k_bytes + 4096, error_msg);
++    if (q4k == nullptr)
++      return false;
++    QuantizeQ8_0ToQ4K(head, q4k, kMtpDraftVocab, cols, nullptr);
++    if (!Check(hipMemset(q4k + q4k_bytes, 0, 4096), "draft perm q4k tail",
++               error_msg) ||
++        !Check(hipDeviceSynchronize(), "draft perm q4k", error_msg))
++      return false;
++    head_q4k = q4k;
++  }
++  if (!w3perm::Claim(w3perm::Device{owner, head, map, head_q4k})) {
+     AssignError(error_msg, "GUFO_DRAFT_PERM: no free permuted-head slot");
+     return false;
+   }
+   std::fprintf(stderr,
+                "event=draft_perm_device rows=%u swapped=%zu head_bytes=%zu\n",
+                kMtpDraftVocab, perm.drop.size(), head_bytes);
++  std::fprintf(stderr, "event=draft_perm_q4k q4k=%d q4k_bytes=%zu\n",
++               head_q4k != nullptr ? 1 : 0, q4k_bytes);
+   std::fflush(stderr);
+   return true;
+ }
+@@ -2725,7 +2751,14 @@ std::unique_ptr<Executor> Executor::Create(const DeviceModel& model,
+   e->A1Setup();
+   // Wave3 Q2L (q2live-226): GUFO_Q2_SCREEN unset = nothing; w1 /
+   // w2 = the Q2 copy, its scratch and the GPU self-test, or no model.
+-  if (!W3q2lSetup(e->model_->output(), e->model_->draft_output(), e->has_mtp(),
++  // rebase-v035: the Q2 screen reads the Q8_0 prefix in place (output()'s
++  // leading rows), whatever head #1209 gave the plain draft path.
++  DeviceTensor q8_prefix = e->model_->draft_output();
++  if (!q8_prefix.empty()) {
++    q8_prefix = e->model_->output();
++    q8_prefix.rows = e->model_->draft_output().rows;
++  }
++  if (!W3q2lSetup(e->model_->output(), q8_prefix, e->has_mtp(),
+                   e->s_.logits, e->s_.mtp_argmax, e->s_.mtp_ids,
+                   e->s_.mtp_scratch_ids, e->s_.mtp_scores, e->stream_, error_msg))
+     return nullptr;
+diff --git a/src/models/qwen38_flash_next/w3perm_draft.hpp b/src/models/qwen38_flash_next/w3perm_draft.hpp
+--- a/src/models/qwen38_flash_next/w3perm_draft.hpp
++++ b/src/models/qwen38_flash_next/w3perm_draft.hpp
+@@ -188,6 +188,9 @@ struct Device {
+   const void* owner{nullptr};
+   void* head{nullptr};
+   const std::int32_t* map{nullptr};
++  // rebase-v035 (#1209 port): the Q4_K copy of `head` (null when the model's
++  // draft prefix is not a #1209 Q4_K copy, e.g. GUFO_DRAFT_Q4K=0).
++  void* head_q4k{nullptr};
+ };
+ 
+ inline std::array<Device, 4>& Devices() {
+@@ -221,10 +224,20 @@ inline void Release(const void* owner) {
+ 
+ /// The small head's prefix weight for `owner`: production's tensor, with its data swapped for the permuted copy when
+ /// `owner` holds one (same rows / cols / type: the GEMV launch is production's).
++// rebase-v035 (#1209 port): when the model's prefix is upstream's Q4_K copy
++// (t.type Q4_K), the permuted Q4_K copy (rows of the same per-row quantizer,
++// so row r == the Q4_K of the permuted Q8_0 row r); else the permuted Q8_0
++// copy as production.
+ template<typename Tensor>
+ [[nodiscard]] inline Tensor Prefix(Tensor t, const void* owner) {
+-  if (const Device* d = Find(owner))
+-    t.data = d->head;
++  if (const Device* d = Find(owner)) {
++    if (t.type == decltype(t.type)::kQ4_K && d->head_q4k != nullptr) {
++      t.data = d->head_q4k;
++    } else {
++      t.data = d->head;
++      t.type = decltype(t.type)::kQ8_0;
++    }
++  }
+   return t;
+ }
+ 

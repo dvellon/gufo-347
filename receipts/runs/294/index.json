@@ -1,0 +1,441 @@
+{
+ "note": "refused = launches / rows not receipted (private inputs, e.g. arms C / CX, or missing inputs)",
+ "receipts": [
+  {
+   "file": "launch-c1-A-r0.json",
+   "kind": "launch",
+   "lid": "c1-A-r0",
+   "sha256": "501037f770bfdcc62fcd17fb35ec8e12f75d2f0c0a1fd9a69720430cdd0e599a"
+  },
+  {
+   "file": "launch-c1-A-r1.json",
+   "kind": "launch",
+   "lid": "c1-A-r1",
+   "sha256": "5f64f0ed427cfab8b9a74bf5ce3e3a72cd83a69b67b01b440dbf0bd4839d2df5"
+  },
+  {
+   "file": "launch-c1-A-r2.json",
+   "kind": "launch",
+   "lid": "c1-A-r2",
+   "sha256": "a7c477ee06dbd1894a010651bcec74e8fe14d074f2d54077820e866a651dec47"
+  },
+  {
+   "file": "launch-c1-A-r3.json",
+   "kind": "launch",
+   "lid": "c1-A-r3",
+   "sha256": "a0c924fdf1db3e52526c5c9508f459503d10d27919520132da904088e189bbc6"
+  },
+  {
+   "file": "launch-c1-B-r0.json",
+   "kind": "launch",
+   "lid": "c1-B-r0",
+   "sha256": "b6c5c576697adf3999c9007e41cad7b76126ef57df2787e65efb49af3308b1c6"
+  },
+  {
+   "file": "launch-c1-B-r1.json",
+   "kind": "launch",
+   "lid": "c1-B-r1",
+   "sha256": "7104712cf5fd9743667b49f7090fdb9efe12358163d9dd5c7b807117e900cc86"
+  },
+  {
+   "file": "launch-c1-B-r2.json",
+   "kind": "launch",
+   "lid": "c1-B-r2",
+   "sha256": "5e5e3ff8f6c2945bfe56b49638e5a584db3431cce54b16aebec016322f3b963a"
+  },
+  {
+   "file": "launch-c1-B-r3.json",
+   "kind": "launch",
+   "lid": "c1-B-r3",
+   "sha256": "050ab5711e213a98e47c39476fc953370c9ae6c64050aba1a8e1971230cdfcc5"
+  },
+  {
+   "file": "launch-c1-R7Q-r0.json",
+   "kind": "launch",
+   "lid": "c1-R7Q-r0",
+   "sha256": "9b25b55508d8a5b0873ce214e45123e2c2e8c2d111ecd428133fb917b8025d95"
+  },
+  {
+   "file": "launch-c1-R7Q-r1.json",
+   "kind": "launch",
+   "lid": "c1-R7Q-r1",
+   "sha256": "cf858916bb55e2866aa1a2fc3a728c06ad59a994647f9b6d35d8fdba9be6a79c"
+  },
+  {
+   "file": "launch-c1-R7Q-r2.json",
+   "kind": "launch",
+   "lid": "c1-R7Q-r2",
+   "sha256": "56345b0502fb0c09b8dd853c4356ddb83ae321439c63e284a4e770869ba83675"
+  },
+  {
+   "file": "launch-c1-R7Q-r3.json",
+   "kind": "launch",
+   "lid": "c1-R7Q-r3",
+   "sha256": "cd17191d8b8f67009e1f6233ceb8cb1048c839408a2d59b594a19315ec871cb0"
+  },
+  {
+   "file": "launch-c1-R7QX-r0.json",
+   "kind": "launch",
+   "lid": "c1-R7QX-r0",
+   "sha256": "96c08cbf036faa05cc48f70b9d641e481023946d6c5bd2dffc31ee39b9a3ad44"
+  },
+  {
+   "file": "launch-c1-R7QX-r1.json",
+   "kind": "launch",
+   "lid": "c1-R7QX-r1",
+   "sha256": "50dd3f4cfc69a177a37bbf81c33d5f7281a2500aad993d0dc2e1098c28b8c54b"
+  },
+  {
+   "file": "launch-c1-R7QX-r2.json",
+   "kind": "launch",
+   "lid": "c1-R7QX-r2",
+   "sha256": "ebe6d0a22df5d5827a7650e97ae51fc525488579ee7ee5c4cf9fe1902c7946b3"
+  },
+  {
+   "file": "launch-c1-R7QX-r3.json",
+   "kind": "launch",
+   "lid": "c1-R7QX-r3",
+   "sha256": "b0d233f4b71096563ddaea7d493b18a34dec3c633d2954e3f56a590105e258b5"
+  },
+  {
+   "file": "launch-c1-RR7Q-k0.json",
+   "kind": "launch",
+   "lid": "c1-RR7Q-k0",
+   "sha256": "95b854b859522f66640c0208dd53269aa0471fe99786dce5c86c6e0fb19a258a"
+  },
+  {
+   "file": "launch-c1-RR7Q-k2.json",
+   "kind": "launch",
+   "lid": "c1-RR7Q-k2",
+   "sha256": "0bf0e4a771a629f41d37ca592086acc5b6c363a726f78f5cdbfadf0c9126666a"
+  },
+  {
+   "file": "launch-c1-RR7Q-k4.json",
+   "kind": "launch",
+   "lid": "c1-RR7Q-k4",
+   "sha256": "32c5a1c1c211af987f0713d697f94807c192d5113ef0a7be428457f8dc80930c"
+  },
+  {
+   "file": "launch-c1-RR7Q-k6.json",
+   "kind": "launch",
+   "lid": "c1-RR7Q-k6",
+   "sha256": "976ef642e5a8799c959f20f3bfaf1cafd884b5368bcd515d4776ffe5ade8bb1d"
+  },
+  {
+   "file": "launch-c8-A-r0.json",
+   "kind": "launch",
+   "lid": "c8-A-r0",
+   "sha256": "40757c2b0a169e81e8de9b7059a95c6921560816399c31dc7aa57a96a6f5e02d"
+  },
+  {
+   "file": "launch-c8-A-r1.json",
+   "kind": "launch",
+   "lid": "c8-A-r1",
+   "sha256": "d9c32da369a0257fc4627658af3991bd679f0bb7d0655d6ad08210e4b5f2b101"
+  },
+  {
+   "file": "launch-c8-A-r2.json",
+   "kind": "launch",
+   "lid": "c8-A-r2",
+   "sha256": "bbc7100c512dd3afd3b8fbd467693e8db4afe262c16ac9bf04db63f45a8814e8"
+  },
+  {
+   "file": "launch-c8-A-r3.json",
+   "kind": "launch",
+   "lid": "c8-A-r3",
+   "sha256": "b89ef0ac77f993659e7ae991c6a0721b29f35277e3c0126b27e453fdc7e9b3ce"
+  },
+  {
+   "file": "launch-c8-B-r0.json",
+   "kind": "launch",
+   "lid": "c8-B-r0",
+   "sha256": "7c9c55ad72ad3b394663e04714bf2f75563e76f4225375911c0cc7d5cd0e19d5"
+  },
+  {
+   "file": "launch-c8-B-r1.json",
+   "kind": "launch",
+   "lid": "c8-B-r1",
+   "sha256": "4faa16c7fe6b9569fbf4652e07b3f3195c04723088311e3b58ad6bb71cb07ca1"
+  },
+  {
+   "file": "launch-c8-B-r2.json",
+   "kind": "launch",
+   "lid": "c8-B-r2",
+   "sha256": "c3de65dab179a3229cd458c83c8a17e13112bf72376449aa700a7d9de9962b45"
+  },
+  {
+   "file": "launch-c8-B-r3.json",
+   "kind": "launch",
+   "lid": "c8-B-r3",
+   "sha256": "bbba89fa039f9da5b0fed141e09d60f1bff4caf3d2d95ccf049d670a2b4a91c5"
+  },
+  {
+   "file": "launch-c8-R7Q-r0.json",
+   "kind": "launch",
+   "lid": "c8-R7Q-r0",
+   "sha256": "a3c6b23f81c52fb3429084c6bc89fc53b15fb1c826a149a5a65c1f389b4d5b1f"
+  },
+  {
+   "file": "launch-c8-R7Q-r1.json",
+   "kind": "launch",
+   "lid": "c8-R7Q-r1",
+   "sha256": "350a570999790b713d878de408b573b2fa28d93f73651403c3f93bd2fa4d6ba8"
+  },
+  {
+   "file": "launch-c8-R7Q-r2.json",
+   "kind": "launch",
+   "lid": "c8-R7Q-r2",
+   "sha256": "5ef4d89671f354c526f4a59c4b6f16b6bd2ed10a9d35437bbecdec9f0babc0ce"
+  },
+  {
+   "file": "launch-c8-R7Q-r3.json",
+   "kind": "launch",
+   "lid": "c8-R7Q-r3",
+   "sha256": "4e6709e62ca8200282d28c8a8aa1dd57d02159978cc12d556bb9e0fcf73b558f"
+  },
+  {
+   "file": "launch-c8-R7QX-r0.json",
+   "kind": "launch",
+   "lid": "c8-R7QX-r0",
+   "sha256": "86ff354dc5d719948771585f9ef44bd689951312b7658d6aa200fbd7c0e7e91a"
+  },
+  {
+   "file": "launch-c8-R7QX-r1.json",
+   "kind": "launch",
+   "lid": "c8-R7QX-r1",
+   "sha256": "f247ff4c6738da0c22a601d63f0dd0e2a9dc0b7b2114c2215021e8253b89d1c9"
+  },
+  {
+   "file": "launch-c8-R7QX-r2.json",
+   "kind": "launch",
+   "lid": "c8-R7QX-r2",
+   "sha256": "aff4eb241a7608eac3b942021c5b849d1cd07dead1fc3315b69b956b637a4828"
+  },
+  {
+   "file": "launch-c8-R7QX-r3.json",
+   "kind": "launch",
+   "lid": "c8-R7QX-r3",
+   "sha256": "ec012d7a51f0d0676f7e38b6496d7724ab1df13801e3c933250c884fe48e183d"
+  },
+  {
+   "file": "launch-canon-A-r0.json",
+   "kind": "launch",
+   "lid": "canon-A-r0",
+   "sha256": "71a222d61a553d1893a75a62b3fcfb12835e9ff0beb0a2258c441ebe8905c64f"
+  },
+  {
+   "file": "launch-canon-A-r1.json",
+   "kind": "launch",
+   "lid": "canon-A-r1",
+   "sha256": "7f263ea4307a0588a1a08a11041e60fd1dbe0151936a9214396654a58369c4c8"
+  },
+  {
+   "file": "launch-canon-B-r0.json",
+   "kind": "launch",
+   "lid": "canon-B-r0",
+   "sha256": "ecad30ceb72a8f55d41188cd889355412deb9c93bb352754a79c1fb10e344f57"
+  },
+  {
+   "file": "launch-canon-B-r1.json",
+   "kind": "launch",
+   "lid": "canon-B-r1",
+   "sha256": "6cca339182dabd1f3da290fbb4afce4e7266dbaecb5c06aa4384110a69a16fc5"
+  },
+  {
+   "file": "launch-canon-R7Q-r0.json",
+   "kind": "launch",
+   "lid": "canon-R7Q-r0",
+   "sha256": "3ec67c7cb11c0f55f9b3cff9147aceff9504edf2735ca0c580f584d23c1c0904"
+  },
+  {
+   "file": "launch-canon-R7Q-r1.json",
+   "kind": "launch",
+   "lid": "canon-R7Q-r1",
+   "sha256": "88a770df2e5425852ceff419ec190fc312731ff2240d865f52b92b141e7885e7"
+  },
+  {
+   "file": "launch-canon-R7QX-r0.json",
+   "kind": "launch",
+   "lid": "canon-R7QX-r0",
+   "sha256": "730a4fbfede8edb871925d8d33485805d0c8a92d64a3d439ab31f91610ebeea9"
+  },
+  {
+   "file": "launch-canon-R7QX-r1.json",
+   "kind": "launch",
+   "lid": "canon-R7QX-r1",
+   "sha256": "f22cdda3234711233cb27b6cfb7d4c5c58b19fa736e3fe2aa81394e51dbd6905"
+  },
+  {
+   "file": "launch-canon-RR7Q.json",
+   "kind": "launch",
+   "lid": "canon-RR7Q",
+   "sha256": "4451ab84b9462e03944043833281e590f59f20696cc91a3b9d187c309128ceec"
+  },
+  {
+   "file": "launch-chat-A-r0.json",
+   "kind": "launch",
+   "lid": "chat-A-r0",
+   "sha256": "8cf4eb6c089c7e0b2aa36cfdfc3a30200ababd71bb9abd4e021d5e16be0cafd8"
+  },
+  {
+   "file": "launch-chat-A-r1.json",
+   "kind": "launch",
+   "lid": "chat-A-r1",
+   "sha256": "71e9bf52cc5e8c391c1c84f5454eb1a72d2528ddb625d91de30fb1d2378d19ee"
+  },
+  {
+   "file": "launch-chat-B-r0.json",
+   "kind": "launch",
+   "lid": "chat-B-r0",
+   "sha256": "f97a0c95e7d0cc1610e17c2e8c46ee815ebe18a148d5c5bb4f7809715ab7ec5a"
+  },
+  {
+   "file": "launch-chat-B-r1.json",
+   "kind": "launch",
+   "lid": "chat-B-r1",
+   "sha256": "1ea6def948049bd186f87c695190b73e37692b8f3a8853b57c937659b82aa6f6"
+  },
+  {
+   "file": "launch-chat-R7Q-r0.json",
+   "kind": "launch",
+   "lid": "chat-R7Q-r0",
+   "sha256": "9793c8d8e8faa59c43de0dc299d86b82b8b2515ce417fc3e7f86f5e7c216466d"
+  },
+  {
+   "file": "launch-chat-R7Q-r1.json",
+   "kind": "launch",
+   "lid": "chat-R7Q-r1",
+   "sha256": "e1a41a4f119bbdfefd25d6846d474efbcdc82d0b15a58c90e3875885ce88eec8"
+  },
+  {
+   "file": "launch-chat-R7QX-r0.json",
+   "kind": "launch",
+   "lid": "chat-R7QX-r0",
+   "sha256": "86b68e6aa873adff32ebbb128d294e5c9802583809f56d1a659245df6e7de545"
+  },
+  {
+   "file": "launch-chat-R7QX-r1.json",
+   "kind": "launch",
+   "lid": "chat-R7QX-r1",
+   "sha256": "09818f7eb24a56a68a04268d9d888b14744431ec1e6d42ff59b410a21c40808e"
+  },
+  {
+   "file": "launch-chat-RR7Q-k0.json",
+   "kind": "launch",
+   "lid": "chat-RR7Q-k0",
+   "sha256": "fba21629de06bd8269b01c177ee36ad7f23649744ec578a968e2e810632bb886"
+  },
+  {
+   "file": "launch-chat-RR7Q-k2.json",
+   "kind": "launch",
+   "lid": "chat-RR7Q-k2",
+   "sha256": "8fd8d13bb84c0c8d2be3ac39a876104e8c9d351541a487e14985dc767758c89e"
+  },
+  {
+   "file": "row-canon-B-A.json",
+   "kind": "row",
+   "name": "canon B/A",
+   "sha256": "17d3191daa2218bccabe143daf67ea238c7a3fbdbdfee9c1e47a1862fd75ff7d"
+  },
+  {
+   "file": "row-canon-A.json",
+   "kind": "row",
+   "name": "canon A",
+   "sha256": "22116d78489f2b9847063eed4a3dfed96e3f831073d460bdf4697315c18d39d3"
+  },
+  {
+   "file": "row-canon-B.json",
+   "kind": "row",
+   "name": "canon B",
+   "sha256": "b21f95cd8ee5e0587536e25ecb3b845074fdfdbb6e77f18a150525d6779b3e36"
+  },
+  {
+   "file": "row-c1-B-A.json",
+   "kind": "row",
+   "name": "c1 B/A",
+   "sha256": "a7b6f8a0bf952904c4d6b2736f0aad4b95bc9863d84a60f7a2df39617994caae"
+  },
+  {
+   "file": "row-c1-A.json",
+   "kind": "row",
+   "name": "c1 A",
+   "sha256": "4d1128841ebeb58123bf85a0ffc236bb94a00ad7b4b13dba99398e34d2cfd22d"
+  },
+  {
+   "file": "row-c1-B.json",
+   "kind": "row",
+   "name": "c1 B",
+   "sha256": "72265c6a43294a8867869807ea952cb089dcf18f9fdae06fdfb9f29dd0afb7c6"
+  },
+  {
+   "file": "row-chat-B-A.json",
+   "kind": "row",
+   "name": "chat B/A",
+   "sha256": "22aa5d5888c3e06d9f44be3b673ffcd73ddc18ab16992b97db13c1e52ff81856"
+  },
+  {
+   "file": "row-chat-A.json",
+   "kind": "row",
+   "name": "chat A",
+   "sha256": "77984df24d056446f7762089420a1ff3c1e2164f5530f09acfec0d0e4ec1a51b"
+  },
+  {
+   "file": "row-chat-B.json",
+   "kind": "row",
+   "name": "chat B",
+   "sha256": "901cafd347365eddd32b30a05a85aea393f058b13f926c7f058a4c2bedf471af"
+  },
+  {
+   "file": "row-c8-B-A.json",
+   "kind": "row",
+   "name": "c8 B/A",
+   "sha256": "c320e887754edd51d9d5ff306e9840070f38dceb9de65a97c9ed23597f110c14"
+  },
+  {
+   "file": "row-c8-BX-B.json",
+   "kind": "row",
+   "name": "c8 BX/B",
+   "sha256": "1e71be78b488445f480cba6ef24b6e11ef76d619c5a59aec7e9aac5c55ebdc08"
+  },
+  {
+   "file": "row-c8-A.json",
+   "kind": "row",
+   "name": "c8 A",
+   "sha256": "fbb5f484b42e34e5aa4bb6d8d36a2df9c963ea1f855530ecb80f2fad743be339"
+  },
+  {
+   "file": "row-c8-B.json",
+   "kind": "row",
+   "name": "c8 B",
+   "sha256": "8aed472f8a6977f433acfae2225cd1c334bbdb3d324f750ca4aae18287d63465"
+  },
+  {
+   "file": "row-C8-A-A-A-same-subset-twice-report-only.json",
+   "kind": "row",
+   "name": "C8 A/A A (same subset twice, report only)",
+   "sha256": "b29a99809aca58cecda5372343c5eaba0856296788ac600041a25a780dbff3af"
+  },
+  {
+   "file": "row-C8-A-A-B-same-subset-twice-report-only.json",
+   "kind": "row",
+   "name": "C8 A/A B (same subset twice, report only)",
+   "sha256": "0a0bfd52f7db5aa532a03e49d431a9847a229ceb80f02589b63eb4775b9d0083"
+  }
+ ],
+ "refused": [],
+ "run": {
+  "tag": "294"
+ },
+ "schema": "gufo.bench-receipt.index.v1",
+ "signer": {
+  "key_fingerprint": "SHA256:w70wubwWEJsWn1W/c+5uvqrPuXSuXs9e3xGk99YUWgg",
+  "namespace": "gufo-bench-receipt",
+  "principal": "gufo-bench-receipts"
+ },
+ "timestamps": {
+  "made": {
+   "et": "2026-11-18 11:50:04 EST",
+   "utc": "2026-11-18T16:50:04Z"
+  }
+ }
+}

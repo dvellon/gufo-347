@@ -1,0 +1,47 @@
+diff --git a/src/cli/serve/text_generation_scheduler.cpp b/src/cli/serve/text_generation_scheduler.cpp
+--- a/src/cli/serve/text_generation_scheduler.cpp
++++ b/src/cli/serve/text_generation_scheduler.cpp
+@@ -1620,6 +1620,7 @@ struct TextGenerationScheduler::Impl {
+       request->phase.store(TextRequestPhase::kPrefilling,
+                            std::memory_order_release);
+       last_prefill_request_id = request->id;
++      c82_last_group_ids.clear();  // rebase-v035: a solo step (see #1181 site)
+       std::size_t budget =
+           work.max_tokens.value_or(request->runner_request.prompt_tokens());
+       // wave3 dx R3-23 (GUFO_DX_CHUNK=N, explicit knob in R7): for requests
+@@ -1749,6 +1750,10 @@ struct TextGenerationScheduler::Impl {
+       return false;
+     for (const auto& member : members)
+       prefilling.erase(std::find(prefilling.begin(), prefilling.end(), member));
++    // rebase-v035 (C82 + upstream #1181): every member is served this step.
++    c82_last_group_ids.clear();
++    for (const auto& member : members)
++      c82_last_group_ids.push_back(member->id);
+     const std::size_t k = members.size();
+     std::vector<std::size_t> budgets(k, 0);
+     std::vector<unsigned char> active(k, 0);
+@@ -2603,6 +2608,15 @@ struct TextGenerationScheduler::Impl {
+               prefilling->back()->id == last_prefill_request_id) {
+             --next;
+           }
++          // rebase-v035 (GUFO_C82): a grouped step served several peers and
++          // re-queued them at the back; resume before every one of them, as
++          // #1181 does before the one peer of a solo step. Empty unless the
++          // last prefill step was a C82 group.
++          while (next != prefilling->begin() &&
++                 std::ranges::find(c82_last_group_ids,
++                                   (*std::prev(next))->id) !=
++                     c82_last_group_ids.end())
++            --next;
+           prefilling->insert(next, std::move(request));
+         }
+       }
+@@ -2843,6 +2857,8 @@ struct TextGenerationScheduler::Impl {
+   std::vector<std::shared_ptr<ScheduledRequest>> device_lost_requests;
+   std::size_t consecutive_active_prefill_chunks{0};
+   std::uint64_t last_prefill_request_id{0};
++  // rebase-v035: the requests the last C82 group step served (GUFO_C82).
++  std::vector<std::uint64_t> c82_last_group_ids;
+   std::atomic<std::uint64_t> next_request_id{1};
+   // Written by the scheduler thread and read by the stall monitor. `progress`
+   // advances when a request is admitted, a work unit starts, a pending

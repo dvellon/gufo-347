@@ -27,7 +27,32 @@ that is still under investigation. Both are described below.
   follows a different cache history is attributed to that history and listed by cause. The speculation flag of each
   arm is passed explicitly.
 
-## Results in run 287
+## Results in run 294 (R8 on upstream v0.35.0)
+
+Run 294 gated R8's strict tier before any release claim (pre-registered: R8 is a candidate only if every check below
+passes). It passed every one.
+
+- Canonical prose: 10 of 10 completions identical to the no-speculation reference (completion sha per prompt).
+- Agent C1: 93 of 93 requests on the same cache path as the reference, 0 differ (PASS). The reference is the majority
+  no-speculation output of R8's own reference launches and four earlier no-speculation runs of the same cells on our
+  v0.34.0 builds (runs 287, 275 and 284). That pooling is allowed only if R8's own references agree with the earlier
+  majority (pre-registered), and they did: 0 differing turns, so R8's no-speculation output equals our v0.34.0 builds'
+  on this workload.
+- Chat: 23 of 24 requests on the same cache path as R8's own no-speculation reference, 0 differ (PASS); the one
+  remaining request follows a reply cut by `max_tokens` and is excluded by cause (K1, below).
+- Eight concurrent sessions (report only, see below): 95 of 99 comparable requests identical to the pooled
+  single-session references.
+
+| check (lineage judge, speculation flag explicit) | paired | compared | differing on the same cache path | unattributed breaks | excluded by cause | verdict |
+|---|---:|---:|---:|---:|---|---|
+| E1 c1 R8 strict vs the majority no-speculation reference | 93 | 93 | 0 | 0 | K1 0, K2 0, K3 0, UNATTRIBUTED 0 | PASS |
+| E1 c1 previous build (R7R) vs the same reference (control) | 93 | 93 | 0 | 0 | K1 0, K2 0, K3 0, UNATTRIBUTED 0 | PASS |
+| E1 chat R8 strict vs R8's own no-speculation reference | 24 | 23 | 0 | 0 | K1 1, K2 0, K3 0, UNATTRIBUTED 0 | PASS |
+| E1 chat previous build (R7R) vs R8's no-speculation reference (control) | 24 | 23 | 0 | 0 | K1 1, K2 0, K3 0, UNATTRIBUTED 0 | PASS |
+| E1 canon R8 strict vs R8's no-speculation reference (completion sha) | 10 | 10 | 0 | - | - | PASS |
+| E1 canon previous build (R7R) vs the same reference (control) | 10 | 10 | 0 | - | - | PASS |
+
+## Previous release: results in run 287 (R7R on upstream v0.34.0)
 
 - Canonical prose: 20 of 20 completions identical to the no-speculation
   reference.
@@ -49,7 +74,7 @@ one token's state was written by decode in one arm and by prefill in the other. 
 result. This is a cache-history difference, not a verify error, but it means plain byte identity does **not** hold
 after a truncated turn.
 
-**Fix status:** A fix is built and tested. When a reply is cut by max_tokens, the fix feeds the final pending token with a one-row decode, so the speculative and non-speculative paths keep the same cache. In a re-test it removed 6 of the 7 differences and was speed-neutral (+0.6 % / -0.6 %, both inside noise). It is not in the binary benchmarked here.
+**Fix status:** A fix is built and tested. When a reply is cut by max_tokens, the fix feeds the final pending token with a one-row decode, so the speculative and non-speculative paths keep the same cache. In a re-test it removed 6 of the 7 differences and was speed-neutral (+0.6 % / -0.6 %, both inside noise). It is not in the binaries benchmarked here (neither R7R in run 287 nor R8 in run 294), and it is not in patches/.
 
 ## The open near-tie flip
 
@@ -64,8 +89,10 @@ between two runs of the same binary. A fix that cuts and restores prefill only a
 
 ## Stock's speculation
 
-Stock's speculative decoding is not exact on this machine. On the same cache path, its output differs from its own --speculative off output, because its verify numerics differ from its non-speculative path. That is a legitimate design choice, but it means stock's speculative speed-up and ours are not the same kind of claim. In run 287, n/a of 0 canonical prompts differ from
-stock's own `--speculative off` output. In agent C1, n/a lineage-compared requests differ.
+Stock's speculative decoding is not exact on this machine. On the same cache path, its output differs from its own --speculative off output, because its verify numerics differ from its non-speculative path. That is a legitimate design choice, but it means stock's speculative speed-up and ours are not the same kind of claim. Runs 294 and 287 had no stock `--speculative off` arm, so they do not repeat this
+comparison for stock v0.35.0 or v0.34.0. In run 2603, an earlier full benchmark against stock v0.33.0, 12 of 20 canonical prompts differed from
+stock's own `--speculative off` output, and 12 of 31 lineage-compared agent C1 requests differed (19 identical; 62
+further requests were not comparable after an earlier difference in their session).
 
 ## What we do and do not claim
 
@@ -76,4 +103,4 @@ stock's own `--speculative off` output. In agent C1, n/a lineage-compared reques
 - Relaxed numbers are never presented as lossless.
 
 ---
-Numbers filled by fill_release.py from benchmark run 287 (written 2026-11-15 23:56:05 ET).
+Numbers from benchmark run 294 (verdict written 2026-11-17 18:31:16 ET); previous-release numbers from run 287 (written 2026-11-15 23:56:05 ET).

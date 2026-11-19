@@ -1,0 +1,93 @@
+{
+ "launches": [
+  {
+   "lid": "c8-A-r0",
+   "receipt": "launch-c8-A-r0.json",
+   "receipt_sha256": "40757c2b0a169e81e8de9b7059a95c6921560816399c31dc7aa57a96a6f5e02d"
+  },
+  {
+   "lid": "c8-A-r1",
+   "receipt": "launch-c8-A-r1.json",
+   "receipt_sha256": "d9c32da369a0257fc4627658af3991bd679f0bb7d0655d6ad08210e4b5f2b101"
+  },
+  {
+   "lid": "c8-A-r2",
+   "receipt": "launch-c8-A-r2.json",
+   "receipt_sha256": "bbc7100c512dd3afd3b8fbd467693e8db4afe262c16ac9bf04db63f45a8814e8"
+  },
+  {
+   "lid": "c8-A-r3",
+   "receipt": "launch-c8-A-r3.json",
+   "receipt_sha256": "b89ef0ac77f993659e7ae991c6a0721b29f35277e3c0126b27e453fdc7e9b3ce"
+  },
+  {
+   "lid": "c8-B-r0",
+   "receipt": "launch-c8-B-r0.json",
+   "receipt_sha256": "7c9c55ad72ad3b394663e04714bf2f75563e76f4225375911c0cc7d5cd0e19d5"
+  },
+  {
+   "lid": "c8-B-r1",
+   "receipt": "launch-c8-B-r1.json",
+   "receipt_sha256": "4faa16c7fe6b9569fbf4652e07b3f3195c04723088311e3b58ad6bb71cb07ca1"
+  },
+  {
+   "lid": "c8-B-r2",
+   "receipt": "launch-c8-B-r2.json",
+   "receipt_sha256": "c3de65dab179a3229cd458c83c8a17e13112bf72376449aa700a7d9de9962b45"
+  },
+  {
+   "lid": "c8-B-r3",
+   "receipt": "launch-c8-B-r3.json",
+   "receipt_sha256": "bbba89fa039f9da5b0fed141e09d60f1bff4caf3d2d95ccf049d670a2b4a91c5"
+  }
+ ],
+ "matches_run_verdict": true,
+ "result": {
+  "run_statistic": {
+   "ci": [
+    1.0615006556606879,
+    1.0978677487684736
+   ],
+   "point": 1.0796623645004335,
+   "rounds": 4
+  },
+  "two_level": {
+   "ci": [
+    1.0615006556606879,
+    1.0978677487684736
+   ],
+   "point": 1.0796623645004337,
+   "resamples": 4000,
+   "rounds": 4,
+   "seed": 260
+  }
+ },
+ "row": {
+  "den": "A",
+  "kind": "ratio",
+  "name": "c8 B/A",
+  "num": "B",
+  "stage": "c8",
+  "tier": "strict (lossless)"
+ },
+ "run": {
+  "label": "Windows 11, gfx1151",
+  "tag": "294"
+ },
+ "schema": "gufo.bench-receipt.row.v1",
+ "signer": {
+  "key_fingerprint": "SHA256:w70wubwWEJsWn1W/c+5uvqrPuXSuXs9e3xGk99YUWgg",
+  "namespace": "gufo-bench-receipt",
+  "principal": "gufo-bench-receipts"
+ },
+ "statistic": {
+  "run_statistic": "paired percentile bootstrap over rounds (every arm ran the same session subset in a round), 4000 resamples, seed 260; per-arm value = mean full-window tok/s (>= 8 in flight, valid launches only)",
+  "two_level": "paired two-level percentile bootstrap: rounds, then the units inside each drawn round (c1 / chat: sessions; canon: prose samples; c8: the launch, not separable)"
+ },
+ "timestamps": {
+  "receipt_made": {
+   "et": "2026-11-18 11:50:04 EST",
+   "utc": "2026-11-18T16:50:04Z"
+  }
+ }
+}

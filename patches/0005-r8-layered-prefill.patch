@@ -1,0 +1,33 @@
+diff --git a/src/models/qwen38_flash_next/runner.cpp b/src/models/qwen38_flash_next/runner.cpp
+--- a/src/models/qwen38_flash_next/runner.cpp
++++ b/src/models/qwen38_flash_next/runner.cpp
+@@ -656,18 +656,18 @@ public:
+                 .max_in_pass_checkpoints = rocm::kMaxPassCheckpoints,
+             },
+         .sampling_defaults = FlashNextSamplingDefaults(),
+-        // rebase-272: GUFO_LAYERED_PREFILL=0 drops the profile (passes stay
+-        // bounded by the host's decode-active budget, no decode rounds
+-        // between layer groups), as production, which skipped upstream's
+-        // layered prefill (#1042 / #1039 / #1095). Unset: upstream.
++        // rebase-272: GUFO_LAYERED_PREFILL=0 = no decode rounds between layer
++        // groups (production skipped upstream's layered prefill #1042 / #1039
++        // / #1095). rebase-v035: #1175 requires a profile and removed the
++        // legacy prefill budget, so =0 keeps upstream's profile with one
++        // layer group. Unset: upstream.
+         .scheduling =
+-            LayeredPrefillOn()
+-                ? std::optional<TextSchedulingProfile>(TextSchedulingProfile{
+-                      .pass_tokens = model_->PrefillCapacity(),
+-                      .max_layer_groups = kMaxPrefillLayerGroups,
+-                      .max_yield_decode_width = kMaxBatchWidth,
+-                  })
+-                : std::nullopt,
++            TextSchedulingProfile{
++                .pass_tokens = model_->PrefillCapacity(),
++                .max_layer_groups =
++                    LayeredPrefillOn() ? kMaxPrefillLayerGroups : 1,
++                .max_yield_decode_width = kMaxBatchWidth,
++            },
+     };
+   }
+   [[nodiscard]] static bool LayeredPrefillOn() {

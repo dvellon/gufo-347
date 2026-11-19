@@ -1,28 +1,49 @@
 {
  "schema": "gufo-release.patches.v1",
  "base": {
-  "tag": "v0.34.0",
-  "commit": "2845939b2a7d61243d407c8816c6d42652512e50"
+  "tag": "v0.35.0",
+  "commit": "0260e1162f8713caee4d3f4ff77e017de7165f9c"
  },
- "candidate_label": "R7R",
- "tree_label": "R7R",
- "final_tree": "2878ab16e2e1ac62c127dc60f62e164c4366c74f",
- "released_tree_comment_scrubbed": "300ee35990db045ec9e745a41356b2cc218b8d83",
+ "candidate_label": "R8",
+ "tree_label": "R8",
+ "describe": "v0.35.0-6-gaa982395",
+ "head_commit": "aa982395247e9a65fc49519a37b4fd2172007c00",
+ "final_tree": "062d2a1e4db3b88fcb0d07a5d113e42f268835da",
+ "released_tree_comment_scrubbed": "9510077d10e03a6bc88eca1b90ff89a0bdc546da",
  "a1_table": "flat (data-free), sha256 37e287184de6a92556d6620dc350bb5fe1ee478ac42c1c7879ba7c77e9af235e",
- "apply": "git checkout v0.34.0 && git apply --whitespace=nowarn patches/0*.patch (in order)",
+ "apply": "git checkout v0.35.0 && git apply --whitespace=nowarn patches/0*.patch (in order)",
+ "previous_release": {
+  "label": "R7R",
+  "base": "v0.34.0 (2845939b)",
+  "note": "the v0.34.0 series (0001-r7 ... 0006-r7r) is in this repository's git history"
+ },
  "patches": [
   {
-   "patch": "0001-r7.patch",
-   "title": "rebase: our production changes re-implemented on upstream v0.34.0",
-   "switches_added": [],
-   "files": 85,
+   "patch": "0001-r8-rebase.patch",
+   "commit": "3483239e9c08834235850482e46ff43fe34ff4ce",
+   "title": "rebase: our production changes (the R7R stack) on upstream v0.35.0",
+   "switches_added": [
+    "GUFO_U882_BCONF",
+    "GUFO_U882=drop",
+    "GUFO_XM_STRICT_ALIGN",
+    "GUFO_W3_DECODE_GRAPHS",
+    "GUFO_W3_FB_FIX",
+    "GUFO_C82",
+    "GUFO_NT_ACCEPT_EPS",
+    "GUFO_XM_RELAXED_ALIGN"
+   ],
+   "files": 90,
+   "insertions": 24868,
+   "deletions": 597,
    "paths": [
     "include/gufo/ext/SURFACE",
     "src/cache/prefix_index.cpp",
+    "src/cache/prefix_index.hpp",
     "src/cache/w3canon.hpp",
     "src/cli/serve/bc_capture.hpp",
     "src/cli/serve/cap_capture.hpp",
     "src/cli/serve/component_text_cache.cpp",
+    "src/cli/serve/component_text_cache.hpp",
     "src/cli/serve/http_server.cpp",
     "src/cli/serve/inference_backend.cpp",
     "src/cli/serve/inference_backend.hpp",
@@ -51,6 +72,7 @@
     "src/core/speculative/spec_sampling.hpp",
     "src/core/up219_knobs.hpp",
     "src/core/w3as_early.hpp",
+    "src/core/w3c82_group.hpp",
     "src/core/w3gmask.hpp",
     "src/core/w3sb_knobs.hpp",
     "src/ext/text.cpp",
@@ -95,115 +117,98 @@
     "src/models/qwen38_flash_next/mtp_policy.hpp",
     "src/models/qwen38_flash_next/mtp_sampling.hpp",
     "src/models/qwen38_flash_next/mtp_spec_sampling.hpp",
+    "src/models/qwen38_flash_next/nt_accept.hpp",
     "src/models/qwen38_flash_next/runner.cpp",
     "src/models/qwen38_flash_next/w3a1aw_arm.hpp",
     "src/models/qwen38_flash_next/w3a1t_tool.hpp",
     "src/models/qwen38_flash_next/w3gc8_planned.hpp",
     "src/models/qwen38_flash_next/w3h1g_gate.hpp",
     "src/models/qwen38_flash_next/w3perm_draft.hpp",
-    "src/models/qwen38_flash_next/xm_relaxed_policy.hpp"
-   ],
-   "comment_lines_scrubbed": 140,
-   "sha256": "38ec555fc805eafa91970a5d374242a9e23fa82e2fb037c30c7131fcb319c032",
-   "bytes": 1270076
-  },
-  {
-   "patch": "0002-r7q.patch",
-   "title": "ask for upstream #882 draft confidence only when a gate reads it",
-   "switches_added": [],
-   "files": 3,
-   "paths": [
-    "src/models/qwen38_flash_next/engine.cpp",
-    "src/models/qwen38_flash_next/engine.hpp",
-    "src/models/qwen38_flash_next/kernels/rocm/executor.cpp"
-   ],
-   "comment_lines_scrubbed": 0,
-   "sha256": "e3247de1f9da7a673c4635bd2b9ce9b8558c909b5a8990365903f9ebc1a47a62",
-   "bytes": 6303
-  },
-  {
-   "patch": "0003-r7h.patch",
-   "title": "batched draft confidence fix, #882 drop mode, strict live-frontier alignment",
-   "switches_added": [
-    "GUFO_U882_BCONF",
-    "GUFO_U882=drop",
-    "GUFO_XM_STRICT_ALIGN"
-   ],
-   "files": 11,
-   "paths": [
-    "src/cli/serve/component_text_cache.cpp",
-    "src/cli/serve/component_text_cache.hpp",
-    "src/cli/serve/openai_chat.cpp",
-    "src/cli/serve/text_generation_backend.hpp",
-    "src/cli/serve/text_generation_scheduler.cpp",
-    "src/cli/serve/text_model_runner.cpp",
-    "src/cli/serve/text_model_runner.hpp",
-    "src/models/qwen38_flash_next/engine.cpp",
-    "src/models/qwen38_flash_next/kernels/rocm/batch.cpp",
-    "src/models/qwen38_flash_next/kernels/rocm/executor.cpp",
-    "src/models/qwen38_flash_next/kernels/rocm/executor.hpp"
-   ],
-   "comment_lines_scrubbed": 1,
-   "sha256": "23a044e676d487cf4e1c490efe9903aea8d0e405195bdad2304b8f5b6d8d5958",
-   "bytes": 19663
-  },
-  {
-   "patch": "0004-r7i.patch",
-   "title": "decode HIP graphs on Windows, frontier readback fix",
-   "switches_added": [
-    "GUFO_W3_DECODE_GRAPHS",
-    "GUFO_W3_FB_FIX"
-   ],
-   "files": 3,
-   "paths": [
-    "src/models/qwen38_flash_next/kernels/rocm/executor.cpp",
-    "src/models/qwen38_flash_next/kernels/rocm/executor.hpp",
-    "src/models/qwen38_flash_next/kernels/rocm/w3rb_gdn.hpp"
-   ],
-   "comment_lines_scrubbed": 0,
-   "sha256": "3422d25cd60d0b81afe7bc7a212d3521dbf4f6048727a099c88329356cea6655",
-   "bytes": 12587
-  },
-  {
-   "patch": "0005-r7j.patch",
-   "title": "cross-request batched prefill at 8 sessions",
-   "switches_added": [
-    "GUFO_C82"
-   ],
-   "files": 4,
-   "paths": [
-    "src/cli/serve/text_generation_scheduler.cpp",
-    "src/core/w3c82_group.hpp",
-    "src/models/qwen38_flash_next/kernels/rocm/executor.cpp",
-    "src/models/qwen38_flash_next/kernels/rocm/executor.hpp"
-   ],
-   "comment_lines_scrubbed": 3,
-   "sha256": "15c46bcce700b5fc1b7f3ddc6cf66c615125c3f7a790cf5a404ffb36df589618",
-   "bytes": 59174
-  },
-  {
-   "patch": "0006-r7r.patch",
-   "title": "relaxed tier: near-tie acceptance and relaxed live-frontier alignment (off unless set)",
-   "switches_added": [
-    "GUFO_NT_ACCEPT_EPS",
-    "GUFO_XM_RELAXED_ALIGN"
-   ],
-   "files": 10,
-   "paths": [
-    "src/cli/serve/component_text_cache.cpp",
-    "src/cli/serve/component_text_cache.hpp",
-    "src/cli/serve/text_generation_scheduler.cpp",
-    "src/cli/serve/text_model_runner.cpp",
-    "src/cli/serve/text_model_runner.hpp",
-    "src/models/qwen38_flash_next/engine.cpp",
-    "src/models/qwen38_flash_next/kernels/rocm/executor.cpp",
-    "src/models/qwen38_flash_next/kernels/rocm/executor.hpp",
-    "src/models/qwen38_flash_next/nt_accept.hpp",
+    "src/models/qwen38_flash_next/xm_relaxed_policy.hpp",
     "tests/cli/component_text_cache_test.cpp"
    ],
-   "comment_lines_scrubbed": 2,
-   "sha256": "47a4f98c50a68bfea5003effbf1b8bb363ab15a1d65cc040e4e683e0f5d87bff",
-   "bytes": 33628
+   "comment_lines_scrubbed": 143,
+   "sha256": "bec8f23e9ac69040534198d971bfe31112f92afabda9b847414e77a23f9a0bd6",
+   "bytes": 1377725
+  },
+  {
+   "patch": "0002-r8-q4k-draft-head.patch",
+   "commit": "284074a65dcfa87efe118b9abb430ef39b6705b8",
+   "title": "port upstream #1209 (Q4_K copy of the MTP draft-head prefix) to the permuted draft head",
+   "switches_added": [
+    "GUFO_DRAFT_Q4K=0 (kill switch)"
+   ],
+   "files": 3,
+   "insertions": 66,
+   "deletions": 6,
+   "paths": [
+    "src/models/qwen38_flash_next/kernels/rocm/device_model.cpp",
+    "src/models/qwen38_flash_next/kernels/rocm/executor.cpp",
+    "src/models/qwen38_flash_next/w3perm_draft.hpp"
+   ],
+   "comment_lines_scrubbed": 1,
+   "sha256": "c6e72474b535fad8cb7641dc313c6d8c62832c1cb4eea06ac4d4572cb6302fdd",
+   "bytes": 6771
+  },
+  {
+   "patch": "0003-r8-xa-retained-test.patch",
+   "commit": "d4caa2a5ff400e23797e5eeaa0758a9bf8989bbe",
+   "title": "test: relaxed alignment stays within its level for #1183 retained frontiers",
+   "switches_added": [],
+   "files": 1,
+   "insertions": 84,
+   "deletions": 0,
+   "paths": [
+    "tests/cli/component_text_cache_test.cpp"
+   ],
+   "comment_lines_scrubbed": 0,
+   "sha256": "5caa6f82d8ad4d89afbc4ee1b3478ae7518bd54e61a6076f6c5252307fffd9d0",
+   "bytes": 4744
+  },
+  {
+   "patch": "0004-r8-c82-resume.patch",
+   "commit": "29ca5084a950393d9641a89a09e814650fa47986",
+   "title": "cross-request batched prefill: resume a ready capture before every peer of the grouped step (#1181)",
+   "switches_added": [],
+   "files": 1,
+   "insertions": 16,
+   "deletions": 0,
+   "paths": [
+    "src/cli/serve/text_generation_scheduler.cpp"
+   ],
+   "comment_lines_scrubbed": 0,
+   "sha256": "e7342f5dd1c113a6f86996bf296120af2ac760d4057c66a2960ca53ddb24b9ed",
+   "bytes": 2549
+  },
+  {
+   "patch": "0005-r8-layered-prefill.patch",
+   "commit": "6ae7df4c43ab6a8b369fe161516abd56999891b7",
+   "title": "GUFO_LAYERED_PREFILL=0 as a one-layer-group profile (#1175 requires a profile)",
+   "switches_added": [],
+   "files": 1,
+   "insertions": 11,
+   "deletions": 11,
+   "paths": [
+    "src/models/qwen38_flash_next/runner.cpp"
+   ],
+   "comment_lines_scrubbed": 0,
+   "sha256": "96360601bafbdc6ce96fe5db80dad3f86a0a1ce8323c2681ef32e8504490c205",
+   "bytes": 1738
+  },
+  {
+   "patch": "0006-r8-identity.patch",
+   "commit": "aa982395247e9a65fc49519a37b4fd2172007c00",
+   "title": "startup identity line names the upstream base (v0.35.0)",
+   "switches_added": [],
+   "files": 1,
+   "insertions": 3,
+   "deletions": 2,
+   "paths": [
+    "src/cli/serve/serve.cpp"
+   ],
+   "comment_lines_scrubbed": 0,
+   "sha256": "776b0064507f27876dd01819182f9f68b2f31efbf9299cea95e0e81a7eb1f4d5",
+   "bytes": 875
   }
  ]
 }

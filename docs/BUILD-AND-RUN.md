@@ -2,27 +2,30 @@
 
 
 
-This page covers what we did on AMD Ryzen AI Max+ 395 (Radeon 8060S, gfx1151), 128 GiB unified memory, Windows 11 Pro. Our build is upstream v0.34.0 plus the patches in
+This page covers what we did on AMD Ryzen AI Max+ 395 (Radeon 8060S, gfx1151), 128 GiB unified memory, Windows 11 Pro. Our build (R8) is upstream v0.35.0 plus the patches in
 [patches/](../patches/), built with upstream's own Windows recipe. Our changes will also go upstream as separate pull
 requests.
 
 ## 1. Build stock gufo
 
-Follow upstream's [BUILD-WINDOWS.md](https://github.com/gufo-org/gufo/blob/main/BUILD-WINDOWS.md). In short:
+Follow upstream's [BUILD-WINDOWS.md](https://github.com/gufo-org/gufo/blob/v0.35.0/BUILD-WINDOWS.md) (as of v0.35.0). In short:
 
 1. Install Visual Studio 2022 (or newer) with the C++ workload, Git, CMake >= 3.29, Ninja, Python 3, Rust >= 1.88
    (`x86_64-pc-windows-msvc`), and a full vcpkg clone with `VCPKG_ROOT` set.
 2. Install TheRock 10.0.0 for gfx1151 and set `HIP_PATH` to it. Check the tarball's sha256 against the value in
-   upstream's guide.
+   upstream's guide. Upstream's v0.35.0 guide names TheRock 10.0.0 as the only SDK validated at full speed on gfx1151.
+   Since v0.35.0, configure also needs the XRT Windows SDK 2.21 extracted to `C:\xrt` (NPU runtime headers; see
+   upstream's guide). IRON, also in upstream's guide, is only needed for the NPU designs; the GPU path does not use it.
 3. Patch the SDK's HIP math headers once: `python tools\windows\patch_sdk_math.py %HIP_PATH%`.
 4. `tools\windows\vs-env.cmd cmake --preset windows-release`, then
    `tools\windows\vs-env.cmd cmake --build --preset windows-release`.
 5. Check it with `build\windows-release\gufo.exe diagnose`. It should report the gfx1151 GPU.
 
-The stock arm in our benchmark was built exactly this way, at v0.34.0 (`2845939b`).
+The stock arm in our benchmark (run 294) was built exactly this way, at v0.35.0 (`0260e116`).
 
-**Our build.** Check out upstream v0.34.0 (`2845939b`), apply the patches with
-`git apply --ignore-whitespace patches\*.patch` (in the order of `patches/README.md`), then run steps 3-5 above.
+**Our build.** Check out upstream v0.35.0 (`0260e116`), apply the patches with
+`git apply --whitespace=nowarn ../patches/0*.patch` (in the order of `patches/README.md`; afterwards
+`git add -A && git write-tree` prints `9510077d10e03a6bc88eca1b90ff89a0bdc546da`), then run steps 3-5 above.
 Our benchmarked build uses exactly this toolchain (TheRock 10.0.0), the same as stock. Set the switches listed in the [README](../README.md#switches-used-in-the-benchmark) as
 environment variables before `gufo.exe serve`; with none set the build behaves as upstream.
 
@@ -63,4 +66,5 @@ may need engine support for its tensor types.
 - **Thermals.** Long all-GPU runs on our desktop ran hot (high-80s C mean). Watch temperatures before 24/7 use.
 
 ---
-Numbers filled by fill_release.py from benchmark run 287 (written 2026-11-15 23:56:05 ET).
+Build R8 (upstream v0.35.0 plus patches/), benchmarked in run 294 (2026-11-17). The previous release (R7R, run 287)
+applied its patch series to v0.34.0 (`2845939b`); that series is in the git history.

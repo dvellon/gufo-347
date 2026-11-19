@@ -15,7 +15,7 @@ documents **347 experiments** (2026-10-26 to 2026-11-16) of performance work on 
 | model | Qwen3.8-Flash-Next, Unsloth UD-Q4_K_XL GGUF (revision 38bb39ee), with its MTP draft head for speculative decoding |
 | machine | AMD Ryzen AI Max+ 395 (Radeon 8060S, gfx1151), 128 GiB unified memory, Windows 11 Pro |
 | stack | our build on TheRock 10.0.0; stock on upstream's own Windows recipe |
-| engine | our gufo fork, rebased on upstream v0.34.0 (2845939b); every change sits behind a runtime switch (off = upstream behaviour) |
+| engine | our gufo fork R8, rebased on upstream v0.35.0 (0260e116); every change sits behind a runtime switch (off = upstream behaviour) |
 | workloads | coding-agent sessions (one and eight at a time), multi-turn chat with thinking, and upstream's canonical pp2048/tg128 benchmark |
 
 The goal was throughput for a machine that serves coding agents around the clock, **without changing the model's
@@ -24,20 +24,23 @@ exception is an explicitly labelled *relaxed* tier. See [Exactness]({{ site.base
 
 ## Headline results
 
-**Final public benchmark, run 287 (2026-11-15), stock upstream v0.34.0 vs ours**
+**Release benchmark, run 294 (2026-11-17), stock upstream v0.35.0 vs ours (R8)**
 ([details]({{ site.baseurl }}/results/)):
 
 | configuration | canonical C1 | agent C1 | agent C8 | chat C1 |
 |---|---:|---:|---:|---:|
-| **Stock** upstream gufo v0.34.0 (tok/s) | 41.03 | 62.98 | 57.43 | 49.82 |
-| **Ours, strict** (lossless; public draft head and public vocab table) | 40.41 (-1.5 % [-1.9 %, -0.8 %]) | 71.27 (+13.2 % [+6.5 %, +19.5 %]) | 61.16 (+6.5 % [+3.0 %, +10.1 %]) | 53.98 (+8.3 % [+5.5 %, +11.0 %]) |
-| **Ours, relaxed** (non-standard: near-tie acceptance; public assets) | 40.58 (-1.1 % [-1.3 %, -0.8 %]) | 71.93 (+14.2 % [+8.4 %, +20.1 %]) | 62.40 (+8.7 % [+3.6 %, +14.2 %]) | 54.08 (+8.6 % [+6.3 %, +10.3 %]) |
-| **Ours, strict + privately trained drafter** (not reproducible: head not published; run 289, see the note below) | 47.81 (+17.0 % [+16.5 %, +17.6 %]; vs public drafter +19.4 % [+18.3 %, +20.6 %]) | 74.88 (+17.0 % [+4.6 %, +30.7 %]; vs public drafter +3.4 % [+3.0 %, +3.6 %]) | 63.54 (+7.5 % [+4.8 %, +11.8 %]; vs public drafter +1.0 % [-1.5 %, +3.4 %]) | 56.03 (+11.6 % [+9.4 %, +15.3 %]; vs public drafter +5.1 % [+4.7 %, +5.4 %]) |
-| **Ours, relaxed + privately trained drafter** (non-standard; not reproducible: head not published; run 289, see the note below) | 47.44 (+16.1 % [+16.0 %, +16.2 %]) | 76.79 (+20.0 % [+8.5 %, +34.0 %]) | 62.67 (+6.0 % [+0.8 %, +14.8 %]) | 56.16 (+11.9 % [+10.3 %, +14.5 %]) |
+| **Stock** upstream gufo v0.35.0 (tok/s) | 38.76 | 64.80 | 57.74 | 49.62 |
+| **Ours, strict** (R8; lossless; public draft head and public vocab table) | 39.39 (+1.6 % [+1.2 %, +2.1 %]) | 71.56 (+10.4 % [+9.0 %, +12.9 %]) | 61.54 (+6.6 % [+2.2 %, +10.5 %]) | 52.35 (+5.5 % [+5.5 %, +5.5 %]) |
+| **Ours, relaxed** (R8; non-standard: near-tie acceptance; public assets) | 39.38 (+1.6 % [+0.8 %, +2.4 %]) | 72.63 (+12.1 % [+10.6 %, +13.6 %]) | 63.48 (+9.9 % [+7.9 %, +12.4 %]) | 52.51 (+5.8 % [+5.7 %, +6.0 %]) |
+| Our previous build, strict (R7R on v0.34.0; reference row) | 39.21 (+1.2 % [+1.0 %, +1.3 %]) | 71.53 (+10.4 % [+9.1 %, +12.7 %]) | 62.33 (+8.0 % [+6.2 %, +9.8 %]) | 51.98 (+4.8 % [+4.6 %, +5.0 %]) |
 
-The private-drafter rows were measured in run 289 (2026-11-16), a separate paired session on the same build that includes its own stock arm (stock there, tok/s: canonical C1 40.85; agent C1 63.99; agent C8 59.13; chat C1 50.20). Their changes vs stock are that run's own paired ratios, and "vs public drafter" compares the private and the public draft head within that same run; no ratio is taken across runs. The private head is not published, so these rows cannot be reproduced. Run 289's signed receipts are published for its stock and public-drafter launches; its private-drafter launches have none, because a receipt records the hash of every input and those inputs are private.
+Strict passed every pre-registered exactness gate in run 294. Chat and canonical rows have 2 rounds each, so their
+CIs understate the uncertainty; the agent rows have 4. Where we are not clearly ahead of stock (95 % CI not above
+zero): none in run 294.
 
-Where we are not clearly ahead of stock (95 % CI not above zero, or no CI): canonical C1 strict -1.5 % [-1.9 %, -0.8 %]; canonical C1 relaxed -1.1 % [-1.3 %, -0.8 %].
+The previous release (R7R on upstream v0.34.0, run 287 against stock v0.34.0, with the privately trained drafter rows
+of run 289) is kept on [Results]({{ site.baseurl }}/results/#previous-release-run-287-r7r-on-upstream-v0340). Ratios
+are never taken across runs.
 
 **Train your own drafter.** The [guide]({{ site.baseurl }}/drafter/) gives the data, steps, compute
 (about $21 of H100 time for the path that worked) and pitfalls, and the tooling is in the repository.
@@ -52,7 +55,7 @@ in a gains audit. There are far more KILLs than GOs, and every INVALID run is li
 
 | page | what it holds |
 |---|---|
-| [Results]({{ site.baseurl }}/results/) | the final public benchmark: every arm, ratio, exactness check and limitation |
+| [Results]({{ site.baseurl }}/results/) | the release benchmark (run 294) and the previous release (run 287): every arm, ratio, exactness check and limitation |
 | [Train your own drafter]({{ site.baseurl }}/drafter/) | data, steps, compute, expected gain by workload, pitfalls |
 | [Benchmarks]({{ site.baseurl }}/benchmarks/) | earlier runs: the quick look, the matched benchmark, the production re-profile history |
 | [Production]({{ site.baseurl }}/production/) | what is running, the promotion history, the server profiles |
@@ -65,4 +68,4 @@ Terms: **C1 / C8** = 1 or 8 concurrent sessions; **canonical** = upstream's pp20
 = the exactness tiers; **GO / KILL / REVIEW / INVALID** = verdicts against a line written down before the run.
 Times are New York time (ET).
 
-<small>Numbers filled by fill_release.py from benchmark run 287 (written 2026-11-15 23:56:05 ET).</small>
+<small>Numbers from benchmark run 294 (verdict written 2026-11-17 18:31:16 ET); previous release: runs 287 and 289.</small>

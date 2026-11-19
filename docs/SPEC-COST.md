@@ -1,6 +1,30 @@
 ## The cost of speculation
 
-Tokens per second alone hides what speculation costs. Per round, the drafter proposes a few tokens and the target model checks them all in one pass; rejected drafts are discarded work. Every number in a table comes from benchmark run 287.
+Tokens per second alone hides what speculation costs. Per round, the drafter proposes a few tokens and the target model checks them all in one pass; rejected drafts are discarded work.
+
+### Release build R8 (run 294, public assets)
+
+| workload | engine | launches | drafted tokens / round | accepted / round | acceptance | discarded drafts / round | tokens per target pass | TTFT warm p50 / p90 ms | TTFT cold p50 ms | run |
+|---|---|---:|---:|---:|---:|---:|---:|---:|---:|---|
+| canonical pp2048/tg128, 1 stream | stock v0.35.0 | 2 | 1.55 | 0.83 | 0.534 | 0.72 | 1.83 | 1154 / - | - | 294 |
+| canonical pp2048/tg128, 1 stream | ours strict (R8) | 2 | 2.80 | 1.12 | 0.401 | 1.67 | 2.12 | 1147 / - | - | 294 |
+| canonical pp2048/tg128, 1 stream | our previous build (R7R; reference) | 2 | 2.80 | 1.12 | 0.401 | 1.67 | 2.12 | 1145 / - | - | 294 |
+| coding agent, 1 at a time | stock v0.35.0 | 4 | 3.74 | 3.03 | 0.809 | 0.71 | 3.92 | 368 / 2008 | 963 | 294 |
+| coding agent, 1 at a time | ours strict (R8) | 4 | 4.33 | 3.43 | 0.791 | 0.91 | 4.43 | 372 / 2015 | 966 | 294 |
+| coding agent, 1 at a time | our previous build (R7R; reference) | 4 | 4.33 | 3.43 | 0.791 | 0.91 | 4.43 | 382 / 1998 | 959 | 294 |
+| coding agent, 8 at once | stock v0.35.0 | 4 | 2.46 | 2.25 | 0.916 | 0.21 | 2.87 | 1985 / 6916 | 2439 | 294 |
+| coding agent, 8 at once | ours strict (R8) | 4 | 2.58 | 2.25 | 0.872 | 0.33 | 3.09 | 1804 / 5823 | 2130 | 294 |
+| coding agent, 8 at once | our previous build (R7R; reference) | 4 | 2.61 | 2.29 | 0.875 | 0.33 | 3.13 | 1791 / 5677 | 2222 | 294 |
+| MT-Bench chat, 1 stream | stock v0.35.0 | 2 | 2.28 | 1.62 | 0.710 | 0.66 | 2.50 | 170 / 188 | 253 | 294 |
+| MT-Bench chat, 1 stream | ours strict (R8) | 2 | 2.73 | 1.77 | 0.647 | 0.96 | 2.77 | 166 / 179 | 260 | 294 |
+| MT-Bench chat, 1 stream | our previous build (R7R; reference) | 2 | 2.73 | 1.77 | 0.647 | 0.96 | 2.77 | 172 / 185 | 255 | 294 |
+
+Run-294 values are plain means over the launches, computed from the signed launch receipts. The cost model below
+was fitted in run 287 on the previous build and was not refitted for R8.
+
+## Previous release: run 287 (R7R on upstream v0.34.0)
+
+Every number below comes from benchmark run 287.
 
 ### Public assets
 

@@ -1,0 +1,44 @@
+{
+ "launches": [
+  {
+   "lid": "chat-B-r0",
+   "receipt": "launch-chat-B-r0.json",
+   "receipt_sha256": "f97a0c95e7d0cc1610e17c2e8c46ee815ebe18a148d5c5bb4f7809715ab7ec5a"
+  },
+  {
+   "lid": "chat-B-r1",
+   "receipt": "launch-chat-B-r1.json",
+   "receipt_sha256": "1ea6def948049bd186f87c695190b73e37692b8f3a8853b57c937659b82aa6f6"
+  }
+ ],
+ "matches_run_verdict": true,
+ "result": {
+  "launches": 2,
+  "value": 51.979645591467
+ },
+ "row": {
+  "arm": "B",
+  "kind": "arm",
+  "name": "chat B",
+  "stage": "chat"
+ },
+ "run": {
+  "label": "Windows 11, gfx1151",
+  "tag": "294"
+ },
+ "schema": "gufo.bench-receipt.row.v1",
+ "signer": {
+  "key_fingerprint": "SHA256:w70wubwWEJsWn1W/c+5uvqrPuXSuXs9e3xGk99YUWgg",
+  "namespace": "gufo-bench-receipt",
+  "principal": "gufo-bench-receipts"
+ },
+ "statistic": {
+  "value": "pooled client decode tok/s (sum completion tokens / sum client decode s)"
+ },
+ "timestamps": {
+  "receipt_made": {
+   "et": "2026-11-18 11:50:04 EST",
+   "utc": "2026-11-18T16:50:04Z"
+  }
+ }
+}

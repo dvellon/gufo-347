@@ -11,7 +11,7 @@ permalink: /reproduce/
 | APU | AMD Ryzen AI Max+ 395, Radeon 8060S integrated GPU (`gfx1151`, RDNA 3.5) |
 | memory | 128 GiB LPDDR5X unified; measured streaming roofline ~238 GB/s |
 | OS | Windows 11 Pro, WDDM driver |
-| our stack | upstream v0.34.0 plus our patches, built with TheRock 10.0.0 (upstream's recipe), the same toolchain as stock; only the "previous build" reference row was built with ROCm 10.1 (AMD HIP SDK wheels) |
+| our stack | R8: upstream v0.35.0 plus our patches, built with TheRock 10.0.0 (upstream's recipe), the same toolchain as stock (run 294). Previous release: upstream v0.34.0 plus that release's patches, also TheRock 10.0.0; only run 287's "previous build" reference row was built with ROCm 10.1 (AMD HIP SDK wheels) |
 | stock stack | upstream's Windows recipe: TheRock 10.0.0 runtime, Rust >= 1.88, vcpkg ports |
 
 Practical limits we hit:

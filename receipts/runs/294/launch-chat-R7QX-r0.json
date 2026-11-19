@@ -1,0 +1,675 @@
+{
+ "checks": {
+  "exe_identity_ok": true,
+  "host_state": "LOUD",
+  "quiet_before_launch": true,
+  "quiet_rule": "host-load-v2"
+ },
+ "hardware": {
+  "collected": "Win32 CIM (GPU name / driver, CPU, OS build, RAM); no host name, serials or network ids",
+  "cpu": {
+   "cores": 16,
+   "name": "AMD RYZEN AI MAX+ PRO 395 w/ Radeon 8060S",
+   "threads": 32
+  },
+  "gpu": [
+   {
+    "driver_date": "2026-09-29",
+    "driver_version": "32.0.31041.5005",
+    "name": "AMD Radeon(TM) 8060S Graphics",
+    "vendor": "Advanced Micro Devices, Inc."
+   }
+  ],
+  "os": {
+   "arch": "64-bit",
+   "build": "26200",
+   "caption": "Microsoft Windows 11 Pro",
+   "version": "10.0.26200"
+  },
+  "ram_gib": 31.8
+ },
+ "headline": {
+  "counts": true,
+  "name": "client_decode_tps",
+  "value": 52.474584453092305
+ },
+ "inputs": {
+  "client": {
+   "call": {
+    "cancel_after": 24,
+    "cancel_every": 0,
+    "cancel_mode": "retry",
+    "concurrency": 1,
+    "label": "chat",
+    "max_tokens": 2048,
+    "model": "flash-next",
+    "preserve_thinking": "on",
+    "session_ids": [
+     "mtbench-106",
+     "mtbench-140",
+     "mtbench-116",
+     "mtbench-155",
+     "mtbench-88",
+     "mtbench-147"
+    ],
+    "stagger_s": 0.0,
+    "think": "on",
+    "timeout": 900.0,
+    "tool_latency_ms": 0,
+    "tools": false,
+    "turns": null
+   },
+   "name": "run_agent_replay.py",
+   "sha256": "b902b03e6134c49b02b75d1a278141d4f58b5e671a2874c473fd473dadbbc1be"
+  },
+  "hip_runtime": null,
+  "launch_wrapper": null,
+  "model": {
+   "first_shard": "Qwen3.8-Flash-Next-UD-Q4_K_XL-00001-of-00004.gguf",
+   "shards": [
+    {
+     "bytes": 10946624,
+     "name": "Qwen3.8-Flash-Next-UD-Q4_K_XL-00001-of-00004.gguf",
+     "sha256": "4448186216b3af4cc558bbce2c3213f01608f8f8b2e5267a9767971dd3ec8082"
+    },
+    {
+     "bytes": 49859583136,
+     "name": "Qwen3.8-Flash-Next-UD-Q4_K_XL-00002-of-00004.gguf",
+     "sha256": "3f342f1c1580473f1ee94ddd5b28206e8c07a70fa1a366f59d1d6c922919a6c9"
+    },
+    {
+     "bytes": 49376141504,
+     "name": "Qwen3.8-Flash-Next-UD-Q4_K_XL-00003-of-00004.gguf",
+     "sha256": "56758f40269cad5cd9b0d3d6fbae0f40f6d5be6de49e4ab392dbe83157d9cbd3"
+    },
+    {
+     "bytes": 12087983520,
+     "name": "Qwen3.8-Flash-Next-UD-Q4_K_XL-00004-of-00004.gguf",
+     "sha256": "753bda48b98ba4f1636134a90a967de1b2d3908a236c026e464777342e53510a"
+    }
+   ]
+  },
+  "mtp_head": {
+   "name": "mtp-Qwen3.8-Flash-Next-shared-Q8_0.gguf",
+   "sha256": "5ff54097406a905cf3a724c709124ceb0e3e10235ee862298969e91c96fa96e6"
+  },
+  "perm": {
+   "name": "perm-public-6931.pairs",
+   "server_logged": [
+    {
+     "fnv": "7c191787b213acee",
+     "pairs": 6931
+    }
+   ],
+   "sha256": "caade56ad3a63d37e55ec069df9ad72bc89dcfb162985241f6ce9b9b9d5abf9e"
+  },
+  "request_bodies_sha256": "0a513f049192e189f512cd1d158fa8e88d352615b9215080df09627158200604",
+  "rocm_sdk": {
+   "label": "TheRock 10.0.0, upstream windows-release",
+   "name": "therock-10.0.0"
+  },
+  "runner": {
+   "name": "run_pb.py",
+   "sha256": "16103735fdce16835761a8bb1be643e6539314bbc51353399978d87894b62ff0"
+  },
+  "server_args": [
+   "serve",
+   "--host",
+   "127.0.0.1",
+   "--port",
+   "<port>",
+   "--sessions",
+   "1",
+   "llm",
+   "--model",
+   "<model:Qwen3.8-Flash-Next-UD-Q4_K_XL-00001-of-00004.gguf>",
+   "--served-model-name",
+   "flash-next",
+   "--context",
+   "32768",
+   "--max-tokens",
+   "128",
+   "--think",
+   "on",
+   "--reasoning-effort",
+   "xhigh",
+   "--speculative",
+   "mtp",
+   "--mtp-model",
+   "<mtp_head:mtp-Qwen3.8-Flash-Next-shared-Q8_0.gguf>",
+   "--exactness",
+   "relaxed",
+   "--cache-ram-bytes",
+   "9000000000"
+  ],
+  "server_env": {
+   "GUFO_A1_DRAFT2": "1",
+   "GUFO_A1_MAX_ROWS": "4",
+   "GUFO_B5_FLOOR": "1.5",
+   "GUFO_B5_HIDE": "inf",
+   "GUFO_C82": "1",
+   "GUFO_CACHE_SEG_SPLIT": "1",
+   "GUFO_DRAFT_PERM": "<perm:perm-public-6931.pairs>",
+   "GUFO_H1_MAX_SESSIONS": "1",
+   "GUFO_HC_DOWN_SMALL": "1",
+   "GUFO_MTP_CTL": "c1",
+   "GUFO_Q2_SCREEN": "w1",
+   "GUFO_TOOL_STOP": "1",
+   "GUFO_U882": "drop",
+   "GUFO_U882_BCONF": "1",
+   "GUFO_VF_BATCH_WAIT": "1",
+   "GUFO_XM_STRICT_ALIGN": "1",
+   "HIP_PATH": "<rocm_sdk:therock-10.0.0>"
+  },
+  "server_exe": {
+   "file_sha256_at_receipt": "8735d2424ddfe57b0ad8679ddc8d8bc44b34326781bffc0743779b60ef5fbb7d",
+   "name": "w3r8_server.exe",
+   "note": null,
+   "sha256": "8735d2424ddfe57b0ad8679ddc8d8bc44b34326781bffc0743779b60ef5fbb7d"
+  },
+  "workload": {
+   "name": "chat-full.json",
+   "session_ids": [
+    "mtbench-106",
+    "mtbench-140",
+    "mtbench-116",
+    "mtbench-155",
+    "mtbench-88",
+    "mtbench-147"
+   ],
+   "sha256": "c53b9aa2fa9a9b59766fbafde83ecf75307b0c9fabb01909a8c2ded2f0bce165",
+   "turns_per_session": {
+    "mtbench-106": 2,
+    "mtbench-116": 2,
+    "mtbench-140": 2,
+    "mtbench-147": 2,
+    "mtbench-155": 2,
+    "mtbench-88": 2
+   }
+  }
+ },
+ "launch": {
+  "arm": "R7QX",
+  "lid": "chat-R7QX-r0",
+  "profile": "strict-chat on R7R (w3r7r_server.exe; candidate-decision.json, arm name R7Q) + relaxed decision [chat] [R7R exe, queue 285]; 294: exe -> R8 (v0.35.0 rebase) 8735d242",
+  "round": 0,
+  "session_ids": [
+   "mtbench-106",
+   "mtbench-140",
+   "mtbench-116",
+   "mtbench-155",
+   "mtbench-88",
+   "mtbench-147"
+  ],
+  "stage": "chat",
+  "state": "DONE",
+  "subset": 0,
+  "tier": "relaxed",
+  "timed": true
+ },
+ "metrics": {
+  "acceptance": 0.6466786735883039,
+  "accepted_per_round": 1.7832310838445808,
+  "client_decode_tps": 52.474584453092305,
+  "completion_tokens": 9528,
+  "decode_s": 181.57361509965267,
+  "errors": 0,
+  "gap_max_ms": 187.795,
+  "makespan_tps": 51.69898639998625,
+  "requests": 12,
+  "server_decode_tps": 52.52216424168385,
+  "span_s": 184.29761709994636,
+  "tokens_per_target_pass": 2.782710280373832,
+  "ttft_cold_p50_ms": 255.46135002514347,
+  "ttft_warm_p50_ms": 169.32800004724413,
+  "ttft_warm_p90_ms": 186.9765499723144
+ },
+ "outputs": {
+  "fields": [
+   "reasoning_sha256",
+   "content_sha256",
+   "tool_calls_sha256",
+   "completion_tokens",
+   "finish_reason"
+  ],
+  "strict_compare": "report",
+  "strict_compare_why": "C8 batching or the relaxed tier may change outputs run to run: identity is reported, not required",
+  "transcript": [
+   {
+    "attempt": 0,
+    "completion_tokens": 149,
+    "content_sha256": "ca3dd92f2c462da9aab26d1bca54a7de0e6048f16c3da6e12d523d73ef0fe94f",
+    "error": false,
+    "finish_reason": "stop",
+    "reasoning_sha256": "7db3e409343884683e023ace19ebeadf03745b71710e714a3139e05237645ab4",
+    "request_sha256": "2d4bbe88f66e8b6cf35f49229d269e05f44904f2c6b02b37b9a33855fec12a69",
+    "session": "mtbench-106",
+    "tool_calls_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+    "turn": 0
+   },
+   {
+    "attempt": 0,
+    "completion_tokens": 339,
+    "content_sha256": "446e260ab8c22e642860e217354a64514aad6e0ffcb41ceb20696c5655871a5a",
+    "error": false,
+    "finish_reason": "stop",
+    "reasoning_sha256": "8ada6552e663f1bc8238ea4947d7b1e33ce0aec413aef92ca1ac277f3001c583",
+    "request_sha256": "530204b37f415cbf24b81f1d4a87ed0dd9563319c32bc5e882f086e5bd1f0d7a",
+    "session": "mtbench-106",
+    "tool_calls_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+    "turn": 1
+   },
+   {
+    "attempt": 0,
+    "completion_tokens": 313,
+    "content_sha256": "7adda8d358226159f8b357696f91c883bad10205fb33ea584130de0f7ae22f20",
+    "error": false,
+    "finish_reason": "stop",
+    "reasoning_sha256": "2e577ddeb3a62f9bcc396fd97c323d58b6d5b6741e28e32ff7ed0fa2857a3e78",
+    "request_sha256": "9926bd9ead3a984d722c2259d74c201f768818055a33aedb87b68f63cb264075",
+    "session": "mtbench-116",
+    "tool_calls_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+    "turn": 0
+   },
+   {
+    "attempt": 0,
+    "completion_tokens": 288,
+    "content_sha256": "2aba62df8be1a39241e0e2a2b1c25e465529750b5bc393a34781f50752c434d2",
+    "error": false,
+    "finish_reason": "stop",
+    "reasoning_sha256": "e7ac8de675e6b659e3ac64e6b3fcfbda82882a5e599024ade43846d6c59973db",
+    "request_sha256": "d356da82fd0be7a67fd67c51df8916969d963993a21869292ce7048f7674606b",
+    "session": "mtbench-116",
+    "tool_calls_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+    "turn": 1
+   },
+   {
+    "attempt": 0,
+    "completion_tokens": 1159,
+    "content_sha256": "df7f9031383162aabc726b5da2eec515d39365d0ba9fd113fa2743592f712eed",
+    "error": false,
+    "finish_reason": "stop",
+    "reasoning_sha256": "cdc329c487ceb0f7e8490c8eba01579d0f6a0b487504a4110c9ee0873d440037",
+    "request_sha256": "e7b9cdd265fda96c063762373fe6c2e324b6fa995eb042a0678ba6f396a95dc5",
+    "session": "mtbench-140",
+    "tool_calls_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+    "turn": 0
+   },
+   {
+    "attempt": 0,
+    "completion_tokens": 703,
+    "content_sha256": "f25eee0c1ea7d464d0d552df991db02877a22fc64a5229ada4fb1c397c860ab7",
+    "error": false,
+    "finish_reason": "stop",
+    "reasoning_sha256": "054469be03073e62142b54a6747956928d6e5634e0b945b2738ffb055c2252d0",
+    "request_sha256": "80688fefecf102c161be7db85780c3359d82793e96762cc8d69ed129fd3a2d4e",
+    "session": "mtbench-140",
+    "tool_calls_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+    "turn": 1
+   },
+   {
+    "attempt": 0,
+    "completion_tokens": 1302,
+    "content_sha256": "c63bb6b947948f56707b5512e40efdc2e1c85cb0c62df65fe4688fd75bd6f682",
+    "error": false,
+    "finish_reason": "stop",
+    "reasoning_sha256": "233329fd4e4d0f9b7ff81a6db1d8d584f00e2f801f222ed8fbdb3cf0c460744d",
+    "request_sha256": "cd718a951ff22a7a2aeb4e3391abb92deee9bb5700b2718b6e3d1d6461dcceaa",
+    "session": "mtbench-147",
+    "tool_calls_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+    "turn": 0
+   },
+   {
+    "attempt": 0,
+    "completion_tokens": 2048,
+    "content_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "error": false,
+    "finish_reason": "length",
+    "reasoning_sha256": "1a19ac8374725bf3f1814463ecd7a0ecce16fcdc5cf57616cf5b746ba21daf61",
+    "request_sha256": "5d4dfad5fdd0b4ed600fde81459d58252ee454edec3f7f4e52f53cc4e8cad147",
+    "session": "mtbench-147",
+    "tool_calls_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+    "turn": 1
+   },
+   {
+    "attempt": 0,
+    "completion_tokens": 430,
+    "content_sha256": "4495f508433bfc1412dadf75efde92e8949882df32c347067c089e6f6f9210a6",
+    "error": false,
+    "finish_reason": "stop",
+    "reasoning_sha256": "0c6e1ef3bc6620a6230592bf96db5d9c216ffc5c7fa76f03a714ec5c8fa1bcb0",
+    "request_sha256": "263c484ab4fa58eb13e0f45e0bcccd108bc907d7ff1042c3adcd0c8c5a5efb29",
+    "session": "mtbench-155",
+    "tool_calls_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+    "turn": 0
+   },
+   {
+    "attempt": 0,
+    "completion_tokens": 2048,
+    "content_sha256": "b22aa8d61d804e2d6fb3edaa26e487989ab12d9ba902fbff535a24e31b87236f",
+    "error": false,
+    "finish_reason": "length",
+    "reasoning_sha256": "43a4dcd1c4b32d0cf5b6728d59ce5dd76d96a53265768b2f66db6fc62cf6912e",
+    "request_sha256": "5da83053864fad4a30d8395ee9a1d8d201d493499260d152b6c928dccc1e21a4",
+    "session": "mtbench-155",
+    "tool_calls_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+    "turn": 1
+   },
+   {
+    "attempt": 0,
+    "completion_tokens": 131,
+    "content_sha256": "9f2c846e7438330360f12582cbe7cb768ff05431d11b09a71cc2b2621bb18c3f",
+    "error": false,
+    "finish_reason": "stop",
+    "reasoning_sha256": "de5bbfee56b39cddbcde3954cd3e9687a78b529f0e0d672a1640454300f0d6e6",
+    "request_sha256": "15cb0ba38283a44adb5072f9ead93d322928850eb101c39732fea8c18e8ae813",
+    "session": "mtbench-88",
+    "tool_calls_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+    "turn": 0
+   },
+   {
+    "attempt": 0,
+    "completion_tokens": 618,
+    "content_sha256": "875efe4e41350e09d1fa3e03ae7c27d7fc42d7769a4aa48def3dbdfc608fa98e",
+    "error": false,
+    "finish_reason": "stop",
+    "reasoning_sha256": "db1f608641c6b0fc0f22b4cd644e96810d540371ffd5a2066623cad46d2b5779",
+    "request_sha256": "912dfbc78ac9cdffef60a2444d4f8a8b5faca5bc9618b70f256f9dd0e37c5bc9",
+    "session": "mtbench-88",
+    "tool_calls_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+    "turn": 1
+   }
+  ],
+  "transcript_sha256": "16fc316f8a9645b7321f417bd8d098d32e9fb9895b5df0dedc7aa4a845f1e9f8"
+ },
+ "run": {
+  "benchmark": "gufo public benchmark (full)",
+  "label": "Windows 11, gfx1151",
+  "tag": "294"
+ },
+ "schema": "gufo.bench-receipt.launch.v1",
+ "signer": {
+  "key_fingerprint": "SHA256:w70wubwWEJsWn1W/c+5uvqrPuXSuXs9e3xGk99YUWgg",
+  "namespace": "gufo-bench-receipt",
+  "principal": "gufo-bench-receipts"
+ },
+ "speed_band": {
+  "cv": 0.0008990967818678615,
+  "max": 52.541349113272716,
+  "mean": 52.50796678318251,
+  "min": 52.474584453092305,
+  "n": 2,
+  "rel": 0.03,
+  "rule": "band = max(3%, 2 x CV of the launch headline over this arm's timed launches in this stage, same run)",
+  "stdev": 0.04720974395718396
+ },
+ "timestamps": {
+  "launch_end": {
+   "et": "2026-11-17 17:34:35 EST",
+   "utc": "2026-11-17T22:34:35Z"
+  },
+  "launch_start": {
+   "et": "2026-11-17 17:31:09 EST",
+   "utc": "2026-11-17T22:31:09Z"
+  },
+  "receipt_made": {
+   "et": "2026-11-18 11:50:03 EST",
+   "utc": "2026-11-18T16:50:03Z"
+  },
+  "server_load_s": 18.6
+ },
+ "timing": [
+  {
+   "attempt": 0,
+   "completion_tokens": 149,
+   "error": false,
+   "session": "mtbench-106",
+   "t_end_s": 2.8703249000245705,
+   "t_first_output_ms": 265.08090004790574,
+   "t_start_s": 0.0003645999822765589,
+   "turn": 0,
+   "usage": {
+    "draft_tokens": 149,
+    "draft_tokens_accepted": 101,
+    "gufo": {
+     "decode_ms": 2591.1199000000006,
+     "draft_rounds": 48,
+     "max_inter_token_ms": 80.517
+    }
+   },
+   "wall_ms": 2869.960300042294,
+   "worker": 0
+  },
+  {
+   "attempt": 0,
+   "completion_tokens": 339,
+   "error": false,
+   "session": "mtbench-106",
+   "t_end_s": 8.599290999933146,
+   "t_first_output_ms": 155.2259000018239,
+   "t_start_s": 2.87222020002082,
+   "turn": 1,
+   "usage": {
+    "draft_tokens": 347,
+    "draft_tokens_accepted": 243,
+    "gufo": {
+     "decode_ms": 5550.860299999999,
+     "draft_rounds": 96,
+     "max_inter_token_ms": 89.1599
+    }
+   },
+   "wall_ms": 5727.070799912326,
+   "worker": 0
+  },
+  {
+   "attempt": 0,
+   "completion_tokens": 1159,
+   "error": false,
+   "session": "mtbench-140",
+   "t_end_s": 27.29301239992492,
+   "t_first_output_ms": 426.9246000330895,
+   "t_start_s": 8.60126429994125,
+   "turn": 0,
+   "usage": {
+    "draft_tokens": 1192,
+    "draft_tokens_accepted": 846,
+    "gufo": {
+     "decode_ms": 18251.33129999999,
+     "draft_rounds": 313,
+     "max_inter_token_ms": 187.795
+    }
+   },
+   "wall_ms": 18691.74809998367,
+   "worker": 0
+  },
+  {
+   "attempt": 0,
+   "completion_tokens": 703,
+   "error": false,
+   "session": "mtbench-140",
+   "t_end_s": 38.82545669993851,
+   "t_first_output_ms": 189.14599996060133,
+   "t_start_s": 27.294676700024866,
+   "turn": 1,
+   "usage": {
+    "draft_tokens": 660,
+    "draft_tokens_accepted": 504,
+    "gufo": {
+     "decode_ms": 11330.493099999994,
+     "draft_rounds": 199,
+     "max_inter_token_ms": 107.3484
+    }
+   },
+   "wall_ms": 11530.779999913648,
+   "worker": 0
+  },
+  {
+   "attempt": 0,
+   "completion_tokens": 313,
+   "error": false,
+   "session": "mtbench-116",
+   "t_end_s": 44.107324599986896,
+   "t_first_output_ms": 238.86390007101,
+   "t_start_s": 38.827183899935335,
+   "turn": 0,
+   "usage": {
+    "draft_tokens": 285,
+    "draft_tokens_accepted": 220,
+    "gufo": {
+     "decode_ms": 5034.5593,
+     "draft_rounds": 93,
+     "max_inter_token_ms": 78.891
+    }
+   },
+   "wall_ms": 5280.140700051561,
+   "worker": 0
+  },
+  {
+   "attempt": 0,
+   "completion_tokens": 288,
+   "error": false,
+   "session": "mtbench-116",
+   "t_end_s": 48.397440499975346,
+   "t_first_output_ms": 155.48309998121113,
+   "t_start_s": 44.110321199987084,
+   "turn": 1,
+   "usage": {
+    "draft_tokens": 274,
+    "draft_tokens_accepted": 219,
+    "gufo": {
+     "decode_ms": 4118.978199999999,
+     "draft_rounds": 69,
+     "max_inter_token_ms": 83.2566
+    }
+   },
+   "wall_ms": 4287.119299988262,
+   "worker": 0
+  },
+  {
+   "attempt": 0,
+   "completion_tokens": 430,
+   "error": false,
+   "session": "mtbench-155",
+   "t_end_s": 56.44119059992954,
+   "t_first_output_ms": 218.72589993290603,
+   "t_start_s": 48.39903420000337,
+   "turn": 0,
+   "usage": {
+    "draft_tokens": 422,
+    "draft_tokens_accepted": 283,
+    "gufo": {
+     "decode_ms": 7805.7119999999995,
+     "draft_rounds": 147,
+     "max_inter_token_ms": 85.0727
+    }
+   },
+   "wall_ms": 8042.156399926171,
+   "worker": 0
+  },
+  {
+   "attempt": 0,
+   "completion_tokens": 2048,
+   "error": false,
+   "session": "mtbench-155",
+   "t_end_s": 98.5322633999167,
+   "t_first_output_ms": 174.2086000740528,
+   "t_start_s": 56.44258089992218,
+   "turn": 1,
+   "usage": {
+    "draft_tokens": 2143,
+    "draft_tokens_accepted": 1257,
+    "gufo": {
+     "decode_ms": 41897.57250000004,
+     "draft_rounds": 791,
+     "max_inter_token_ms": 85.3097
+    }
+   },
+   "wall_ms": 42089.682499994524,
+   "worker": 0
+  },
+  {
+   "attempt": 0,
+   "completion_tokens": 131,
+   "error": false,
+   "session": "mtbench-88",
+   "t_end_s": 101.58380149991717,
+   "t_first_output_ms": 245.8418000023812,
+   "t_start_s": 98.53403109998908,
+   "turn": 0,
+   "usage": {
+    "draft_tokens": 142,
+    "draft_tokens_accepted": 76,
+    "gufo": {
+     "decode_ms": 2793.4422,
+     "draft_rounds": 55,
+     "max_inter_token_ms": 73.2437
+    }
+   },
+   "wall_ms": 3049.770399928093,
+   "worker": 0
+  },
+  {
+   "attempt": 0,
+   "completion_tokens": 618,
+   "error": false,
+   "session": "mtbench-88",
+   "t_end_s": 113.67098749999423,
+   "t_first_output_ms": 164.44740002043545,
+   "t_start_s": 101.58589909994043,
+   "turn": 1,
+   "usage": {
+    "draft_tokens": 639,
+    "draft_tokens_accepted": 397,
+    "gufo": {
+     "decode_ms": 11912.504700000001,
+     "draft_rounds": 221,
+     "max_inter_token_ms": 105.1361
+    }
+   },
+   "wall_ms": 12085.088400053792,
+   "worker": 0
+  },
+  {
+   "attempt": 0,
+   "completion_tokens": 1302,
+   "error": false,
+   "session": "mtbench-147",
+   "t_end_s": 141.80384930002037,
+   "t_first_output_ms": 282.2942000348121,
+   "t_start_s": 113.6754360999912,
+   "turn": 0,
+   "usage": {
+    "draft_tokens": 1325,
+    "draft_tokens_accepted": 756,
+    "gufo": {
+     "decode_ms": 27833.360800000002,
+     "draft_rounds": 546,
+     "max_inter_token_ms": 84.4649
+    }
+   },
+   "wall_ms": 28128.413200029172,
+   "worker": 0
+  },
+  {
+   "attempt": 0,
+   "completion_tokens": 2048,
+   "error": false,
+   "session": "mtbench-147",
+   "t_end_s": 184.29798169992864,
+   "t_first_output_ms": 184.80709998402745,
+   "t_start_s": 141.80524729995523,
+   "turn": 1,
+   "usage": {
+    "draft_tokens": 1861,
+    "draft_tokens_accepted": 1202,
+    "gufo": {
+     "decode_ms": 42289.1934,
+     "draft_rounds": 845,
+     "max_inter_token_ms": 83.2549
+    }
+   },
+   "wall_ms": 42492.734399973415,
+   "worker": 0
+  }
+ ]
+}

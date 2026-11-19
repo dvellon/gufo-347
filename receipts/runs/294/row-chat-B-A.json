@@ -1,0 +1,73 @@
+{
+ "launches": [
+  {
+   "lid": "chat-A-r0",
+   "receipt": "launch-chat-A-r0.json",
+   "receipt_sha256": "8cf4eb6c089c7e0b2aa36cfdfc3a30200ababd71bb9abd4e021d5e16be0cafd8"
+  },
+  {
+   "lid": "chat-A-r1",
+   "receipt": "launch-chat-A-r1.json",
+   "receipt_sha256": "71e9bf52cc5e8c391c1c84f5454eb1a72d2528ddb625d91de30fb1d2378d19ee"
+  },
+  {
+   "lid": "chat-B-r0",
+   "receipt": "launch-chat-B-r0.json",
+   "receipt_sha256": "f97a0c95e7d0cc1610e17c2e8c46ee815ebe18a148d5c5bb4f7809715ab7ec5a"
+  },
+  {
+   "lid": "chat-B-r1",
+   "receipt": "launch-chat-B-r1.json",
+   "receipt_sha256": "1ea6def948049bd186f87c695190b73e37692b8f3a8853b57c937659b82aa6f6"
+  }
+ ],
+ "matches_run_verdict": true,
+ "result": {
+  "run_statistic": {
+   "ci": [
+    1.0460565902294539,
+    1.0500526000760841
+   ],
+   "point": 1.0476403919978179,
+   "rounds": 2
+  },
+  "two_level": {
+   "ci": [
+    1.0427218588487646,
+    1.054334850094466
+   ],
+   "point": 1.0476403919978179,
+   "resamples": 4000,
+   "rounds": 2,
+   "seed": 260
+  }
+ },
+ "row": {
+  "den": "A",
+  "kind": "ratio",
+  "name": "chat B/A",
+  "num": "B",
+  "stage": "chat",
+  "tier": "strict (lossless)"
+ },
+ "run": {
+  "label": "Windows 11, gfx1151",
+  "tag": "294"
+ },
+ "schema": "gufo.bench-receipt.row.v1",
+ "signer": {
+  "key_fingerprint": "SHA256:w70wubwWEJsWn1W/c+5uvqrPuXSuXs9e3xGk99YUWgg",
+  "namespace": "gufo-bench-receipt",
+  "principal": "gufo-bench-receipts"
+ },
+ "statistic": {
+  "run_statistic": "paired percentile bootstrap over rounds (every arm ran the same session subset in a round), 4000 resamples, seed 260; per-arm value = pooled client decode tok/s (sum completion tokens / sum client decode s)",
+  "two_level": "paired two-level percentile bootstrap: rounds, then the units inside each drawn round (c1 / chat: sessions; canon: prose samples; c8: the launch, not separable)"
+ },
+ "timestamps": {
+  "receipt_made": {
+   "et": "2026-11-18 11:50:04 EST",
+   "utc": "2026-11-18T16:50:04Z"
+  }
+ }
+}
