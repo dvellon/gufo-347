@@ -32,7 +32,11 @@ exception is an explicitly labelled *relaxed* tier. See [Exactness]({{ site.base
 | **Stock** upstream gufo v0.35.0 (tok/s) | 38.76 | 64.80 | 57.74 | 49.62 |
 | **Ours, strict** (R8; lossless; public draft head and public vocab table) | 39.39 (+1.6 % [+1.2 %, +2.1 %]) | 71.56 (+10.4 % [+9.0 %, +12.9 %]) | 61.54 (+6.6 % [+2.2 %, +10.5 %]) | 52.35 (+5.5 % [+5.5 %, +5.5 %]) |
 | **Ours, relaxed** (R8; non-standard: near-tie acceptance; public assets) | 39.38 (+1.6 % [+0.8 %, +2.4 %]) | 72.63 (+12.1 % [+10.6 %, +13.6 %]) | 63.48 (+9.9 % [+7.9 %, +12.4 %]) | 52.51 (+5.8 % [+5.7 %, +6.0 %]) |
+| **Ours, strict + privately trained drafter** (R8; lossless; head and vocab table not published, so not reproducible; run 295, own stock arm) | 47.84 (+20.0 % [+19.6 %, +20.4 %]) | 73.58 (+14.0 % [+11.7 %, +17.4 %]) | 62.44 (+9.8 % [+8.3 %, +11.4 %]) | 56.53 (+10.9 % [+10.3 %, +11.3 %]) |
+| **Ours, relaxed + privately trained drafter** (R8; non-standard; not reproducible; run 295, own stock arm) | 47.98 (+20.4 % [+19.6 %, +21.1 %]) | 75.27 (+16.6 % [+14.6 %, +18.6 %]) | 61.94 (+8.9 % [+7.7 %, +10.2 %]) | 56.50 (+10.8 % [+10.4 %, +11.1 %]) |
 | Our previous build, strict (R7R on v0.34.0; reference row) | 39.21 (+1.2 % [+1.0 %, +1.3 %]) | 71.53 (+10.4 % [+9.1 %, +12.7 %]) | 62.33 (+8.0 % [+6.2 %, +9.8 %]) | 51.98 (+4.8 % [+4.6 %, +5.0 %]) |
+
+Privately trained drafter rows: our own draft head and vocabulary table, trained on our private traffic and not published, so these rows cannot be reproduced and run 295 has no published receipts. Run 295 (2026-11-17) is a separate paired session on the same R8 build with its own stock v0.35.0 arm (stock there, tok/s: canonical C1 39.87; agent C1 64.56; agent C8 56.87; chat C1 50.97); changes are that run's own paired ratios. The strict row passed the same exactness gates as run 294.
 
 Strict passed every pre-registered exactness gate in run 294. Chat and canonical rows have 2 rounds each, so their
 CIs understate the uncertainty; the agent rows have 4. Where we are not clearly ahead of stock (95 % CI not above

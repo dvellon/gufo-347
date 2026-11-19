@@ -30,6 +30,8 @@ launch uses a fresh server. Rounds: agent C1 4, agent C8 4, chat C1 2, canonical
 | **Stock** upstream gufo v0.35.0 (tok/s) | 38.76 | 64.80 | 57.74 | 49.62 |
 | **Ours, strict** (R8; lossless; public draft head and public vocab table) | 39.39 (+1.6 % [+1.2 %, +2.1 %]) | 71.56 (+10.4 % [+9.0 %, +12.9 %]) | 61.54 (+6.6 % [+2.2 %, +10.5 %]) | 52.35 (+5.5 % [+5.5 %, +5.5 %]) |
 | **Ours, relaxed** (R8; non-standard: near-tie acceptance; public assets) | 39.38 (+1.6 % [+0.8 %, +2.4 %]) | 72.63 (+12.1 % [+10.6 %, +13.6 %]) | 63.48 (+9.9 % [+7.9 %, +12.4 %]) | 52.51 (+5.8 % [+5.7 %, +6.0 %]) |
+| **Ours, strict + privately trained drafter** (R8; lossless; head and vocab table not published, so not reproducible; run 295, see the note below) | 47.84 (+20.0 % [+19.6 %, +20.4 %]) | 73.58 (+14.0 % [+11.7 %, +17.4 %]) | 62.44 (+9.8 % [+8.3 %, +11.4 %]) | 56.53 (+10.9 % [+10.3 %, +11.3 %]) |
+| **Ours, relaxed + privately trained drafter** (R8; non-standard; not reproducible; run 295, see the note below) | 47.98 (+20.4 % [+19.6 %, +21.1 %]) | 75.27 (+16.6 % [+14.6 %, +18.6 %]) | 61.94 (+8.9 % [+7.7 %, +10.2 %]) | 56.50 (+10.8 % [+10.4 %, +11.1 %]) |
 | Our previous build, strict (R7R on v0.34.0; reference row in the same run) | 39.21 (+1.2 % [+1.0 %, +1.3 %]) | 71.53 (+10.4 % [+9.1 %, +12.7 %]) | 62.33 (+8.0 % [+6.2 %, +9.8 %]) | 51.98 (+4.8 % [+4.6 %, +5.0 %]) |
 
 - **Strict** is standard lossless greedy speculative decoding: output is the model's own greedy output (see
@@ -42,6 +44,14 @@ launch uses a fresh server. Rounds: agent C1 4, agent C8 4, chat C1 2, canonical
 - Stock is upstream gufo **v0.35.0** (commit `0260e116`), built with upstream's own Windows recipe (TheRock 10.0.0),
   with the public shared Q8_0 MTP draft head that upstream's model guide uses. Our arms use the **same public head**, plus a draft-vocabulary table rebuilt from a public
   corpus with the tools in this repo (K = 6,931).
+- **Privately trained drafter rows** use a draft head and draft-vocabulary table that we trained on our own private
+  traffic; neither is published, so these rows cannot be reproduced. They were measured in run 295 (2026-11-17), a
+  separate paired session on the same R8 build (`8735d242`) with its own stock v0.35.0 arm (stock there, tok/s:
+  canonical C1 39.87; agent C1 64.56; agent C8 56.87; chat C1 50.97). Their changes vs stock are that run's own paired
+  ratios; no ratio is taken across runs. The strict row passed the same exactness gates as run 294 (agent C1 93 of 93
+  identical, chat PASS, canonical 10 of 10). The relaxed row is the configuration our own production server runs.
+  The [training guide](docs/TRAIN-YOUR-OWN-DRAFTER.md) and [tooling](drafter-training/) show how to train one on your
+  traffic.
 - Chat and canonical rows have 2 rounds each. With 2 rounds the bootstrap CI only spans the two round ratios, so it
   understates the uncertainty there; the agent rows (4 rounds each) carry the more reliable CIs.
 
@@ -52,7 +62,8 @@ Relaxed vs strict (wins / losses only where the 95 % CI excludes zero): canonica
 Against our previous build (R7R on v0.34.0, `fe7b7048`, same run), R8 strict: canonical C1 +0.5 % [-0.1 %, +1.0 %]; agent C1 +0.0 % [-0.4 %, +0.6 %]; agent C8 -1.3 % [-4.2 %, +1.5 %]; chat C1 +0.7 % [+0.5 %, +0.9 %]. R8 is about as fast as the previous build; what it adds is upstream v0.35.0 and its fixes (see [patches/](patches/)).
 
 Every launch of run 294 has a signed receipt in [receipts/runs/294/](receipts/runs/294/); every number in the table
-above can be recomputed from those receipts.
+above except the two privately trained drafter rows can be recomputed from those receipts. Run 295 has no published
+receipts, because a receipt records the hash of every input and its inputs include the private head and table.
 
 ### Launch files: the benchmarked settings for each task
 
@@ -113,8 +124,9 @@ draft-head prefix (#1209, ported to our permuted head) is active, as in every be
 The rows below use a draft head and vocabulary table that we trained on our **own** private traffic. They are not
 reproducible from public data, and the head is not published. We show them so you can see what training on your own
 traffic can buy. The [training guide](docs/TRAIN-YOUR-OWN-DRAFTER.md) and the [tooling](drafter-training/) are
-published. They were measured on the **previous build** (R7R on upstream v0.34.0, run 289) and were not re-measured
-on R8.
+published. The R8 numbers with this drafter (run 295) are in the [headline table](#headline-results) above. The
+private-vs-public comparison below was measured on the **previous build** (R7R on upstream v0.34.0, run 289), in one
+session with both heads.
 
 | configuration | canonical C1 | agent C1 | agent C8 | chat C1 |
 |---|---:|---:|---:|---:|
