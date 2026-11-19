@@ -162,7 +162,7 @@ A prebuilt package of R8 (upstream v0.35.0 plus [patches/](patches/), built with
 on the Radeon 8060S / 8050S (gfx1151) is attached to the
 [GitHub release](https://github.com/dvellon/gufo-347/releases/tag/v0.35.0-r8):
 `gufo-347-r8-windows-x64-gfx1151.zip` (sha256 `793bc1b8aa59b97a1e0a458a46f289f437cfefe2b17890933e78896802474e07`),
-the installer `install-gufo-347.ps1`, and `SHA256SUMS`. The zip holds gufo.exe with its runtime DLLs, the launch
+the installer `install-gufo-347.ps1`, the uninstaller `uninstall-gufo-347.ps1`, and `SHA256SUMS`. The zip holds gufo.exe with its runtime DLLs, the launch
 files above and the public draft-vocabulary table; it contains no model files and no private draft head or
 vocabulary table.
 
@@ -202,7 +202,8 @@ uninstaller. Prerequisites, the model download, a manual install and troubleshoo
 - Binaries in the git tree. The prebuilt Windows package is a release asset (see
   [Install on Windows](#install-on-windows)); to build it yourself, use upstream v0.35.0 plus [patches/](patches/)
   (see [BUILD-AND-RUN](docs/BUILD-AND-RUN.md)).
-  We plan to send the clean, self-contained changes upstream as separate pull requests.
+  We are sending the clean, self-contained changes upstream as separate pull requests; the first,
+  [gufo-org/gufo#1246](https://github.com/gufo-org/gufo/pull/1246) (HIP device code built at -O3 under clang-cl), is open.
 - The exact LM-head screen (A1) scales its bound with a per-channel table. The benchmarked build and the released patches both use a flat, data-free calibration table (every channel 1.0). The screen is exact for any table; the table only changes how many candidate rows are re-read.
 - Our privately trained draft head, our private vocabulary table, and any private workload or traffic.
 - The benchmark runner itself is not in this release, because it pins private files. The public workload builders and the draft-vocabulary tools are in tools/.
@@ -225,4 +226,4 @@ MIT (same as upstream gufo). The model, the GGUF files, the datasets and upstrea
 keeps its own licence.
 
 ---
-Numbers from benchmark run 294 (verdict written 2026-11-17 18:31:16 ET), recomputed from its signed receipts; previous-release numbers from runs 287 and 289.
+Numbers from benchmark run 294 (verdict written 2026-11-17 18:31:16 ET), recomputed from its signed receipts; the privately trained drafter rows from run 295 (2026-11-17, numbers only, no published receipts); previous-release numbers from runs 287 and 289.
